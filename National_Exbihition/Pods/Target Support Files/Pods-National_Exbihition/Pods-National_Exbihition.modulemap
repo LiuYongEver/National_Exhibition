@@ -1,0 +1,6 @@
+framework module Pods_National_Exbihition {
+  umbrella header "Pods-National_Exbihition-umbrella.h"
+
+  export *
+  module * { export * }
+}
