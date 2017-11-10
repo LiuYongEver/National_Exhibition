@@ -19,6 +19,8 @@
 		08A6D8D81FB4466D00FAC0B0 /* BasicInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A6D8D61FB4466D00FAC0B0 /* BasicInformationViewController.swift */; };
 		08A6D8DB1FB4472900FAC0B0 /* BasicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A6D8DA1FB4472900FAC0B0 /* BasicView.swift */; };
 		08A6D8DD1FB4477A00FAC0B0 /* BasicView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A6D8DC1FB4477A00FAC0B0 /* BasicView.xib */; };
+		08C79D5E1FB5C0CD00BF7686 /* TabTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C79D5D1FB5C0CD00BF7686 /* TabTableViewController.swift */; };
+		08C79D601FB5C11E00BF7686 /* TabTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C79D5F1FB5C11E00BF7686 /* TabTableViewCell.swift */; };
 		3FEC729F704F9A07CC3B557A /* Pods_National_Exbihition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C9F8079231DA848C6372A5D /* Pods_National_Exbihition.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +60,8 @@
 		08A6D8D61FB4466D00FAC0B0 /* BasicInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInformationViewController.swift; sourceTree = "<group>"; };
 		08A6D8DA1FB4472900FAC0B0 /* BasicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicView.swift; sourceTree = "<group>"; };
 		08A6D8DC1FB4477A00FAC0B0 /* BasicView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasicView.xib; sourceTree = "<group>"; };
+		08C79D5D1FB5C0CD00BF7686 /* TabTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTableViewController.swift; sourceTree = "<group>"; };
+		08C79D5F1FB5C11E00BF7686 /* TabTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTableViewCell.swift; sourceTree = "<group>"; };
 		2C9F8079231DA848C6372A5D /* Pods_National_Exbihition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_National_Exbihition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A2DE5A9B7CF51A3E07F2620 /* Pods-National_Exbihition.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-National_Exbihition.release.xcconfig"; path = "Pods/Target Support Files/Pods-National_Exbihition/Pods-National_Exbihition.release.xcconfig"; sourceTree = "<group>"; };
 		9485ADD92EAA0169F16F4D1E /* Pods-National_Exbihition.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-National_Exbihition.debug.xcconfig"; path = "Pods/Target Support Files/Pods-National_Exbihition/Pods-National_Exbihition.debug.xcconfig"; sourceTree = "<group>"; };
@@ -103,8 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				08201E6F1FB2F17200563887 /* IndexView.swift */,
-				08A6D8DA1FB4472900FAC0B0 /* BasicView.swift */,
-				08A6D8DC1FB4477A00FAC0B0 /* BasicView.xib */,
+				08C79D5F1FB5C11E00BF7686 /* TabTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -122,7 +125,7 @@
 			children = (
 				08201E651FB2DFD100563887 /* IndexViewController.swift */,
 				08A6D8D41FB419EE00FAC0B0 /* RecommendViewController.swift */,
-				08A6D8D61FB4466D00FAC0B0 /* BasicInformationViewController.swift */,
+				08C79D5D1FB5C0CD00BF7686 /* TabTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -152,6 +155,7 @@
 		086EA5A81FB2DE8A00E549F7 /* National_Exbihition */ = {
 			isa = PBXGroup;
 			children = (
+				08C79D591FB5BBED00BF7686 /* CountryDetail */,
 				08201E641FB2DFB800563887 /* Index */,
 				086EA5A91FB2DE8A00E549F7 /* AppDelegate.swift */,
 				086EA5B01FB2DE8A00E549F7 /* Assets.xcassets */,
@@ -177,6 +181,40 @@
 				086EA5CB1FB2DE8B00E549F7 /* Info.plist */,
 			);
 			path = National_ExbihitionUITests;
+			sourceTree = "<group>";
+		};
+		08C79D591FB5BBED00BF7686 /* CountryDetail */ = {
+			isa = PBXGroup;
+			children = (
+				08C79D5C1FB5BC2000BF7686 /* Controller */,
+				08C79D5B1FB5BC1A00BF7686 /* Model */,
+				08C79D5A1FB5BC1400BF7686 /* View */,
+			);
+			path = CountryDetail;
+			sourceTree = "<group>";
+		};
+		08C79D5A1FB5BC1400BF7686 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				08A6D8DA1FB4472900FAC0B0 /* BasicView.swift */,
+				08A6D8DC1FB4477A00FAC0B0 /* BasicView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		08C79D5B1FB5BC1A00BF7686 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		08C79D5C1FB5BC2000BF7686 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				08A6D8D61FB4466D00FAC0B0 /* BasicInformationViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		C4006E59E4FDB7535BDD8B29 /* Pods */ = {
@@ -395,9 +433,11 @@
 			files = (
 				08A6D8DB1FB4472900FAC0B0 /* BasicView.swift in Sources */,
 				086EA5AA1FB2DE8A00E549F7 /* AppDelegate.swift in Sources */,
+				08C79D601FB5C11E00BF7686 /* TabTableViewCell.swift in Sources */,
 				08201E721FB2F1C100563887 /* Propoty.swift in Sources */,
 				08A6D8D81FB4466D00FAC0B0 /* BasicInformationViewController.swift in Sources */,
 				08201E701FB2F17200563887 /* IndexView.swift in Sources */,
+				08C79D5E1FB5C0CD00BF7686 /* TabTableViewController.swift in Sources */,
 				08201E661FB2DFD100563887 /* IndexViewController.swift in Sources */,
 				08A6D8D51FB419EE00FAC0B0 /* RecommendViewController.swift in Sources */,
 			);

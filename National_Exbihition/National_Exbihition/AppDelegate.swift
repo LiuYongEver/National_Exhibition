@@ -16,7 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame:UIScreen.main.bounds)
-        window?.rootViewController = UINavigationController(rootViewController:IndexViewController())
+       // window?.rootViewController = UINavigationController(rootViewController:IndexViewController())
+        window?.rootViewController = self.CusTomTabBar()
+        
         window?.makeKeyAndVisible()
         window?.backgroundColor = UIColor.white
         
@@ -45,6 +47,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    func CusTomTabBar() ->UITabBarController{
+        let vc1 = IndexViewController()
+        let vc2 = IndexViewController()
+        let vc3 = IndexViewController()
+        let vc4 = IndexViewController()
+        let vc5 = IndexViewController()
+        
+
+        let nvc1:UINavigationController = UINavigationController(rootViewController: vc1)
+        let nvc2:UINavigationController = UINavigationController(rootViewController: vc2)
+        let nvc3:UINavigationController = UINavigationController(rootViewController: vc3)
+        let nvc4:UINavigationController = UINavigationController(rootViewController: vc4)
+        let nvc5:UINavigationController = UINavigationController(rootViewController:vc5)
+      
+        let tabbar1 = UITabBarItem(title: "首页", image: UIImage(named:"bottom1"), selectedImage:  UIImage(named:"bottom1"))
+        // tabbar1.imageInsets = UIEdgeInsetsMake(getHeight(25), width(25), getHeight(25), width(25))
+        let tabbar2 = UITabBarItem(title: "文献数据", image: UIImage(named:"bottom2"), selectedImage:  UIImage(named:"bottom2"))
+        let tabbar3 = UITabBarItem(title: "学习解惑",image: UIImage(named:"bottom3"), selectedImage:  UIImage(named:"bottom3"))
+        let tabbar4 = UITabBarItem(title: "我的", image: UIImage(named:"bottom4"), selectedImage:  UIImage(named:"bottom4"))
+        nvc1.tabBarItem = tabbar1;
+        nvc2.tabBarItem = tabbar2;
+        nvc3.tabBarItem = tabbar3;
+        nvc4.tabBarItem = tabbar4;
+        let tc = UITabBarController()
+        tc.tabBar.tintColor = naviColor
+        tc.viewControllers = [nvc1,nvc2,nvc4]
+        // tc.tabBar.backgroundImage = Public.getImgView("3.png")tc.viewControllers = [nvc1,nvc2,nvc3,nvc4,nvc5];return tc;
+        return tc
+    }
+
+    
 
 
 }

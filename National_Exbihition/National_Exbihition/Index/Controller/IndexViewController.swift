@@ -8,8 +8,17 @@
 
 import UIKit
 
-class IndexViewController: UIViewController {
+
+protocol resignDelegate:class {
+    func resign()
+}
+
+
+
+class IndexViewController: UIViewController{
     let searchBar = UISearchBar()
+    let delegate : resignDelegate? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNaviView()
@@ -23,6 +32,14 @@ class IndexViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+  
+    public func resignSearch(){
+        
+        self.searchBar.resignFirstResponder()
+    }
+    
+    
     
     func setNaviView(){
         self.navigationController?.navigationBar.barTintColor = naviColor
@@ -43,16 +60,17 @@ class IndexViewController: UIViewController {
     
     func  setPageView(){
         var childVcs = [UIViewController]()
-        for _ in 0..<5 {
-            let vc = UIViewController()
-            vc.view.backgroundColor = UIColor(red: CGFloat(arc4random_uniform(255))/255.0, green: CGFloat(arc4random_uniform(255))/255.0, blue: CGFloat(arc4random_uniform(255))/255.0, alpha: 1.0)
-            childVcs.append(vc)
-        }
-        childVcs[0] = RecommendViewController()
-        childVcs[1] = BasicInformationViewController()
+  
+        childVcs.append(RecommendViewController())
+     
         
-        let title  =  ["推荐","基本信息","环境资源","政治军事","经济发展"]
+        let title  =  ["推荐","基本信息","环境资源","政治军事","经济发展","社会状况","科技教育","国际关系","侨情","国际数据"]
+        for i in 1...title.count-1{
+            childVcs.append(TabTableViewController(index:title[i]))
+        }
+        
         let vieww = IndexPageView(frame: FloatRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64),titles: title,child:childVcs,parentViewController: self)
+        vieww.delegate = self
         self.view.addSubview(vieww)
     }
     
@@ -69,7 +87,12 @@ class IndexViewController: UIViewController {
 
 }
 
-extension IndexViewController:UISearchBarDelegate{
+extension IndexViewController:UISearchBarDelegate,resignDelegate{
+    
+    
+    func resign() {
+        self.searchBar.resignFirstResponder()
+    }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print(searchText)

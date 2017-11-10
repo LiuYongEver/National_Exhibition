@@ -40,26 +40,17 @@
                     </subviews>
                     <color key="backgroundColor" red="0.65766677461139889" green="0.65766677461139889" blue="0.65766677461139889" alpha="0.53606404049295775" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOg-0o-Mao">
-                    <rect key="frame" x="16" y="306" width="42" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="namelabel" destination="bn0-gR-tf7" id="3hN-nd-A4H"/>
+                <outlet property="playAction" destination="dRq-jr-a8Y" id="AMp-QL-YSn"/>
+                <outlet property="topview" destination="7yp-Va-7a0" id="chW-Nh-Lkb"/>
                 <outlet property="videoView" destination="Mz2-84-Sws" id="QvT-OW-hJ1"/>
             </connections>
             <point key="canvasLocation" x="442" y="73"/>
         </view>
-        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="m0z-0o-6KP">
-            <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <state key="normal" title="Button"/>
-        </button>
         <view contentMode="scaleToFill" id="cje-OT-2ne">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
