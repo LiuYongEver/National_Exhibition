@@ -7,14 +7,17 @@
 //
 
 import UIKit
-
+import StreamingKit
 class BasicInformationViewController: UIViewController {
 
+    var v:BasicView?
+    var audioPlayer: STKAudioPlayer = STKAudioPlayer()
     override func viewDidLoad() {
         super.viewDidLoad()
         let nib = UINib(nibName: "BasicView", bundle: nil)
-        let v = nib.instantiate(withOwner: nil, options: nil)[0] as! BasicView
-        self.view.addSubview(v)
+        v = nib.instantiate(withOwner: nil, options: nil)[0] as? BasicView
+        v?.musicButton.addTarget(self, action: #selector(playMusic(_:)), for: .touchUpInside)
+        self.view.addSubview(v!)
         
         
         // Do any additional setup after loading the view.
@@ -23,6 +26,18 @@ class BasicInformationViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc func playMusic(_ btn:UIButton){
+        btn.isSelected = !btn.isSelected
+        if btn.isSelected{
+           print("play")
+          audioPlayer.play("http://www.abstractpath.com/files/audiosamples/sample.mp3")
+        }else{
+            print("stop")
+           audioPlayer.stop()
+        }
+        
     }
     
 

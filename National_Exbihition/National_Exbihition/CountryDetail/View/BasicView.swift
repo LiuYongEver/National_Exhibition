@@ -9,19 +9,27 @@
 import Foundation
 import UIKit
 import SnapKit
-
+import StreamingKit
 class BasicView: UIView {
     @IBOutlet weak var playAction: UIButton!
     
     @IBOutlet weak var namelabel: UILabel!
     
     @IBOutlet weak var topview: UIView!
+          
+    
     @IBAction func playButton(_ sender: Any) {
+ 
+           //audioPlayer.queue("http://www.abstractpath.com/files/audiosamples/sample.mp3");
+          // audioPlayer.play("http://www.abstractpath.com/files/audiosamples/sample.mp3")
     }
     
     @IBOutlet weak var videoView: UIImageView!
     
     var InfoLabels:[UILabel]? = [UILabel]()
+    var musicButton = UIButton()
+    
+    
     
     override func draw(_ rect: CGRect) {
         self.videoView.frame = FloatRect(0, 0, SCREEN_WIDTH, getHeight(450))
@@ -61,6 +69,14 @@ class BasicView: UIView {
             i.sizeToFit()
             self.superview?.addSubview(i)
         }
+        
+        self.addSubview(self.musicButton)
+        musicButton.frame = FloatRect(self.InfoLabels![6].frame.width, self.InfoLabels![6].frame.origin.y, getWidth(31), getHeight(33))
+        
+        musicButton.backgroundColor = naviColor
+ 
+        
+        
         
         
     }

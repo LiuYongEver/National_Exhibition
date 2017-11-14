@@ -119,6 +119,11 @@ extension TabTableViewController:UITableViewDelegate,UITableViewDataSource
     
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.navigationController?.pushViewController(BasicInformationViewController(), animated: true)
+        
+    }
+    
     
     
     

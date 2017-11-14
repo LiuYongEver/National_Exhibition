@@ -6,5 +6,6 @@ target ‘National_Exbihition’ do
   pod ’SDWebImage’
   pod ’SVProgressHUD’
   pod 'SnapKit’
+  pod ‘StreamingKit’
 end
 
