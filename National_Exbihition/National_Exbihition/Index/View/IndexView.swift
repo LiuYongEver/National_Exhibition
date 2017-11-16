@@ -37,7 +37,12 @@ class IndexPageView:UIView {
     
     func setTitle(){
 
-        titleWidth =  (SCREEN_WIDTH/5)
+        
+        if titles.count<5{
+            titleWidth =  (SCREEN_WIDTH/CGFloat(titles.count));
+        }else{
+            titleWidth = SCREEN_WIDTH/5
+        }
         topback.frame = FloatRect(0, 0, SCREEN_WIDTH, interval)
         topback.contentSize = CGSize(width:titleWidth*CGFloat(titles.count),height:interval)
         topback.showsVerticalScrollIndicator = false

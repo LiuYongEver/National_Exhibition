@@ -7,5 +7,7 @@ target ‘National_Exbihition’ do
   pod ’SVProgressHUD’
   pod 'SnapKit’
   pod ‘StreamingKit’
+  pod 'Charts' 
+  pod 'ChartsRealm'
 end
 

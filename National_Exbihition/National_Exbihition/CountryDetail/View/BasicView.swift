@@ -71,9 +71,10 @@ class BasicView: UIView {
         }
         
         self.addSubview(self.musicButton)
-        musicButton.frame = FloatRect(self.InfoLabels![6].frame.width, self.InfoLabels![6].frame.origin.y, getWidth(31), getHeight(33))
-        
-        musicButton.backgroundColor = naviColor
+        musicButton.frame = FloatRect(self.InfoLabels![6].frame.width + 20, self.InfoLabels![6].frame.origin.y - 5, getWidth(41), getHeight(43))
+        musicButton.setImage(#imageLiteral(resourceName: "音乐"), for: .normal)
+        musicButton.setImage(#imageLiteral(resourceName: "stopPlay"), for: .selected)
+        //musicButton.backgroundColor = naviColor
  
         
         

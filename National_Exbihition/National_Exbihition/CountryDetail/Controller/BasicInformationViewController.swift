@@ -12,12 +12,24 @@ class BasicInformationViewController: UIViewController {
 
     var v:BasicView?
     var audioPlayer: STKAudioPlayer = STKAudioPlayer()
+
+    
+    
+    init(title:String){
+        super.init(nibName: nil, bundle: nil)
+        self.title = title
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let nib = UINib(nibName: "BasicView", bundle: nil)
-        v = nib.instantiate(withOwner: nil, options: nil)[0] as? BasicView
-        v?.musicButton.addTarget(self, action: #selector(playMusic(_:)), for: .touchUpInside)
-        self.view.addSubview(v!)
+        setNaviView()
+        setTabView()
+
+        //vivi.addSubview(v!)
         
         
         // Do any additional setup after loading the view.
@@ -28,6 +40,39 @@ class BasicInformationViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func setNaviView(){
+        self.navigationController?.navigationBar.barTintColor = naviColor
+        self.navigationController?.navigationBar.isTranslucent = false
+        let item = UIBarButtonItem(image: #imageLiteral(resourceName: "搜索"), style: .plain, target: self, action: #selector(touchReturn))
+        self.navigationItem.leftBarButtonItem = item
+        self.navigationItem.title = self.title
+        let dict:NSDictionary = [NSAttributedStringKey.foregroundColor: UIColor.white,NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 18)]
+        //标题颜色
+        self.navigationController?.navigationBar.titleTextAttributes = dict as? [NSAttributedStringKey : Any]
+    }
+    
+    func setTabView(){
+        var childVcs = [UIViewController]()
+        
+        childVcs.append(RecommendViewController())
+        
+        
+        let title  =  ["基本信息","环境资源","政治军事","经济发展","社会状况","科技教育","国际关系","侨情","国际数据"]
+        for i in 1...title.count-1{
+            childVcs.append(UIViewController())
+        }
+        
+        let vieww = IndexPageView(frame: FloatRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64),titles: title,child:childVcs,parentViewController: self)
+        self.view.addSubview(vieww)
+        
+        let nib = UINib(nibName: "BasicView", bundle: nil)
+        v = nib.instantiate(withOwner: nil, options: nil)[0] as? BasicView
+        v?.musicButton.addTarget(self, action: #selector(playMusic(_:)), for: .touchUpInside)
+        //let vivi = UIView(frame:FloatRect(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64))
+        childVcs[0].view.addSubview(v!)
+        
+    }
+
     @objc func playMusic(_ btn:UIButton){
         btn.isSelected = !btn.isSelected
         if btn.isSelected{
@@ -38,6 +83,11 @@ class BasicInformationViewController: UIViewController {
            audioPlayer.stop()
         }
         
+    }
+    
+    @objc func touchReturn(){
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
 

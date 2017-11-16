@@ -50,17 +50,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func CusTomTabBar() ->UITabBarController{
         let vc1 = IndexViewController()
-        let vc2 = IndexViewController()
+        let vc2 = ChartViewController()
         let vc3 = IndexViewController()
         let vc4 = IndexViewController()
-        let vc5 = IndexViewController()
+       // let vc5 = IndexViewController()
         
 
         let nvc1:UINavigationController = UINavigationController(rootViewController: vc1)
         let nvc2:UINavigationController = UINavigationController(rootViewController: vc2)
         let nvc3:UINavigationController = UINavigationController(rootViewController: vc3)
         let nvc4:UINavigationController = UINavigationController(rootViewController: vc4)
-        let nvc5:UINavigationController = UINavigationController(rootViewController:vc5)
+        //let nvc5:UINavigationController = UINavigationController(rootViewController:vc5)
       
         let tabbar1 = UITabBarItem(title: "首页", image: UIImage(named:"bottom1"), selectedImage:  UIImage(named:"bottom1"))
         // tabbar1.imageInsets = UIEdgeInsetsMake(getHeight(25), width(25), getHeight(25), width(25))

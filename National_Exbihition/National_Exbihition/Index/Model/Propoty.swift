@@ -12,6 +12,18 @@ import UIKit
 let SCREEN_HEIGHT = UIScreen.main.bounds.height
 let SCREEN_WIDTH = UIScreen.main.bounds.width
 let naviColor = UIColor.init(red: 0/255, green: 143/255, blue: 216/255, alpha: 1)
+
+extension UIColor{
+    class var randomColor: UIColor {
+        get{
+            let red = CGFloat((arc4random()%255))/255.0
+            let green = CGFloat((arc4random()%255))/255.0
+            let blue = CGFloat((arc4random()%255))/255.0
+            return UIColor(red:red,green:green,blue:blue,alpha:1)
+        }
+        
+    }
+}
 public func hexStringToColor(hexString: String) -> UIColor{
     
     var cString: String = hexString.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
@@ -64,6 +76,7 @@ public func FloatRect(_ x:CGFloat,_ y:CGFloat,_ w:CGFloat,_ h:CGFloat)->CGRect{
     
     return CGRect(x:x,y:y,width:w,height:h)
 }
+
 
 
 
