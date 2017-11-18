@@ -53,10 +53,9 @@ class ChartViewController: UIViewController{
     
     func  setPageView(){
         var childVcs = [UIViewController]()
-        childVcs.append(UIViewController())
         let title  =  ["统计数据","重要文献","重要研究"]
-        for i in 1...title.count-1{
-            childVcs.append(TabTableViewController(index:title[i]))
+        for i in 0...title.count-1{
+            childVcs.append(UIViewController())
         }
         
         childVcs[0].view.addSubview(chartView)

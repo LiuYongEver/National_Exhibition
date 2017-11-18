@@ -23,7 +23,7 @@ class ChartView: UIView,ChartViewDelegate{
     }
     
     func setChart(){
-        pieChartView = PieChartView.init(frame: FloatRect(0, 64, 400, 400))
+        pieChartView = PieChartView.init(frame: FloatRect(0,20,SCREEN_WIDTH, SCREEN_HEIGHT/2))
         pieChartView.delegate = self
         
         pieChartView.animate(xAxisDuration: 1, easingOption: ChartEasingOption.easeOutSine)
@@ -58,6 +58,14 @@ class ChartView: UIView,ChartViewDelegate{
         data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
         pieChartView.data = data
         pieChartView.chartDescription?.text = "右下角"
+        
+        let totalButton = UIButton(frame:Rect(47, 800, 658, 88))
+        totalButton.backgroundColor = naviColor
+        totalButton.layer.cornerRadius = 5
+        totalButton.layer.masksToBounds = true
+        totalButton.setTitleColor(UIColor.white, for: .normal)
+        totalButton.setTitle("更多国家", for: .normal)
+        self.addSubview(totalButton)
     }
 
 

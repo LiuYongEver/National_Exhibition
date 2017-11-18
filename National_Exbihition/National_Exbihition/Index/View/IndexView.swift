@@ -99,7 +99,7 @@ class IndexPageView:UIView {
             let vview  = UIView()
             vview.frame = CGRect(x: CGFloat(i)*(SCREEN_WIDTH),y:0,width: (SCREEN_WIDTH),height:SCREEN_HEIGHT - interval - naviOffset)
             vview.backgroundColor = UIColor.red
-            self.parentViewController?.addChildViewController(childVcs![i])
+           self.parentViewController?.addChildViewController(childVcs![i]);
             childVcs![i].view.frame = CGRect(x:0,y:0,width:SCREEN_WIDTH,height:SCREEN_HEIGHT-interval-naviOffset)
             vview.addSubview(childVcs![i].view)
             self.scroll.addSubview(vview)
