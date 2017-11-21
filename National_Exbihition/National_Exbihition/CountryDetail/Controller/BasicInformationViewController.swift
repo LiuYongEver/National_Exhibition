@@ -43,8 +43,16 @@ class BasicInformationViewController: UIViewController {
     func setNaviView(){
         self.navigationController?.navigationBar.barTintColor = naviColor
         self.navigationController?.navigationBar.isTranslucent = false
-        let item = UIBarButtonItem(image: #imageLiteral(resourceName: "搜索"), style: .plain, target: self, action: #selector(touchReturn))
-        self.navigationItem.leftBarButtonItem = item
+       
+        let backbutton = UIButton(type: .custom)
+        backbutton.frame = CGRect(x: 200, y: 13, width: 18, height: 18)
+        backbutton.setImage(UIImage(named: "back@1x"), for: .normal)
+        backbutton.addTarget(self, action: #selector(touchReturn), for: .touchUpInside)
+        let item = UIBarButtonItem(customView: backbutton)
+        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        barButtonItem.width = -5
+        //item.tintColor = UIColor.white
+        self.navigationItem.leftBarButtonItems = [barButtonItem,item]
         self.navigationItem.title = self.title
         let dict:NSDictionary = [NSAttributedStringKey.foregroundColor: UIColor.white,NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 18)]
         //标题颜色

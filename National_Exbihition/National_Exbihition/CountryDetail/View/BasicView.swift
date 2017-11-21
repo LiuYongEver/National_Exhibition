@@ -32,6 +32,8 @@ class BasicView: UIView {
     
     
     override func draw(_ rect: CGRect) {
+        
+        self.frame = FloatRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
         self.videoView.frame = FloatRect(0, 0, SCREEN_WIDTH, getHeight(450))
         videoView.image = #imageLiteral(resourceName: "组 186")
         
