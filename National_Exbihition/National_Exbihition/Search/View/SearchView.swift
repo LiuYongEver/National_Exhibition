@@ -50,7 +50,7 @@ class SearchView: UIView {
 extension SearchView:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if flag{
-          if let data = database?.getDatabase().historyName.count{
+            if let data = Int((database?.getDatabase().historyNames[0]?[0])!){
            // print(data)
              return data
           }else{
@@ -69,10 +69,19 @@ extension SearchView:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
+        var num:Int = 0;
+        if let c = database?.getDatabase().historyNames[indexPath.row+1]?.count{
+            num = c-1
+        }
+    
         if flag{
-           let cell = UITableViewCell.init(style: .default, reuseIdentifier: "cell")
-           if let data = database?.getDatabase().historyName[indexPath.row]{
-            cell.textLabel?.text = data
+            let cell = SearchHistoryTableViewCell.init(style: .default, reuseIdentifier: "cell",count:num)
+           if let data = database?.getDatabase().historyNames[indexPath.row+1]{
+            for i in  0...data.count-1{
+                cell.labels[i].setTitle(data[i], for: .normal)
+            }
+            
+            
             }
             return cell
             

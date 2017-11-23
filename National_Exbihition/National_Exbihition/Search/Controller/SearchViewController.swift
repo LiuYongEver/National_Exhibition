@@ -52,7 +52,10 @@ class SearchViewController: UIViewController {
     }
     
     func netRequest(){
-        self.searchData = searchDatabase(historyName:["1"],historyTag:["1"] ,hotName:["1"], hotTag:["1"],resultName:["2"],resultTag:["s"])
+        self.searchData = searchDatabase(historyNames:[
+            0:["2"],
+            1:["1","sa","swq","asdqewf"],2:["2","3"]],historyTags:[1:["1","sa","swq","asdqewf","afeqwas"]] ,hotName:["1"], hotTag:["1"],resultName:["2"],resultTag:["s"])
+        print(Int((searchData?.historyNames[0]![0])!))
         
         
     }

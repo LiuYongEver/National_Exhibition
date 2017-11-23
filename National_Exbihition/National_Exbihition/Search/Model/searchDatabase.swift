@@ -9,8 +9,10 @@
 import Foundation
 
 struct searchDatabase {
-    var historyName:[String]
-    var historyTag:[String]
+    var historyNames:[Int:[String]]
+    var historyTags:[Int:[String]]
+    
+    
     var hotName:[String]
     var hotTag:[String]
     var resultName:[String]
