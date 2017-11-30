@@ -63,7 +63,7 @@ class IndexViewController: UIViewController{
         self.navigationController?.navigationBar.addSubview(searchBar)
 
         ImageExbihition.frame = Rect(26,21, 155, 41)
-        ImageExbihition.image = #imageLiteral(resourceName: "国家展示"); self.navigationController?.navigationBar.addSubview(ImageExbihition)
+        ImageExbihition.image = #imageLiteral(resourceName: "国情概览"); self.navigationController?.navigationBar.addSubview(ImageExbihition)
         
     }
     

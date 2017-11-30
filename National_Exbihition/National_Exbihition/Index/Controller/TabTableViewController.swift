@@ -121,7 +121,7 @@ extension TabTableViewController:UITableViewDelegate,UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let nav = UINavigationController(rootViewController:BasicInformationViewController(title:(self.dataBase["name"]?[indexPath.row])!))
-        //self.navigationController?.pushViewController(BasicInformationViewController(title:(self.dataBase["name"]?[indexPath.row])!), animated: true)
+       
         self.present(nav, animated: true, completion: nil)
         
     }

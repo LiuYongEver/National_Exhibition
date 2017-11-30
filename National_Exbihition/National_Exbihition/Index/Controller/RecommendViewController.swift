@@ -67,12 +67,17 @@ class RecommendViewController: UIViewController {
         totalButton.setTitleColor(UIColor.white, for: .normal)
         totalButton.setTitle("全部国家", for: .normal)
         self.collectionView?.addSubview(totalButton)
+        totalButton.addTarget(self, action: #selector(allNation), for: .touchUpInside)
         
+    
         
-        
-        
-        
-        
+    }
+    
+  @objc  func allNation(){
+    
+    let nav = UINavigationController(rootViewController:AllCountryViewController())
+    self.present(nav, animated: true, completion: nil)
+        //self.navigationController?.pushViewController(AllCountryViewController(), animated: true)
     }
     
 
