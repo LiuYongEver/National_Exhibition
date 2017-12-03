@@ -12,6 +12,7 @@ import Charts
 class ChartView: UIView,ChartViewDelegate{
   
     var pieChartView:PieChartView!
+    var totalButton = UIButton()
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
 
@@ -59,13 +60,7 @@ class ChartView: UIView,ChartViewDelegate{
         pieChartView.data = data
         pieChartView.chartDescription?.text = "右下角"
         
-        let totalButton = UIButton(frame:Rect(47, 800, 658, 88))
-        totalButton.backgroundColor = naviColor
-        totalButton.layer.cornerRadius = 5
-        totalButton.layer.masksToBounds = true
-        totalButton.setTitleColor(UIColor.white, for: .normal)
-        totalButton.setTitle("更多国家", for: .normal)
-        self.addSubview(totalButton)
+
     }
 
 

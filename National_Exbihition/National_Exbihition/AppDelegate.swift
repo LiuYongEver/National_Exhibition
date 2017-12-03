@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame:UIScreen.main.bounds)
        // window?.rootViewController = UINavigationController(rootViewController:IndexViewController())
         window?.rootViewController = self.CusTomTabBar()
-        
+        self.window?.backgroundColor = UIColor.white
         window?.makeKeyAndVisible()
         window?.backgroundColor = UIColor.white
         
