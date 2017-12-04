@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		081738071FD437FB00F2C4E1 /* dataSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081738061FD437FB00F2C4E1 /* dataSelect.swift */; };
+		081738101FD56BEA00F2C4E1 /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817380F1FD56BEA00F2C4E1 /* MineViewController.swift */; };
+		081738121FD56C1300F2C4E1 /* MineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081738111FD56C1300F2C4E1 /* MineView.swift */; };
 		08201E661FB2DFD100563887 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08201E651FB2DFD100563887 /* IndexViewController.swift */; };
 		08201E701FB2F17200563887 /* IndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08201E6F1FB2F17200563887 /* IndexView.swift */; };
 		08201E721FB2F1C100563887 /* Propoty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08201E711FB2F1C100563887 /* Propoty.swift */; };
@@ -53,6 +55,8 @@
 
 /* Begin PBXFileReference section */
 		081738061FD437FB00F2C4E1 /* dataSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataSelect.swift; sourceTree = "<group>"; };
+		0817380F1FD56BEA00F2C4E1 /* MineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
+		081738111FD56C1300F2C4E1 /* MineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineView.swift; sourceTree = "<group>"; };
 		08201E651FB2DFD100563887 /* IndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
 		08201E6F1FB2F17200563887 /* IndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IndexView.swift; path = National_Exbihition/Index/View/IndexView.swift; sourceTree = SOURCE_ROOT; };
 		08201E711FB2F1C100563887 /* Propoty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Propoty.swift; sourceTree = "<group>"; };
@@ -114,6 +118,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		081738081FD56B8900F2C4E1 /* MIne */ = {
+			isa = PBXGroup;
+			children = (
+				0817380C1FD56BA800F2C4E1 /* Controller */,
+				0817380B1FD56BA000F2C4E1 /* Model */,
+				081738091FD56B9200F2C4E1 /* View */,
+			);
+			path = MIne;
+			sourceTree = "<group>";
+		};
+		081738091FD56B9200F2C4E1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				081738111FD56C1300F2C4E1 /* MineView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0817380B1FD56BA000F2C4E1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0817380C1FD56BA800F2C4E1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0817380F1FD56BEA00F2C4E1 /* MineViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		08201E641FB2DFB800563887 /* Index */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +214,7 @@
 		086EA5A81FB2DE8A00E549F7 /* National_Exbihition */ = {
 			isa = PBXGroup;
 			children = (
+				081738081FD56B8900F2C4E1 /* MIne */,
 				08FE0AEA1FCFAFC7005915A4 /* LiteratureData */,
 				08F734141FC01DFA00E0CAE9 /* Search */,
 				08C79D591FB5BBED00BF7686 /* CountryDetail */,
@@ -548,6 +586,7 @@
 				08DA83971FC409970003259C /* searchDatabase.swift in Sources */,
 				08FE0AEF1FCFB0BD005915A4 /* ChartView.swift in Sources */,
 				08A6D8D81FB4466D00FAC0B0 /* BasicInformationViewController.swift in Sources */,
+				081738121FD56C1300F2C4E1 /* MineView.swift in Sources */,
 				08201E701FB2F17200563887 /* IndexView.swift in Sources */,
 				08F734191FC01E5300E0CAE9 /* SearchViewController.swift in Sources */,
 				08C79D5E1FB5C0CD00BF7686 /* TabTableViewController.swift in Sources */,
@@ -557,6 +596,7 @@
 				08A6D8D51FB419EE00FAC0B0 /* RecommendViewController.swift in Sources */,
 				081738071FD437FB00F2C4E1 /* dataSelect.swift in Sources */,
 				08F734111FBDA3DE00E0CAE9 /* ChartViewController.swift in Sources */,
+				081738101FD56BEA00F2C4E1 /* MineViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

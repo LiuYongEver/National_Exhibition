@@ -52,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let vc1 = IndexViewController()
         let vc2 = ChartViewController()
         let vc3 = IndexViewController()
-        let vc4 = IndexViewController()
+        let vc4 = MineViewController()
        // let vc5 = IndexViewController()
         
 

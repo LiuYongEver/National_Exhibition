@@ -14,6 +14,7 @@ class MoreChartViewController: UIViewController {
     fileprivate var database:dataSelect?
     fileprivate var pickView:UIPickerView!
     fileprivate var selecteddata = [String]()
+    fileprivate var clicktag = 0;
     
     override func viewDidLoad() {
         Alarequest()
@@ -21,6 +22,12 @@ class MoreChartViewController: UIViewController {
         setPickview()
 
         self.navigationItem.title = "统计数据"
+        let dict:NSDictionary = [NSAttributedStringKey.foregroundColor: UIColor.white,NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 18)]
+        //标题颜色
+    self.navigationController?.navigationBar.titleTextAttributes = dict as? [NSAttributedStringKey : Any]
+        
+        
+    
         super.viewDidLoad()
         self.view.backgroundColor = backColor
         self.view.addSubview(vview)
@@ -39,26 +46,43 @@ class MoreChartViewController: UIViewController {
     
     func setPickview(){
         pickView = UIPickerView()
-        //pickView.frame = FloatRect(0 ,SCREEN_WIDTH-80 , SCREEN_WIDTH,80)
+        pickView.frame = FloatRect(0 ,0 , SCREEN_WIDTH,180)
         pickView.selectRow(0,inComponent:0,animated:true)
 
         pickView.dataSource = self
         pickView.delegate = self
         pickView.isHidden = true
         self.vview.addSubview(pickView)
+        self.vview.verifyButton.addTarget(self, action: #selector(verifyClicked), for: .touchUpInside)
         
     }
     
     
     
+    
     @objc func selector(_ btn:UIButton){
+        
+        self.clicktag = btn.tag
+        if let data = database{
+            
         switch btn.tag {
         case 0:
-            self.selecteddata = (database?.continet)!
+            self.selecteddata = (data.continet)
+        case 1:
+            selecteddata = (data.dataType)
+        case 2:
+            selecteddata = (data.nation)
+        case 3:
+            selecteddata = data.time
+        case 4:
+            selecteddata = data.lastType
+        case 5:
+            selecteddata = data.population
         default:
-            selecteddata = (database?.dataType)!
+            selecteddata = [""]
         }
-        print(selecteddata)
+       // print(selecteddata)
+        }
 
         btn.isSelected = !btn.isSelected
         self.pickView.reloadAllComponents()
@@ -66,6 +90,9 @@ class MoreChartViewController: UIViewController {
         pickView.showsSelectionIndicator = true
         pickView.isHidden = true
         alert.view.addSubview(pickView)
+        let cancel = UIAlertAction.init(title: "确定", style: .cancel, handler: nil)
+        alert.addAction(cancel)
+        
         self.present(alert, animated: true, completion: nil)
         
         
@@ -75,16 +102,25 @@ class MoreChartViewController: UIViewController {
         }else{
             pickView.isHidden = true
         }
-        
-        
     }
     
+    
+    @objc func verifyClicked(){
+    
+    
+    }
+    
+    
+    
+    
+    
+    
     func Alarequest(){
-        for i in 0...5{
+        for i in 0...0{
         
             //self.selecteddata.append("无数据")
             
-            self.database = dataSelect(continet:["亚洲\(i)","亚洲\(i)","亚洲\(i)","亚洲\(i)"],dataType:["亚洲\(i)"],nation:["亚洲\(i)"],time:["亚洲\(i)"],lastType:["亚洲\(i)"])
+            self.database = dataSelect(continet:["亚洲","亚洲","亚洲","亚洲"],dataType:["类型","tyoe2","type3"],nation:["中国","日本"],time:["1997","2015","2017","2018"],lastType:["ty1","ty2","ty3"],population:["111","222"])
         }
         //print(database)
     }
@@ -126,6 +162,10 @@ extension MoreChartViewController:UIPickerViewDelegate,UIPickerViewDataSource{
         return 20
     }
     
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.vview.texts[clicktag].setTitle(selecteddata[row], for: .normal)
+        
+    }
     
     
 }

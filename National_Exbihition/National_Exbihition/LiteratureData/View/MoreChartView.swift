@@ -17,6 +17,7 @@ class MoreChartView: UIView {
         }
         
         self.addSubview(backView)
+        self.backView.addSubview(verifyButton)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -56,6 +57,18 @@ class MoreChartView: UIView {
         return button
     }()
     
+    
+    lazy var verifyButton:UIButton = {
+        let   totalButton = UIButton(frame:Rect(47, 600, 658, 88))
+        totalButton.backgroundColor = naviColor
+        totalButton.layer.cornerRadius = 5
+        totalButton.layer.masksToBounds = true
+        totalButton.setTitleColor(UIColor.white, for: .normal)
+        totalButton.setTitle("绑定", for: .normal);
+        
+        return totalButton
+        
+    }()
     
       
 

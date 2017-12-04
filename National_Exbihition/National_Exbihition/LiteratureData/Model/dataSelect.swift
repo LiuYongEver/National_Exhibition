@@ -15,5 +15,6 @@ struct dataSelect {
     var nation:[String]
     var time:[String]
     var lastType:[String]
+    var population:[String]
 
 }
