@@ -20,6 +20,7 @@ class IndexViewController: UIViewController{
     let delegate : resignDelegate? = nil
     let ImageExbihition = UIImageView()
     override func viewWillAppear(_ animated: Bool) {
+        UIApplication.shared.statusBarStyle = .lightContent
          setNaviView()
     }
     
@@ -89,6 +90,7 @@ class IndexViewController: UIViewController{
         
     }
 
+    
         
 
     

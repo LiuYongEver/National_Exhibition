@@ -127,6 +127,9 @@ extension SearchView:UITableViewDelegate,UITableViewDataSource{
         return getHeight(95)
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.isSelected = false
+    }
     
     
 

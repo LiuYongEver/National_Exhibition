@@ -63,6 +63,10 @@ class ChartViewController: UIViewController{
         searchBar.layer.cornerRadius = 5
         // searchBar.backgroundColor = UIColor.white
         //searchBar.layer.masksToBounds = true
+        let btn = UIButton(frame:FloatRect(0, 0, getWidth(509), getHeight(100)))
+        btn.backgroundColor = UIColor.clear
+        searchBar.addSubview(btn)
+        btn.addTarget(self, action: #selector(searchTouch), for: .touchUpInside)
         self.navigationController?.navigationBar.addSubview(searchBar)
 
         ImageExbihition.frame = Rect(26,21, 155, 41)
@@ -91,6 +95,13 @@ class ChartViewController: UIViewController{
         self.navigationController?.pushViewController(MoreChartViewController(), animated: true)
     }
     
+    @objc func searchTouch(){
+        self.ImageExbihition.removeFromSuperview()
+        self.searchBar.removeFromSuperview()
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"",style:.plain,target:nil,action:nil);
+        self.navigationController?.pushViewController(SearchViewController(), animated: true)
+    }
     
 /*
     // In a storyboard-based application, you will often want to do a little preparation before navigation

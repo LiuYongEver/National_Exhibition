@@ -26,6 +26,7 @@ class BasicInformationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = backColor
         setNaviView()
         setTabView()
 
@@ -95,7 +96,7 @@ class BasicInformationViewController: UIViewController {
     
     @objc func touchReturn(){
         
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: false, completion: nil)
     }
     
 

@@ -17,6 +17,7 @@ class RecommendViewController: UIViewController {
     
     override func viewDidLoad() {
         setCollectionView()
+        self.view.backgroundColor = backColor
         super.viewDidLoad()
         
 
@@ -74,9 +75,13 @@ class RecommendViewController: UIViewController {
     }
     
   @objc  func allNation(){
-    
+    let animation = CATransition.init()
+    animation.duration = 0.5;
+    animation.type = kCATransitionFade
+    animation.subtype = kCATransitionFromRight
+    self.view.window?.layer.add(animation, forKey: nil);
     let nav = UINavigationController(rootViewController:AllCountryViewController())
-    self.present(nav, animated: true, completion: nil)
+    self.present(nav, animated: false, completion: nil)
         //self.navigationController?.pushViewController(AllCountryViewController(), animated: true)
     }
     
@@ -121,6 +126,17 @@ extension RecommendViewController:UICollectionViewDelegate,UICollectionViewDataS
         
         
         return cell
+
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let nav = UINavigationController.init(rootViewController: BasicInformationViewController.init(title: "中国"))
+        let animation = CATransition.init()
+        animation.duration = 0.5;
+        animation.type = kCATransitionFade
+        animation.subtype = kCATransitionFromRight
+        self.view.window?.layer.add(animation, forKey: nil)
+        self.present(nav, animated:false, completion: nil)
 
     }
     

@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol selectContinetDelegate {
+    func getContinent()->String
+}
+
+
 class TabTableViewController: UIViewController{
     
     public var dataBase:[String:[String]] = [
@@ -17,6 +22,8 @@ class TabTableViewController: UIViewController{
     ]
     
     var index : String?
+    var getContinet:selectContinetDelegate!
+    
     
     lazy var changeLocation:UIButton = {
         let button = UIButton(frame:FloatRect(0, 0, SCREEN_WIDTH, getHeight(47)))
@@ -26,6 +33,7 @@ class TabTableViewController: UIViewController{
         button.layer.borderWidth = getHeight(1)
         button.layer.borderColor = lineColor.cgColor
         button.backgroundColor = backColor
+        button.addTarget(self, action: #selector(selectTouch), for: .touchUpInside)
         return button
         
     }()
@@ -51,6 +59,7 @@ class TabTableViewController: UIViewController{
         setTV()
         super.viewDidLoad()
 
+
         // Do any additional setup after loading the view.
     }
 
@@ -75,6 +84,25 @@ class TabTableViewController: UIViewController{
         
         
     }
+    
+    
+    @objc func selectTouch(){
+        let animation = CATransition.init()
+        animation.type = kCATransitionFade
+        animation.subtype = kCATransitionFromRight
+        animation.duration = 0.5
+        self.view.window?.layer.add(animation, forKey: nil)
+        
+        let vc = SelectContinentTableViewController()
+        self.getContinet = vc
+
+        self.changeLocation.setTitle("您已选择 " + getContinet.getContinent(), for: .normal)
+        
+        let nav = UINavigationController.init(rootViewController: vc)
+       
+        self.present(nav, animated: false, completion: nil)
+    }
+    
     
 
     /*
@@ -120,13 +148,19 @@ extension TabTableViewController:UITableViewDelegate,UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.isSelected = false
+
         let nav = UINavigationController(rootViewController:BasicInformationViewController(title:(self.dataBase["name"]?[indexPath.row])!))
+        let animation = CATransition.init()
+        animation.duration = 0.5;
+        animation.type = kCATransitionFade
+        animation.subtype = kCATransitionFromRight
+        self.view.window?.layer.add(animation, forKey: nil)
        
-        self.present(nav, animated: true, completion: nil)
+        self.present(nav, animated: false, completion: nil)
         
     }
-    
-    
+
     
     
 }

@@ -46,7 +46,7 @@ class MoreChartViewController: UIViewController {
     
     func setPickview(){
         pickView = UIPickerView()
-        pickView.frame = FloatRect(0 ,0 , SCREEN_WIDTH,180)
+        pickView.frame = FloatRect(0 ,0 , SCREEN_WIDTH-19,180)
         pickView.selectRow(0,inComponent:0,animated:true)
 
         pickView.dataSource = self

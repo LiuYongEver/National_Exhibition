@@ -48,7 +48,7 @@ class AllCountryViewController: UIViewController {var userArray: [Userr] = [User
         //标题颜色
         self.navigationController?.navigationBar.titleTextAttributes = dict as? [NSAttributedStringKey : Any]
         
-        searchBar.frame = Rect(105, 20, 609, 42)
+        searchBar.frame = Rect(105, 30, 609, 42)
         searchBar.tintColor = naviColor
         searchBar.placeholder = "中国"
         searchBar.layer.cornerRadius = 5
@@ -64,7 +64,7 @@ class AllCountryViewController: UIViewController {var userArray: [Userr] = [User
         
     }
     @objc func touchReturn(){
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: false, completion: nil)
     }
     @objc func searchTouch(){}
     

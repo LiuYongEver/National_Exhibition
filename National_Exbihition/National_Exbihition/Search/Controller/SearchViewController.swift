@@ -37,7 +37,7 @@ class SearchViewController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = false
         searchBar = UISearchBar()
         self.searchBar.delegate = self
-        searchBar.frame = Rect(105, 15, 509, 42)
+        searchBar.frame = Rect(105, 30, 609, 42)
         searchBar.tintColor = naviColor
         searchBar.placeholder = "中国"
         searchBar.layer.cornerRadius = 5
