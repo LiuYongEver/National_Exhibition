@@ -35,8 +35,11 @@ class AllCountryViewController: UIViewController {var userArray: [Userr] = [User
         self.navigationController?.navigationBar.isTranslucent = false
         
         let backbutton = UIButton(type: .custom)
-        backbutton.frame = CGRect(x: 200, y: 13, width: 18, height: 18)
-        backbutton.setImage(UIImage(named: "back@1x"), for: .normal)
+        backbutton.frame = CGRect(x: 0, y: 0, width:68, height: 60)
+        //backbutton.setImage(UIImage(named: "back@1x"), for: .normal)
+        let bti = UIImageView.init(frame:( CGRect(x:0, y: 13, width: 22, height: 22)))
+        bti.image = #imageLiteral(resourceName: "back@1x")
+        backbutton.addSubview(bti)
         backbutton.addTarget(self, action: #selector(touchReturn), for: .touchUpInside)
         let item = UIBarButtonItem(customView: backbutton)
         let barButtonItem = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
@@ -48,7 +51,7 @@ class AllCountryViewController: UIViewController {var userArray: [Userr] = [User
         //标题颜色
         self.navigationController?.navigationBar.titleTextAttributes = dict as? [NSAttributedStringKey : Any]
         
-        searchBar.frame = Rect(105, 30, 609, 42)
+        searchBar.frame = Rect(90, 30, 609, 42)
         searchBar.tintColor = naviColor
         searchBar.placeholder = "中国"
         searchBar.layer.cornerRadius = 5

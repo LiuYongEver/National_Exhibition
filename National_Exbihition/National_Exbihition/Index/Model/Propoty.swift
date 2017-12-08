@@ -12,6 +12,10 @@ import UIKit
 let SCREEN_HEIGHT = UIScreen.main.bounds.height
 let SCREEN_WIDTH = UIScreen.main.bounds.width
 let naviColor = UIColor.init(red: 0/255, green: 143/255, blue: 216/255, alpha: 1)
+let rootUrl = "http://112.74.36.246:8080/nation/api"
+
+
+
 
 extension UIColor{
     class var randomColor: UIColor {

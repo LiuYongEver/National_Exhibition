@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import Alamofire
+import SDWebImage
+import SVProgressHUD
 
 protocol selectContinetDelegate {
-    func getContinent()->String
+    func getContinent(str:String)
 }
 
 
@@ -18,11 +21,13 @@ class TabTableViewController: UIViewController{
     public var dataBase:[String:[String]] = [
         "flag":[],
         "name":[],
-        "content":[],
+        "nation_id":[],
+        "capital":[],
+        "establish_time":[]
     ]
     
     var index : String?
-    var getContinet:selectContinetDelegate!
+    var getContinet = ""
     
     
     lazy var changeLocation:UIButton = {
@@ -68,13 +73,99 @@ class TabTableViewController: UIViewController{
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
+   // MARK: - Alarequest
+    
     func request(){
-        for i in 0...5{
-        self.dataBase["flag"]?.append("ss")
-        self.dataBase["name"]?.append("中国")
-        self.dataBase["content"]?.append("国名   中国，是大手笔方法好欺负那可是粉红 i 企鹅放假啊反馈客户问起恢复 i 恶气本菲卡是毕福剑阿富汗 i 前后放假啊什么能发掘并发放 i 啊师傅把沙发")
+        SVProgressHUD.show(withStatus:"loading")
+        var continent_id = "A"
+        var titles = ["亚洲 (Asia)","欧洲 (Europe)","北美洲 (North America)","南美洲 (South America)","非洲 (Africa)","大洋洲 (Oceania)","南极洲 (Antarctica)" ]
+        
+        switch getContinet{
+        case titles[0]:
+            continent_id = "A"
+        case titles[1]:
+            continent_id = "B"
+        case titles[2]:
+            continent_id = "C"
+        case titles[3]:
+            continent_id = "D"
+        case titles[4]:
+            continent_id = "E"
+        case titles[5]:
+            continent_id = "F"
+        case titles[6]:
+            continent_id = "G"
+        default:
+            break
         }
+        print(getContinet,continent_id)
+
+        let url = rootUrl+"/firstpage_find_"+getIndex()
+        let parameter = ["page":"0","continent_id":continent_id]
+        Alamofire.request(url, method: .post,parameters:parameter).responseJSON(completionHandler: {
+            response in
+            if let al = response.response{
+                // print(al)
+            }else{
+                SVProgressHUD.showError(withStatus: "网络连接失败")
+                SVProgressHUD.dismiss(withDelay: 1)
+            }
+            
+            if let js = response.result.value{
+                let json = JSON(js)
+                if  json["data"].count-1>0{
+                    for i in 0...json["data"].count-1{
+                        self.dataBase["name"]?.append(json["data"][i]["nation_z"].string!)
+                        if let flag = json["data"][i]["nation_flag"].string{
+                            self.dataBase["flag"]?.append(flag)
+                        }else{
+                            self.dataBase["flag"]?.append("");
+                        }
+                        if let flag = json["data"][i]["establish_time"].string{
+                            self.dataBase["establish_time"]?.append(flag)
+                        }else{
+                            self.dataBase["establish_time"]?.append("")
+                        }
+                        if let flag = json["data"][i]["capital"].string{
+                            self.dataBase["capital"]?.append(flag)
+                        }else{
+                            self.dataBase["capital"]?.append("")
+                        }
+                        self.dataBase["nation_id"]?.append(json["data"][i]["country_code"].string!)
+                        
+                        
+                        //self.dataBase["content"]?.append("")
+                        //self.dataBase["name"]![i]+self.dataBase["establish_time"]![i]+self.dataBase["capital"]![i]
+                    }
+                   // print(self.dataBase)
+                    SVProgressHUD.dismiss()
+                    self.tableview?.reloadData()
+                }
+                
+                
+            }
+            
+        })
+        
+        SVProgressHUD.dismiss()
+         
+        
+        
+        
+        
+//        for i in 0...5{
+//        self.dataBase["flag"]?.append("ss")
+//        self.dataBase["name"]?.append("中国")
+//        self.dataBase["content"]?.append("国名   中国，是大手笔方法好欺负那可是粉红 i 企鹅放假啊反馈客户问起恢复 i 恶气本菲卡是毕福剑阿富汗 i 前后放假啊什么能发掘并发放 i 啊师傅把沙发")
+//        }
     }
+    
+    
+    
+    
+    
     
     func setTV(){
         self.tableview = UITableView(frame:self.view.frame)
@@ -94,14 +185,36 @@ class TabTableViewController: UIViewController{
         self.view.window?.layer.add(animation, forKey: nil)
         
         let vc = SelectContinentTableViewController()
-        self.getContinet = vc
-
-        self.changeLocation.setTitle("您已选择 " + getContinet.getContinent(), for: .normal)
-        
+        vc.delegate = self
+        //self.changeLocation.setTitle("您已选择: "+getContinet!,for: .normal)
         let nav = UINavigationController.init(rootViewController: vc)
-       
         self.present(nav, animated: false, completion: nil)
+
+        
+        
     }
+    
+    func clearDatabase(){
+        for i in dataBase.keys{
+            dataBase[i]?.removeAll()
+        }
+        
+    }
+    
+    func getIndex()->String{
+        let indexx = ["","nationinfo","nature","politic","development","society","technology","relationship","overseas",""]
+         let ttitle  =  ["推荐","基本信息","环境资源","政治军事","经济发展","社会状况","科技教育","国际关系","侨情","国际数据"]
+        for i in 0...ttitle.count-1{
+            if ttitle[i] == index{
+                return indexx[i]
+            }
+            
+        }
+        return ""
+    }
+   
+    
+    
     
     
 
@@ -117,18 +230,37 @@ class TabTableViewController: UIViewController{
 
 }
 
-extension TabTableViewController:UITableViewDelegate,UITableViewDataSource
+
+extension TabTableViewController:UITableViewDelegate,UITableViewDataSource,selectContinetDelegate
 {
+    
+    func getContinent(str: String) {
+        self.changeLocation.setTitle("您已选择: "+str,for: .normal)
+        self.getContinet = str
+        self.clearDatabase()
+        self.request()
+        self.tableview?.reloadData()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (self.dataBase["name"]?.count)!
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = TabTableViewCell(style: .default ,reuseIdentifier:"cell")
-        cell.flagImage.image = #imageLiteral(resourceName: "组 3")
+       
+        
+        let fg = dataBase["flag"]?[indexPath.row]
+        if  fg != "" {
+            cell.flagImage.sd_setImage(with: URL.init(string: fg!), completed: nil)
+        }else{
+            cell.flagImage.image = #imageLiteral(resourceName: "baccc")
+        }
+        
         cell.nameTitle.text = (self.dataBase["name"]?[indexPath.row])! + "   \(self.index!)"
         cell.nameTitle.sizeToFit()
-        cell.contentLabel.text = self.dataBase["content"]?[indexPath.row]
+        let content = ("国名： "+self.dataBase["name"]![indexPath.row]+" 建立时间:"+self.dataBase["establish_time"]![indexPath.row]+" 首都："+self.dataBase["capital"]![indexPath.row])
+        cell.contentLabel.text = (content)//+self.dataBase["capital"]![indexPath.row])
         //cell.contentLabel.sizeToFit()
         return cell
     }
@@ -150,7 +282,7 @@ extension TabTableViewController:UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.isSelected = false
 
-        let nav = UINavigationController(rootViewController:BasicInformationViewController(title:(self.dataBase["name"]?[indexPath.row])!))
+        let nav = UINavigationController(rootViewController:BasicInformationViewController(title:(self.dataBase["nation_id"]?[indexPath.row])!))
         let animation = CATransition.init()
         animation.duration = 0.5;
         animation.type = kCATransitionFade

@@ -80,8 +80,12 @@ class ChartViewController: UIViewController{
             childVcs.append(UIViewController())
             childVcs[i].view.backgroundColor = backColor
         }
+        
+        let wenxian = TabTableViewController.init(index: "重要文献")
+
         chartView.backgroundColor = backColor
         childVcs[0].view.addSubview(chartView)
+        childVcs[1] = wenxian
         let vieww = IndexPageView(frame: FloatRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64),titles: title,child:childVcs,parentViewController: self)
         self.view.addSubview(vieww)
 

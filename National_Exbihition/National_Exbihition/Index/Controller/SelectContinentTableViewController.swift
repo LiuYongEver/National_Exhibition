@@ -8,10 +8,12 @@
 
 import UIKit
 
-class SelectContinentTableViewController: UITableViewController,selectContinetDelegate{
+class SelectContinentTableViewController: UITableViewController{
 
     
     
+    
+    var delegate:selectContinetDelegate?
     
     var selected:String?
     var titles = ["亚洲 (Asia)","欧洲 (Europe)","北美洲 (North America)","南美洲 (South America)","非洲 (Africa)","大洋洲 (Oceania)","南极洲 (Antarctica)" ]
@@ -22,8 +24,13 @@ class SelectContinentTableViewController: UITableViewController,selectContinetDe
         self.navigationController?.navigationBar.isTranslucent = false
         
         let backbutton = UIButton(type: .custom)
-        backbutton.frame = CGRect(x: 200, y: 13, width: 18, height: 18)
-        backbutton.setImage(UIImage(named: "back@1x"), for: .normal)
+        backbutton.frame = CGRect(x: 0, y: 0, width:68, height: 60)
+        //backbutton.setImage(UIImage(named: "back@1x"), for: .normal)
+        let bti = UIImageView.init(frame:( CGRect(x:0, y: 13, width: 22, height: 22)))
+        bti.image = #imageLiteral(resourceName: "back@1x")
+        backbutton.addSubview(bti)
+        
+        
         backbutton.addTarget(self, action: #selector(touchReturn), for: .touchUpInside)
         let item = UIBarButtonItem(customView: backbutton)
         let barButtonItem = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
@@ -38,8 +45,8 @@ class SelectContinentTableViewController: UITableViewController,selectContinetDe
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
-    func getContinent() -> String {
-        return selected
+    func getContinent(str:String){
+        delegate?.getContinent(str:str)
     }
     
     override func didReceiveMemoryWarning() {
@@ -76,7 +83,8 @@ class SelectContinentTableViewController: UITableViewController,selectContinetDe
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selected = titles[indexPath.row]
-        self.getContinent()
+        self.getContinent(str: selected!)
+
         
         self.dismiss(animated: false, completion: nil)
     }
