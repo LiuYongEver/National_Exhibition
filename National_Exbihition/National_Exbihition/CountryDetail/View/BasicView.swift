@@ -32,7 +32,7 @@ class BasicView: UIView {
     var InfoLabels:[UILabel]? = [UILabel]()
     var musicButton = UIButton()
     var country_code:String!
-    var CLLloaction:[Double]?
+    var CLLloaction:[Float]?
     
     init(frame: CGRect,country_code:String) {
         super.init(frame: frame)
@@ -135,7 +135,7 @@ class BasicView: UIView {
             
             if let js = response.result.value{
                 let json = JSON(js)["data"]
-                print(json)
+                //print(json)
                 
                 if json.count>0{
                     
@@ -158,11 +158,14 @@ class BasicView: UIView {
                             self.InfoLabels![4].text = "行政区划: " + jj
                         }
                         
-                        if let jj = json["capital_latitude"].double{
+                        if let jj = json["capital_latitude"].float{
+                           // print(jj)
+                            self.CLLloaction = [Float]()
                             self.CLLloaction?.append(jj);
-                            self.CLLloaction?.append(json["capital_latitude"].double!);
+                            self.CLLloaction?.append((json["capital_longitude"].float!));
+                         
                         }
-                        
+                        print(self.CLLloaction)
                         
                         
                         for i in self.InfoLabels!{

@@ -14,11 +14,10 @@ class MapViewController: UIViewController {
     
     //定位管理器
     let locationManager:CLLocationManager = CLLocationManager()
-    var CLocation:[Double]!
-    init(CLLocation:[Double]){
+    var CLocation:[Float]!
+    init(CLLocation:[Float]){
         super.init(nibName: nil, bundle: nil)
-        self.CLocation[0] = CLLocation[0]
-        self.CLocation[1] = CLLocation[1]
+        self.CLocation = CLLocation
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -48,7 +47,7 @@ class MapViewController: UIViewController {
         //使用自定义位置
         //lati  long
         
-        let center:CLLocation = CLLocation(latitude: self.CLocation[0], longitude: self.CLocation[1])
+        let center:CLLocation = CLLocation(latitude: Double(self.CLocation[0]), longitude: Double(self.CLocation[1]))
         let currentRegion:MKCoordinateRegion = MKCoordinateRegion(center: center.coordinate,
                                                                   span: currentLocationSpan)
         

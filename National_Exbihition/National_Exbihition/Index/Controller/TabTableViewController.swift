@@ -285,8 +285,12 @@ extension TabTableViewController:UITableViewDelegate,UITableViewDataSource,selec
         for i in (self.navigationController?.navigationBar.subviews)!{
             i.removeFromSuperview()
         }
-        self.navigationController?.pushViewController(BasicInformationViewController(title:(self.dataBase["nation_id"]?[indexPath.row])!,defaultCode:(getIndex().IndexCode-1)), animated: true)
-        
+       
+        let vc = BasicInformationViewController(title:(self.dataBase["nation_id"]?[indexPath.row])!,defaultCode:(getIndex().IndexCode-1))
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
+        vc.hidesBottomBarWhenPushed = false
+
 //        let nav = UINavigationController(rootViewController:BasicInformationViewController(title:(self.dataBase["nation_id"]?[indexPath.row])!,defaultCode:(getIndex().IndexCode-1)))
 //        let animation = CATransition.init()
 //        animation.duration = 0.5;

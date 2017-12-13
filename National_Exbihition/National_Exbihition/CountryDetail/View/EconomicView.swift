@@ -1,18 +1,17 @@
 //
-//  PoliticView.swift
+//  EconomicView.swift
 //  National_Exbihition
 //
 //  Created by ly on 2017/12/13.
 //  Copyright © 2017年 shikeTeam. All rights reserved.
 //
 
-
 import Foundation
 import UIKit
 import Alamofire
 import SVProgressHUD
 
-class PoliticView:UIView{
+class EconomicView:UIView{
     
     var country_code:String!
     var database:[String:String]=[
@@ -47,11 +46,11 @@ class PoliticView:UIView{
         fatalError("init(coder:) has not been implemented")
     }
     /*
-    - parameter textView:   UITextView
-    - parameter fixedWidth:      UITextView宽度
-    - returns:              返回UITextView的高度
-    */
-  func heightForTextView(textView: UITextView, fixedWidth: CGFloat) -> CGFloat {
+     - parameter textView:   UITextView
+     - parameter fixedWidth:      UITextView宽度
+     - returns:              返回UITextView的高度
+     */
+    func heightForTextView(textView: UITextView, fixedWidth: CGFloat) -> CGFloat {
         let size = CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude)
         let constraint = textView.sizeThatFits(size)
         return constraint.height
@@ -62,14 +61,14 @@ class PoliticView:UIView{
         back = UIView.init(frame: self.frame)
         //back.contentSize = CGSize(width:SCREEN_WIDTH,height:SCREEN_HEIGHT*1.2)
         self.addSubview(back)
-
+        
         textView1.isEditable = false
         textView1.textColor = title2color
         //textView1.attributedText = getText();
         textView1.frame = FloatRect(getWidth(0),getHeight(10),SCREEN_WIDTH,SCREEN_HEIGHT-104);
         textView1.bounces = false
         back.addSubview(textView1)
-       
+        
         let IMG  = #imageLiteral(resourceName: "组 183")
         let ttAttach = NSTextAttachment()
         ttAttach.image = IMG
@@ -85,7 +84,7 @@ class PoliticView:UIView{
             ll.append(atrString)
         }
         
-
+        
         ll.append(NSAttributedString.init(attachment: ttAttach))
         
         let titleatrString2 = NSAttributedString.init(string: "军事概览\n", attributes:  [NSAttributedStringKey.foregroundColor : title1Color, NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: getHeight(42))])
@@ -98,7 +97,7 @@ class PoliticView:UIView{
         
         
         textView1.attributedText = ll
-
+        
         
         
         
@@ -106,13 +105,13 @@ class PoliticView:UIView{
         
         let line = UIView.init(frame: FloatRect(0,getHeight(600), SCREEN_WIDTH, getHeight(15)))
         line.backgroundColor = lineColor
-       // back.addSubview(line)
-//        line.snp.makeConstraints({
-//            make in
-//               make.top.greaterThanOrEqualTo(self.center)
-//               make.width.equalTo(SCREEN_WIDTH)
-//               make.height.equalTo(15)
-//        })
+        // back.addSubview(line)
+        //        line.snp.makeConstraints({
+        //            make in
+        //               make.top.greaterThanOrEqualTo(self.center)
+        //               make.width.equalTo(SCREEN_WIDTH)
+        //               make.height.equalTo(15)
+        //        })
         
         
         let titlelabel2 = UILabel.init(frame: Rect(23,12+15, 0, 0))

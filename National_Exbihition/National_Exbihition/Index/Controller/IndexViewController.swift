@@ -19,10 +19,12 @@ class IndexViewController: UIViewController{
     let searchBar = UISearchBar()
     let delegate : resignDelegate? = nil
     let ImageExbihition = UIImageView()
-    override func viewWillAppear(_ animated: Bool) {
-        UIApplication.shared.statusBarStyle = .lightContent
+    override func viewDidAppear(_ animated: Bool) {
+        //UIApplication.shared.statusBarStyle = .lightContent
          setNaviView()
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
