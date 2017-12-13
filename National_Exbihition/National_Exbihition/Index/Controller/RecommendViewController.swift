@@ -18,6 +18,7 @@ class RecommendViewController: UIViewController {
     override func viewDidLoad() {
         setCollectionView()
         self.view.backgroundColor = backColor
+        self.navigationController?.navigationBar.backgroundColor = naviColor
         super.viewDidLoad()
         
 
@@ -75,14 +76,19 @@ class RecommendViewController: UIViewController {
     }
     
   @objc  func allNation(){
-    let animation = CATransition.init()
-    animation.duration = 0.5;
-    animation.type = kCATransitionFade
-    animation.subtype = kCATransitionFromRight
-    self.view.window?.layer.add(animation, forKey: nil);
-    let nav = UINavigationController(rootViewController:AllCountryViewController())
-    self.present(nav, animated: false, completion: nil)
-        //self.navigationController?.pushViewController(AllCountryViewController(), animated: true)
+    
+    
+    for i in (self.navigationController?.navigationBar.subviews)!{
+        i.removeFromSuperview()
+    }
+//    let animation = CATransition.init()
+//    animation.duration = 0.5;
+//    animation.type = kCATransitionFade
+//    animation.subtype = kCATransitionFromRight
+//    self.view.window?.layer.add(animation, forKey: nil);
+//    let nav = UINavigationController(rootViewController:AllCountryViewController())
+//    self.present(nav, animated: false, completion: nil)
+        self.navigationController?.pushViewController(AllCountryViewController(), animated: true)
     }
     
 
@@ -130,13 +136,18 @@ extension RecommendViewController:UICollectionViewDelegate,UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let nav = UINavigationController.init(rootViewController: BasicInformationViewController.init(title: "中国"))
-        let animation = CATransition.init()
-        animation.duration = 0.5;
-        animation.type = kCATransitionFade
-        animation.subtype = kCATransitionFromRight
-        self.view.window?.layer.add(animation, forKey: nil)
-        self.present(nav, animated:false, completion: nil)
+
+        for i in (self.navigationController?.navigationBar.subviews)!{
+            i.removeFromSuperview()
+        }
+        self.navigationController?.pushViewController(BasicInformationViewController.init(title: "", defaultCode: 0), animated: true)
+        //        let nav = UINavigationController.init(rootViewController: BasicInformationViewController.init(title: "", defaultCode: 0))
+//        let animation = CATransition.init()
+//        animation.duration = 0.5;
+//        animation.type = kCATransitionFade
+//        animation.subtype = kCATransitionFromRight
+//        self.view.window?.layer.add(animation, forKey: nil)
+       // self.present(nav, animated:false, completion: nil)
 
     }
     

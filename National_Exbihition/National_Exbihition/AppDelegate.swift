@@ -18,18 +18,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame:UIScreen.main.bounds)
        // window?.rootViewController = UINavigationController(rootViewController:IndexViewController())
         window?.rootViewController = self.CusTomTabBar()
-        self.window?.backgroundColor = UIColor.white
+        self.window?.backgroundColor = naviColor
         window?.makeKeyAndVisible()
-        window?.backgroundColor = UIColor.white
+        //window?.backgroundColor = UIColor.white
         let navBar=UINavigationBar.appearance()
         //.设置导航栏标题颜色
         navBar.titleTextAttributes = [ NSAttributedStringKey.foregroundColor : UIColor.white]
+        //navBar.backItem?.backBarButtonItem = UIBarButtonItem(title:"",style:.plain,target:nil,action:nil)
         //.设置导航栏按钮颜色
-        navBar.tintColor = UIColor.white
+     //navBar.tintColor = UIColor.white
         //.设置导航栏背景颜色
-        navBar.barTintColor=UIColor(red: 49.0/255.0, green: 183.0/255.0, blue: 235.0/255.0, alpha: 1.0)
         //.状态栏文字白色风格
-        UIApplication.shared.statusBarStyle = .lightContent
+       // UIApplication.shared.statusBarStyle = .lightContent
         
         
         

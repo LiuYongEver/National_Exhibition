@@ -12,21 +12,32 @@ import SnapKit
 import StreamingKit
 import Alamofire
 import SVProgressHUD
+
+protocol PushVCDelegate {
+     func Push(vc:UIViewController)
+}
+
+
+
 class BasicView: UIView {
+    
+    var pushDelegate:PushVCDelegate?
     var playAction: UIButton! = UIButton()
     var namelabel: UILabel! = UILabel()
     var topview: UIView! = UIView()
     var videoView: UIImageView! = UIImageView()
+    var mapButton = UIButton()
+    
     
     var InfoLabels:[UILabel]? = [UILabel]()
     var musicButton = UIButton()
     var country_code:String!
+    var CLLloaction:[Double]?
     
     init(frame: CGRect,country_code:String) {
         super.init(frame: frame)
         self.country_code = country_code
         Alarequest()
-    
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -41,6 +52,7 @@ class BasicView: UIView {
         self.addSubview(topview)
         self.addSubview(namelabel)
         self.addSubview(playAction)
+        self.addSubview(mapButton)
         
         self.frame = FloatRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
         self.videoView.frame = FloatRect(0, 0, SCREEN_WIDTH, getHeight(450))
@@ -64,6 +76,7 @@ class BasicView: UIView {
                 make.leftMargin.equalTo(getWidth(24))
                 make.topMargin.equalTo(getHeight(23))
         })
+        
         namelabel.textColor = UIColor.white
         
         
@@ -81,19 +94,35 @@ class BasicView: UIView {
             self.addSubview(i)
         }
         
+        
         self.addSubview(self.musicButton)
+
+       // mapButton.backgroundColor = naviColor
+        mapButton.setImage(#imageLiteral(resourceName: "位置-线"), for: .normal)
+        //mapButton.imageEdgeInsets = UIEdgeInsets.init(top: <#T##CGFloat#>, left: <#T##CGFloat#>, bottom: <#T##CGFloat#>, right: <#T##CGFloat#>)
+        
         musicButton.frame = FloatRect(self.InfoLabels![6].frame.width + 20, self.InfoLabels![6].frame.origin.y - 5, getWidth(41), getHeight(43))
         musicButton.setImage(#imageLiteral(resourceName: "音乐"), for: .normal)
         musicButton.setImage(#imageLiteral(resourceName: "stopPlay"), for: .selected)
+        mapButton.addTarget(self, action: #selector(ppush), for: .touchUpInside)
         //musicButton.backgroundColor = naviColor
  
     }
+    
+
+    @objc func ppush(){
+        if CLLloaction != nil {
+            print(CLLloaction)
+         pushDelegate?.Push(vc: MapViewController.init(CLLocation:self.CLLloaction! ))
+        }
+    }
+    
    
     func Alarequest(){
         let url = rootUrl+"/find_nationinfo_pk"
-        print(country_code)
+        //print(country_code)
         let paramete = ["country_code":"\(country_code!)"]
-        print(paramete)
+        //print(paramete)
         Alamofire.request(url, method: .post,parameters:paramete).responseJSON(completionHandler: {
             response in
             if let al = response.response{
@@ -128,9 +157,29 @@ class BasicView: UIView {
                         if let jj = json["country_emblem"].string{
                             self.InfoLabels![4].text = "行政区划: " + jj
                         }
+                        
+                        if let jj = json["capital_latitude"].double{
+                            self.CLLloaction?.append(jj);
+                            self.CLLloaction?.append(json["capital_latitude"].double!);
+                        }
+                        
+                        
+                        
                         for i in self.InfoLabels!{
                             i.sizeToFit()
                         }
+                        
+                        
+                        
+                        self.mapButton.snp.makeConstraints({
+                            make in
+                            make.left.greaterThanOrEqualTo(self.InfoLabels![3].snp.right);
+                            make.width.equalTo(getWidth(100))
+                            make.height.equalTo(getHeight(50))
+                            make.centerY.equalTo(self.InfoLabels![3])
+                        })
+                        
+                        
                         
                      }
                     

@@ -30,27 +30,16 @@ class AllCountryViewController: UIViewController {var userArray: [Userr] = [User
     }
     
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        for i in (self.navigationController?.navigationBar.subviews)!{
+            i.removeFromSuperview()
+        }
+    }
+    
+    
     func setNaviView(){
-        self.navigationController?.navigationBar.barTintColor = naviColor
-        self.navigationController?.navigationBar.isTranslucent = false
-        
-        let backbutton = UIButton(type: .custom)
-        backbutton.frame = CGRect(x: 0, y: 0, width:68, height: 60)
-        //backbutton.setImage(UIImage(named: "back@1x"), for: .normal)
-        let bti = UIImageView.init(frame:( CGRect(x:0, y: 13, width: 22, height: 22)))
-        bti.image = #imageLiteral(resourceName: "back@1x")
-        backbutton.addSubview(bti)
-        backbutton.addTarget(self, action: #selector(touchReturn), for: .touchUpInside)
-        let item = UIBarButtonItem(customView: backbutton)
-        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-        barButtonItem.width = -5
-        //item.tintColor = UIColor.white
-        self.navigationItem.leftBarButtonItems = [barButtonItem,item]
         self.navigationItem.title = "全部国家"
-        let dict:NSDictionary = [NSAttributedStringKey.foregroundColor: UIColor.white,NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 18)]
-        //标题颜色
-        self.navigationController?.navigationBar.titleTextAttributes = dict as? [NSAttributedStringKey : Any]
-        
         searchBar.frame = Rect(90, 30, 609, 42)
         searchBar.tintColor = naviColor
         searchBar.placeholder = "中国"

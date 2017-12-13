@@ -17,11 +17,23 @@ class BasicInformationViewController: UIViewController {
     var v:BasicView?
     var audioPlayer: STKAudioPlayer = STKAudioPlayer()
     var contry_code:String?
+    var defaultCode:Int!
+
+
+    
+    lazy var PoloticV:UIView = {
+        let vie = PoliticView.init(frame: self.view.frame, country_code: self.contry_code!)
+        vie.backgroundColor = backColor
+        return vie
+    }()
     
     
-    init(title:String){
+    
+    
+    init(title:String,defaultCode:Int){
         super.init(nibName: nil, bundle: nil)
         self.contry_code = title
+        self.defaultCode = defaultCode
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -36,9 +48,13 @@ class BasicInformationViewController: UIViewController {
 
         //vivi.addSubview(v!)
         
-        
         // Do any additional setup after loading the view.
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        SVProgressHUD.dismiss()
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -46,25 +62,8 @@ class BasicInformationViewController: UIViewController {
     }
     
     func setNaviView(){
-        self.navigationController?.navigationBar.barTintColor = naviColor
-        self.navigationController?.navigationBar.isTranslucent = false
-       
-        let backbutton = UIButton(type: .custom)
-        backbutton.frame = CGRect(x: 0, y: 0, width:68, height: 60)
-        //backbutton.setImage(UIImage(named: "back@1x"), for: .normal)
-        let bti = UIImageView.init(frame:( CGRect(x:0, y: 13, width: 22, height: 22)))
-        bti.image = #imageLiteral(resourceName: "back@1x")
-        backbutton.addSubview(bti)
-        backbutton.addTarget(self, action: #selector(touchReturn), for: .touchUpInside)
-        let item = UIBarButtonItem(customView: backbutton)
-        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-        barButtonItem.width = -5
-        //item.tintColor = UIColor.white
-        self.navigationItem.leftBarButtonItems = [barButtonItem,item]
         self.navigationItem.title = "国家信息详情"
-        let dict:NSDictionary = [NSAttributedStringKey.foregroundColor: UIColor.white,NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 18)]
-        //标题颜色
-        self.navigationController?.navigationBar.titleTextAttributes = dict as? [NSAttributedStringKey : Any]
+        
     }
     
     func setTabView(){
@@ -76,17 +75,27 @@ class BasicInformationViewController: UIViewController {
             childVcs.append(UIViewController())
         }
         
+        childVcs[1] = EnvrionmentViewController.init(code: self.contry_code!)
         let vieww = IndexPageView(frame: FloatRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64),titles: title,child:childVcs,parentViewController: self)
+        
+        vieww.changeto(btn: vieww.titleButton[defaultCode])
         self.view.addSubview(vieww)
         
         //let nib = UINib(nibName: "BasicView", bundle: nil)
         v = BasicView.init(frame: self.view.frame, country_code: self.contry_code!)
+        v?.pushDelegate = self
         //nib.instantiate(withOwner: nil, options: nil)[0] as? BasicView
         v?.musicButton.addTarget(self, action: #selector(playMusic(_:)), for: .touchUpInside)
         //let vivi = UIView(frame:FloatRect(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64))
         childVcs[0].view.backgroundColor = backColor
         v?.backgroundColor = backColor
         childVcs[0].view = v
+
+        childVcs[2].view = PoloticV
+        
+        
+        
+        
         
     }
 
@@ -108,10 +117,19 @@ class BasicInformationViewController: UIViewController {
     }
     
 
+    
+    
+
     /*
     // MARK: - 网络请求
     */
     func Alarequest(){}
     
 }
-
+extension BasicInformationViewController:PushVCDelegate{
+    func Push(vc: UIViewController) {
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+}

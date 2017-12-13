@@ -102,7 +102,7 @@ class TabTableViewController: UIViewController{
         }
         print(getContinet,continent_id)
 
-        let url = rootUrl+"/firstpage_find_"+getIndex()
+        let url = rootUrl+"/firstpage_find_"+getIndex().Index
         let parameter = ["page":"0","continent_id":continent_id]
         Alamofire.request(url, method: .post,parameters:parameter).responseJSON(completionHandler: {
             response in
@@ -201,16 +201,16 @@ class TabTableViewController: UIViewController{
         
     }
     
-    func getIndex()->String{
+    func getIndex()->(Index:String,IndexCode:Int){
         let indexx = ["","nationinfo","nature","politic","development","society","technology","relationship","overseas",""]
          let ttitle  =  ["推荐","基本信息","环境资源","政治军事","经济发展","社会状况","科技教育","国际关系","侨情","国际数据"]
         for i in 0...ttitle.count-1{
             if ttitle[i] == index{
-                return indexx[i]
+                return (indexx[i],i)
             }
             
         }
-        return ""
+        return ("",0)
     }
    
     
@@ -281,15 +281,20 @@ extension TabTableViewController:UITableViewDelegate,UITableViewDataSource,selec
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.isSelected = false
-
-        let nav = UINavigationController(rootViewController:BasicInformationViewController(title:(self.dataBase["nation_id"]?[indexPath.row])!))
-        let animation = CATransition.init()
-        animation.duration = 0.5;
-        animation.type = kCATransitionFade
-        animation.subtype = kCATransitionFromRight
-        self.view.window?.layer.add(animation, forKey: nil)
+        
+        for i in (self.navigationController?.navigationBar.subviews)!{
+            i.removeFromSuperview()
+        }
+        self.navigationController?.pushViewController(BasicInformationViewController(title:(self.dataBase["nation_id"]?[indexPath.row])!,defaultCode:(getIndex().IndexCode-1)), animated: true)
+        
+//        let nav = UINavigationController(rootViewController:BasicInformationViewController(title:(self.dataBase["nation_id"]?[indexPath.row])!,defaultCode:(getIndex().IndexCode-1)))
+//        let animation = CATransition.init()
+//        animation.duration = 0.5;
+//        animation.type = kCATransitionFade
+//        animation.subtype = kCATransitionFromRight
+        //self.view.window?.layer.add(animation, forKey: nil)
        
-        self.present(nav, animated: false, completion: nil)
+       // self.present(nav, animated: false, completion: nil)
         
     }
 

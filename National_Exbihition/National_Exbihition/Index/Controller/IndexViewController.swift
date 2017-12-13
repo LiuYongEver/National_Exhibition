@@ -65,6 +65,8 @@ class IndexViewController: UIViewController{
 
         ImageExbihition.frame = Rect(26,21, 155, 41)
         ImageExbihition.image = #imageLiteral(resourceName: "国情概览"); self.navigationController?.navigationBar.addSubview(ImageExbihition)
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"",style:.plain,target:nil,action:nil);
         
     }
     
@@ -85,8 +87,7 @@ class IndexViewController: UIViewController{
   @objc  func searchTouch(){
         self.ImageExbihition.removeFromSuperview();
         self.searchBar.removeFromSuperview();
-        self.navigationController?.navigationBar.tintColor = UIColor.white
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"",style:.plain,target:nil,action:nil); self.navigationController?.pushViewController(SearchViewController(), animated: true);
+        self.navigationController?.pushViewController(SearchViewController(), animated: true);
         
     }
 

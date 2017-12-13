@@ -18,6 +18,10 @@
 		086EA5B41FB2DE8A00E549F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 086EA5B21FB2DE8A00E549F7 /* LaunchScreen.storyboard */; };
 		086EA5BF1FB2DE8A00E549F7 /* National_ExbihitionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EA5BE1FB2DE8A00E549F7 /* National_ExbihitionTests.swift */; };
 		086EA5CA1FB2DE8B00E549F7 /* National_ExbihitionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EA5C91FB2DE8B00E549F7 /* National_ExbihitionUITests.swift */; };
+		08A24A901FDFAD90001D590E /* EnvironmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A24A8F1FDFAD90001D590E /* EnvironmentView.swift */; };
+		08A24A921FE0C8B5001D590E /* PoliticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A24A911FE0C8B5001D590E /* PoliticView.swift */; };
+		08A24A941FE0CA1A001D590E /* EnvrionmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A24A931FE0CA1A001D590E /* EnvrionmentViewController.swift */; };
+		08A24A961FE0CCA1001D590E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A24A951FE0CCA1001D590E /* MapViewController.swift */; };
 		08A6D8D51FB419EE00FAC0B0 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A6D8D41FB419EE00FAC0B0 /* RecommendViewController.swift */; };
 		08A6D8D81FB4466D00FAC0B0 /* BasicInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A6D8D61FB4466D00FAC0B0 /* BasicInformationViewController.swift */; };
 		08A6D8DB1FB4472900FAC0B0 /* BasicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A6D8DA1FB4472900FAC0B0 /* BasicView.swift */; };
@@ -72,6 +76,10 @@
 		086EA5C51FB2DE8B00E549F7 /* National_ExbihitionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = National_ExbihitionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		086EA5C91FB2DE8B00E549F7 /* National_ExbihitionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = National_ExbihitionUITests.swift; sourceTree = "<group>"; };
 		086EA5CB1FB2DE8B00E549F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		08A24A8F1FDFAD90001D590E /* EnvironmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentView.swift; sourceTree = "<group>"; };
+		08A24A911FE0C8B5001D590E /* PoliticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoliticView.swift; sourceTree = "<group>"; };
+		08A24A931FE0CA1A001D590E /* EnvrionmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvrionmentViewController.swift; sourceTree = "<group>"; };
+		08A24A951FE0CCA1001D590E /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		08A6D8D41FB419EE00FAC0B0 /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
 		08A6D8D61FB4466D00FAC0B0 /* BasicInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInformationViewController.swift; sourceTree = "<group>"; };
 		08A6D8DA1FB4472900FAC0B0 /* BasicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicView.swift; sourceTree = "<group>"; };
@@ -265,6 +273,8 @@
 			children = (
 				08FE0AEE1FCFB081005915A4 /* ChartView.swift */,
 				08A6D8DA1FB4472900FAC0B0 /* BasicView.swift */,
+				08A24A8F1FDFAD90001D590E /* EnvironmentView.swift */,
+				08A24A911FE0C8B5001D590E /* PoliticView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -280,6 +290,8 @@
 			isa = PBXGroup;
 			children = (
 				08A6D8D61FB4466D00FAC0B0 /* BasicInformationViewController.swift */,
+				08A24A931FE0CA1A001D590E /* EnvrionmentViewController.swift */,
+				08A24A951FE0CCA1001D590E /* MapViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -582,11 +594,13 @@
 				086EA5AA1FB2DE8A00E549F7 /* AppDelegate.swift in Sources */,
 				08FE0AF41FCFB13E005915A4 /* MoreChartView.swift in Sources */,
 				08C79D601FB5C11E00BF7686 /* TabTableViewCell.swift in Sources */,
+				08A24A921FE0C8B5001D590E /* PoliticView.swift in Sources */,
 				08201E721FB2F1C100563887 /* Propoty.swift in Sources */,
 				08DA83991FC5AB460003259C /* SearchHistoryTableViewCell.swift in Sources */,
 				08E371161FCD6587005FEE4D /* AllCountryViewController.swift in Sources */,
 				08DA83971FC409970003259C /* searchDatabase.swift in Sources */,
 				08D068701FDA78FA0059608F /* SwiftyJSON.swift in Sources */,
+				08A24A941FE0CA1A001D590E /* EnvrionmentViewController.swift in Sources */,
 				08FE0AEF1FCFB0BD005915A4 /* ChartView.swift in Sources */,
 				08A6D8D81FB4466D00FAC0B0 /* BasicInformationViewController.swift in Sources */,
 				081738121FD56C1300F2C4E1 /* MineView.swift in Sources */,
@@ -594,9 +608,11 @@
 				08DD9B4F1FD68FC1002BC6C4 /* SelectContinentTableViewController.swift in Sources */,
 				08F734191FC01E5300E0CAE9 /* SearchViewController.swift in Sources */,
 				08C79D5E1FB5C0CD00BF7686 /* TabTableViewController.swift in Sources */,
+				08A24A901FDFAD90001D590E /* EnvironmentView.swift in Sources */,
 				08FE0AF21FCFB127005915A4 /* MoreChartViewController.swift in Sources */,
 				08DA83951FC407B80003259C /* SearchView.swift in Sources */,
 				08201E661FB2DFD100563887 /* IndexViewController.swift in Sources */,
+				08A24A961FE0CCA1001D590E /* MapViewController.swift in Sources */,
 				08A6D8D51FB419EE00FAC0B0 /* RecommendViewController.swift in Sources */,
 				081738071FD437FB00F2C4E1 /* dataSelect.swift in Sources */,
 				08F734111FBDA3DE00E0CAE9 /* ChartViewController.swift in Sources */,
