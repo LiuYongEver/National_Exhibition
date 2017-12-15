@@ -16,6 +16,7 @@ class MineViewController: UIViewController {
     override func viewDidLoad() {
         
         mview = MineView.init(frame: self.view.frame)
+        mview.delegate = self
         self.view.addSubview(mview)
         self.navigationItem.title = "我的"
         let dict:NSDictionary = [NSAttributedStringKey.foregroundColor: UIColor.white,NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 18)]
@@ -24,6 +25,8 @@ class MineViewController: UIViewController {
         
         //标题颜色
         self.navigationController?.navigationBar.titleTextAttributes = dict as? [NSAttributedStringKey : Any]
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"",style:.plain,target:nil,action:nil);
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -45,4 +48,11 @@ class MineViewController: UIViewController {
     }
     */
 
+}
+extension MineViewController:MineViewDelegate{
+    func push(vc: UIViewController) {
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
 }

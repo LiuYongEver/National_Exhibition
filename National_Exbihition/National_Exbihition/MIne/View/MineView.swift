@@ -8,8 +8,16 @@
 
 import UIKit
 
+protocol MineViewDelegate {
+    func push(vc:UIViewController)
+}
+
+
 class MineView: UIView {
     
+    
+    
+    var delegate:MineViewDelegate?
     var tableview:UITableView!
     fileprivate var titles = ["我的文章","每日签到","关于我们"]
     var nums = ["23","13","3"]
@@ -141,9 +149,13 @@ extension MineView:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 2{
+            delegate?.push(vc:AboutUsViewController())
+        }
         tableView.cellForRow(at: indexPath)?.isSelected = false
     }
     
+
     
     
     
