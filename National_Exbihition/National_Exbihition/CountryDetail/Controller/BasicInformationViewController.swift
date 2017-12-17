@@ -79,6 +79,7 @@ class BasicInformationViewController: UIViewController {
         let vieww = IndexPageView(frame: FloatRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64),titles: title,child:childVcs,parentViewController: self)
         
         vieww.changeto(btn: vieww.titleButton[defaultCode])
+        vieww.changeTopback(btn:vieww.titleButton[defaultCode] )
         self.view.addSubview(vieww)
         
         //let nib = UINib(nibName: "BasicView", bundle: nil)
@@ -92,11 +93,13 @@ class BasicInformationViewController: UIViewController {
         childVcs[0].view = v
 
         childVcs[2].view = PoloticV
+        childVcs[3].view = EconomicView.init(frame: self.view.frame, country_code: contry_code!)
+        childVcs[4].view = SocietyView.init(frame: self.view.frame, country_code: contry_code!)
         
+        childVcs[5].view = TechnologyView.init(frame: self.view.frame, country_code: contry_code!);
         
-        
-        
-        
+         childVcs[6].view = RelationshipView.init(frame: self.view.frame, country_code: contry_code!);
+        childVcs[7].view = OverseasView.init(frame: self.view.frame, country_code: contry_code!);
     }
 
     @objc func playMusic(_ btn:UIButton){

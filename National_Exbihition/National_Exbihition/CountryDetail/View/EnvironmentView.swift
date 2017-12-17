@@ -49,7 +49,7 @@ class Environment:UIView{
         textView1.isEditable = false
         textView1.textColor = title2color
         if let gg =  self.database["geography"]{
-          let atrString = NSMutableAttributedString.init(string: gg)
+          let atrString = NSMutableAttributedString.init(string: gg, attributes:  [NSAttributedStringKey.foregroundColor : title2color, NSAttributedStringKey.font : UIFont.systemFont(ofSize: getHeight(32))])
            textView1.attributedText = atrString
         }
         back.addSubview(textView1)
@@ -87,7 +87,7 @@ class Environment:UIView{
         textView2.isEditable = false
         textView2.textColor = title2color
         if let gg =  self.database["climate"]{
-            let atrString = NSMutableAttributedString.init(string: gg)
+            let atrString = NSMutableAttributedString.init(string: gg, attributes:  [NSAttributedStringKey.foregroundColor : title2color, NSAttributedStringKey.font : UIFont.systemFont(ofSize: getHeight(32))])
             textView2.attributedText = atrString
         }
         back.addSubview(textView2)

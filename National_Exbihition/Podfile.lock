@@ -17,6 +17,7 @@ PODS:
   - SnapKit (4.0.0)
   - StreamingKit (0.1.29)
   - SVProgressHUD (2.2.2)
+  - SwiftFCXRefresh (0.1.1)
 
 DEPENDENCIES:
   - Alamofire
@@ -26,6 +27,7 @@ DEPENDENCIES:
   - SnapKit
   - StreamingKit
   - SVProgressHUD
+  - SwiftFCXRefresh
 
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
@@ -37,7 +39,8 @@ SPEC CHECKSUMS:
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   StreamingKit: c329785aaef3ac142d4ae388345bfe1ed23cfd45
   SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
+  SwiftFCXRefresh: 74cad61a77485cb510a23b485913039f347e67ce
 
-PODFILE CHECKSUM: 68b62976cbb466cba60700cb1ff42b6011e398a3
+PODFILE CHECKSUM: c9bc4326821ba2b50fcc03d6f8fdd03fcf7548b0
 
 COCOAPODS: 1.3.1

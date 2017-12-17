@@ -138,6 +138,7 @@ class IndexPageView:UIView {
     
     
         //动画闭包
+    
    UIView.animate(withDuration: 0.3, animations: {
         self.line.frame.origin.x = (self.titleWidth)*CGFloat(btn.tag)
         })
@@ -147,10 +148,19 @@ class IndexPageView:UIView {
     
     
    
+
+
+
+func changeTopback(btn:UIButton){
+    if (btn.tag>5) && self.topback.frame.origin.x == 0{
+        UIView.animate(withDuration: 0.3, animations: {
+            self.topback.contentOffset.x = SCREEN_WIDTH
+        })
+    }
 }
 
 
-
+}
 
 extension IndexPageView:UIScrollViewDelegate{
    

@@ -19,6 +19,11 @@
 		086EA5B41FB2DE8A00E549F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 086EA5B21FB2DE8A00E549F7 /* LaunchScreen.storyboard */; };
 		086EA5BF1FB2DE8A00E549F7 /* National_ExbihitionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EA5BE1FB2DE8A00E549F7 /* National_ExbihitionTests.swift */; };
 		086EA5CA1FB2DE8B00E549F7 /* National_ExbihitionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EA5C91FB2DE8B00E549F7 /* National_ExbihitionUITests.swift */; };
+		0896F4C51FE6507000658306 /* SocietyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0896F4C41FE6507000658306 /* SocietyView.swift */; };
+		0896F4C71FE65CAC00658306 /* TechnologyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0896F4C61FE65CAC00658306 /* TechnologyView.swift */; };
+		0896F4C91FE65DE400658306 /* RelationshipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0896F4C81FE65DE400658306 /* RelationshipView.swift */; };
+		0896F4CB1FE6622700658306 /* OverseasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0896F4CA1FE6622700658306 /* OverseasView.swift */; };
+		0896F4CD1FE6634B00658306 /* InterNationalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0896F4CC1FE6634B00658306 /* InterNationalData.swift */; };
 		08A24A901FDFAD90001D590E /* EnvironmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A24A8F1FDFAD90001D590E /* EnvironmentView.swift */; };
 		08A24A921FE0C8B5001D590E /* PoliticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A24A911FE0C8B5001D590E /* PoliticView.swift */; };
 		08A24A941FE0CA1A001D590E /* EnvrionmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A24A931FE0CA1A001D590E /* EnvrionmentViewController.swift */; };
@@ -79,6 +84,11 @@
 		086EA5C51FB2DE8B00E549F7 /* National_ExbihitionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = National_ExbihitionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		086EA5C91FB2DE8B00E549F7 /* National_ExbihitionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = National_ExbihitionUITests.swift; sourceTree = "<group>"; };
 		086EA5CB1FB2DE8B00E549F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0896F4C41FE6507000658306 /* SocietyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocietyView.swift; sourceTree = "<group>"; };
+		0896F4C61FE65CAC00658306 /* TechnologyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnologyView.swift; sourceTree = "<group>"; };
+		0896F4C81FE65DE400658306 /* RelationshipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipView.swift; sourceTree = "<group>"; };
+		0896F4CA1FE6622700658306 /* OverseasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverseasView.swift; sourceTree = "<group>"; };
+		0896F4CC1FE6634B00658306 /* InterNationalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterNationalData.swift; sourceTree = "<group>"; };
 		08A24A8F1FDFAD90001D590E /* EnvironmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentView.swift; sourceTree = "<group>"; };
 		08A24A911FE0C8B5001D590E /* PoliticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoliticView.swift; sourceTree = "<group>"; };
 		08A24A931FE0CA1A001D590E /* EnvrionmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvrionmentViewController.swift; sourceTree = "<group>"; };
@@ -197,6 +207,7 @@
 		08201E691FB2E29A00563887 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				085D8F4E1FE649DA006F704E /* tableviewRefresh */,
 				08201E651FB2DFD100563887 /* IndexViewController.swift */,
 				08A6D8D41FB419EE00FAC0B0 /* RecommendViewController.swift */,
 				08C79D5D1FB5C0CD00BF7686 /* TabTableViewController.swift */,
@@ -204,6 +215,13 @@
 				08DD9B4E1FD68FC1002BC6C4 /* SelectContinentTableViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		085D8F4E1FE649DA006F704E /* tableviewRefresh */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = tableviewRefresh;
 			sourceTree = "<group>";
 		};
 		086EA59D1FB2DE8A00E549F7 = {
@@ -281,6 +299,11 @@
 				08A24A8F1FDFAD90001D590E /* EnvironmentView.swift */,
 				08A24A911FE0C8B5001D590E /* PoliticView.swift */,
 				08CC477D1FE0FE29000818C0 /* EconomicView.swift */,
+				0896F4C41FE6507000658306 /* SocietyView.swift */,
+				0896F4C61FE65CAC00658306 /* TechnologyView.swift */,
+				0896F4C81FE65DE400658306 /* RelationshipView.swift */,
+				0896F4CA1FE6622700658306 /* OverseasView.swift */,
+				0896F4CC1FE6634B00658306 /* InterNationalData.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -556,6 +579,7 @@
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/StreamingKit/StreamingKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftFCXRefresh/SwiftFCXRefresh.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -568,6 +592,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StreamingKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftFCXRefresh.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -608,6 +633,7 @@
 				08DA83971FC409970003259C /* searchDatabase.swift in Sources */,
 				08D068701FDA78FA0059608F /* SwiftyJSON.swift in Sources */,
 				08A24A941FE0CA1A001D590E /* EnvrionmentViewController.swift in Sources */,
+				0896F4C71FE65CAC00658306 /* TechnologyView.swift in Sources */,
 				08FE0AEF1FCFB0BD005915A4 /* ChartView.swift in Sources */,
 				08A6D8D81FB4466D00FAC0B0 /* BasicInformationViewController.swift in Sources */,
 				081738121FD56C1300F2C4E1 /* MineView.swift in Sources */,
@@ -617,13 +643,17 @@
 				080C9D391FE36DC70029507F /* AboutUsViewController.swift in Sources */,
 				08C79D5E1FB5C0CD00BF7686 /* TabTableViewController.swift in Sources */,
 				08A24A901FDFAD90001D590E /* EnvironmentView.swift in Sources */,
+				0896F4CB1FE6622700658306 /* OverseasView.swift in Sources */,
 				08FE0AF21FCFB127005915A4 /* MoreChartViewController.swift in Sources */,
 				08DA83951FC407B80003259C /* SearchView.swift in Sources */,
+				0896F4C51FE6507000658306 /* SocietyView.swift in Sources */,
 				08201E661FB2DFD100563887 /* IndexViewController.swift in Sources */,
 				08A24A961FE0CCA1001D590E /* MapViewController.swift in Sources */,
 				08A6D8D51FB419EE00FAC0B0 /* RecommendViewController.swift in Sources */,
 				081738071FD437FB00F2C4E1 /* dataSelect.swift in Sources */,
+				0896F4CD1FE6634B00658306 /* InterNationalData.swift in Sources */,
 				08F734111FBDA3DE00E0CAE9 /* ChartViewController.swift in Sources */,
+				0896F4C91FE65DE400658306 /* RelationshipView.swift in Sources */,
 				081738101FD56BEA00F2C4E1 /* MineViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

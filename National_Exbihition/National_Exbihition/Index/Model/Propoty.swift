@@ -82,7 +82,7 @@ public func FloatRect(_ x:CGFloat,_ y:CGFloat,_ w:CGFloat,_ h:CGFloat)->CGRect{
 }
 
 
-
+  //状态栏20 导航条 44 tabbar 49
 
 let title2color = hexStringToColor(hexString: "#7a7a7a")
 let backColor = UIColor.white //hexStringToColor(hexString:"#fafafa")

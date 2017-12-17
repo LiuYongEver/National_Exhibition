@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SDWebImage
 import SVProgressHUD
+import SwiftFCXRefresh
 
 protocol selectContinetDelegate {
     func getContinent(str:String)
@@ -28,7 +29,9 @@ class TabTableViewController: UIViewController{
     
     var index : String?
     var getContinet = ""
-    
+    var footerRefreshView:FCXRefreshFooterView?
+    fileprivate var tableview:UITableView?
+    var page = 0
     
     lazy var changeLocation:UIButton = {
         let button = UIButton(frame:FloatRect(0, 0, SCREEN_WIDTH, getHeight(47)))
@@ -44,7 +47,7 @@ class TabTableViewController: UIViewController{
     }()
     
     
-    fileprivate var tableview:UITableView?
+
     
     init(index:String) {
         super.init(nibName: nil, bundle: nil)
@@ -62,6 +65,7 @@ class TabTableViewController: UIViewController{
         self.view.backgroundColor = UIColor.white
         request()
         setTV()
+        addRefreshView()
         super.viewDidLoad()
 
 
@@ -73,6 +77,26 @@ class TabTableViewController: UIViewController{
         // Dispose of any resources that can be recreated.
     }
     
+    
+    func addRefreshView() {
+        footerRefreshView =
+            tableview?.addFCXRefreshFooter { [weak self] (refreshHeader) in
+                self?.loadMoreAction()
+        }
+    }
+    func loadMoreAction() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) { [weak self] in
+            guard let weakSelf = self,
+                let footerRefreshView = self?.footerRefreshView else {
+                    return
+            }
+            weakSelf.page+=1
+            weakSelf.request()
+            // weakSelf.rows += 20
+            // self?.tableview.reloadData()
+        }
+        
+    }
     
     
    // MARK: - Alarequest
@@ -103,7 +127,7 @@ class TabTableViewController: UIViewController{
         print(getContinet,continent_id)
 
         let url = rootUrl+"/firstpage_find_"+getIndex().Index
-        let parameter = ["page":"0","continent_id":continent_id]
+        let parameter = ["page":"\(self.page)","continent_id":continent_id]
         Alamofire.request(url, method: .post,parameters:parameter).responseJSON(completionHandler: {
             response in
             if let al = response.response{
@@ -140,8 +164,11 @@ class TabTableViewController: UIViewController{
                         //self.dataBase["name"]![i]+self.dataBase["establish_time"]![i]+self.dataBase["capital"]![i]
                     }
                    // print(self.dataBase)
+                    self.footerRefreshView?.endRefresh()
                     SVProgressHUD.dismiss()
                     self.tableview?.reloadData()
+                }else{
+                    self.footerRefreshView?.showNoMoreData()
                 }
                 
                 
@@ -168,7 +195,7 @@ class TabTableViewController: UIViewController{
     
     
     func setTV(){
-        self.tableview = UITableView(frame:self.view.frame)
+        self.tableview = UITableView(frame:FloatRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-99-54))
         tableview?.delegate = self
         tableview?.dataSource = self
         self.view.addSubview(tableview!)

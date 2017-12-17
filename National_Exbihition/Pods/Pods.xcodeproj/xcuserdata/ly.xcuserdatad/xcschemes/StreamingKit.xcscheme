@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'D97ADD9C386507D17AB4E4ED39C80BEE'
+               BlueprintIdentifier = 'F7ABF78AA9249561C6F9303F439509AB'
                BlueprintName = 'StreamingKit'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'StreamingKit.framework'>
