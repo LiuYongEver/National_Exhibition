@@ -10,5 +10,6 @@ target ‘National_Exbihition’ do
   pod 'Charts' 
   pod 'ChartsRealm'
   pod 'SwiftFCXRefresh'
+  pod “BaiduMapKit” 
 end
 

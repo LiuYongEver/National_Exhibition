@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.5.1)
+  - BaiduMapKit (3.4.2)
   - Charts (3.0.4):
     - Charts/Core (= 3.0.4)
   - Charts/Core (3.0.4)
@@ -21,6 +22,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - BaiduMapKit
   - Charts
   - ChartsRealm
   - SDWebImage
@@ -31,6 +33,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  BaiduMapKit: f61b19ecf07a3f2deede72b221b366bf698739ed
   Charts: 0705898046257443f0afbbc3179f4b67507b6e48
   ChartsRealm: 3cf7c9ebf9c6312efbf418cf1da91d72d5416b26
   Realm: 0ef72b837fb67e9f4b098bac771ddd72c7fdbb69
@@ -41,6 +44,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
   SwiftFCXRefresh: 74cad61a77485cb510a23b485913039f347e67ce
 
-PODFILE CHECKSUM: c9bc4326821ba2b50fcc03d6f8fdd03fcf7548b0
+PODFILE CHECKSUM: e6095138fe00c16492fa4f6d73a7b1bbf91a6d66
 
 COCOAPODS: 1.3.1

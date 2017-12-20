@@ -9,10 +9,30 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,BMKGeneralDelegate{
 
     var window: UIWindow?
-
+    var _mapManager:BMKMapManager?
+    func setMap(){
+        _mapManager = BMKMapManager()
+        /**
+         *百度地图SDK所有接口均支持百度坐标（BD09）和国测局坐标（GCJ02），用此方法设置您使用的坐标类型.
+         *默认是BD09（BMK_COORDTYPE_BD09LL）坐标.
+         *如果需要使用GCJ02坐标，需要设置CoordinateType为：BMK_COORDTYPE_COMMON.
+         */
+        if BMKMapManager.setCoordinateTypeUsedInBaiduMapSDK(BMK_COORDTYPE_BD09LL) {
+            NSLog("经纬度类型设置成功");
+        } else {
+            NSLog("经纬度类型设置失败");
+        }
+        
+        // 如果要关注网络及授权验证事件，请设定generalDelegate参数
+        let ret = _mapManager?.start("u6aBLlEWt4ppufVcjAIDAn8k2HgZAviK", generalDelegate: self)
+        if ret == false {
+            NSLog("manager start failed!")
+            return
+        }
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame:UIScreen.main.bounds)
@@ -30,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //.设置导航栏背景颜色
         //.状态栏文字白色风格
        // UIApplication.shared.statusBarStyle = .lightContent
-        
+        setMap()
         
         
         // Override point for customization after application launch.
@@ -89,6 +109,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return tc
     }
 
+    //MARK: - BMKGeneralDelegate
+    func onGetNetworkState(_ iError: Int32) {
+        if (0 == iError) {
+            NSLog("联网成功");
+        }
+        else{
+            NSLog("联网失败，错误代码：Error\(iError)");
+        }
+    }
+    
+    func onGetPermissionState(_ iError: Int32) {
+        if (0 == iError) {
+            NSLog("授权成功");
+        }
+        else{
+            NSLog("授权失败，错误代码：Error\(iError)");
+        }
+    }
     
 
 
