@@ -135,7 +135,7 @@ class BasicView: UIView {
             
             if let js = response.result.value{
                 let json = JSON(js)["data"]
-                //print(json)
+                print(json)
                 
                 if json.count>0{
                     

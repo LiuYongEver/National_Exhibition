@@ -101,7 +101,6 @@ class PoliticView:UIView{
         return m
     }
     
-    
     func NumsCountDeal(key:String)->NSMutableAttributedString{
         let IMG  = #imageLiteral(resourceName: "LLine")
         let ttAttach = NSTextAttachment()
@@ -114,12 +113,31 @@ class PoliticView:UIView{
         ll.append(titleatrString)
         
         if let gg =  self.database[key]{
+            
+            
+            if key == "来源"{
+                let array = getUrls(str: gg)
+                let titleString = getReFArray(value: gg, url: array)
+                print(titleString)
+                
+                if array.count == titleString.count && titleString.count>0{
+                    for i in 0...array.count-1{
+                        let reft = NSMutableAttributedString.init(string: titleString[i]+"\n\n", attributes:  [NSAttributedStringKey.foregroundColor : title2color, NSAttributedStringKey.font : UIFont.systemFont(ofSize: getHeight(32))])
+                        
+                        reft.addAttribute(NSAttributedStringKey.link, value: array[i], range: NSRange.init(location: 0, length:titleString[i].count))
+                        ll.append(reft)
+                    }
+                    return ll
+                }
+            }
+            
+            
             let atrString = NSMutableAttributedString.init(string: gg+"\n\n", attributes:  [NSAttributedStringKey.foregroundColor : title2color, NSAttributedStringKey.font : UIFont.systemFont(ofSize: getHeight(32))])
+            
             ll.append(atrString)
         }
         return ll
     }
-    
     
     func Alarequest(){
         let url = rootUrl+"/find_politic_pk"
@@ -130,7 +148,7 @@ class PoliticView:UIView{
             response in
             if let al = response.response{
                 // print(al)
-                print(response.result.isSuccess)
+              //  print(response.result.isSuccess)
             }else{
                 SVProgressHUD.showError(withStatus: "网络连接失败")
                 SVProgressHUD.dismiss(withDelay: 1)

@@ -28,7 +28,7 @@ class IndexViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        self.view.backgroundColor = backColor
        // self.navigationController?.navigationBar.isHidden = true
         setPageView()
 
@@ -76,7 +76,7 @@ class IndexViewController: UIViewController{
         var childVcs = [UIViewController]()
   
         childVcs.append(RecommendViewController())
-        let title  =  ["推荐","基本信息","环境资源","政治军事","经济发展","社会状况","科技教育","国际关系","侨情","国际数据"]
+        let title  =  ["推荐","基本信息","环境资源","政治军事","经济发展","社会状况","科技教育","国际关系","侨情"]
         for i in 1...title.count-1{
             childVcs.append(TabTableViewController(index:title[i]))
         }

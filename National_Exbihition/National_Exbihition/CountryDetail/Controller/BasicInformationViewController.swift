@@ -70,7 +70,7 @@ class BasicInformationViewController: UIViewController {
         var childVcs = [UIViewController]()
         
         childVcs.append(RecommendViewController())
-        let title  =  ["基本信息","环境资源","政治军事","经济发展","社会状况","科技教育","国际关系","侨情","国际数据"]
+        let title  =  ["基本信息","环境资源","政治军事","经济发展","社会状况","科技教育","国际关系","侨情"]
         for i in 1...title.count-1{
             childVcs.append(UIViewController())
         }
@@ -131,7 +131,9 @@ class BasicInformationViewController: UIViewController {
 }
 extension BasicInformationViewController:PushVCDelegate{
     func Push(vc: UIViewController) {
+        vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
+        vc.hidesBottomBarWhenPushed = false
     }
     
     

@@ -139,6 +139,7 @@ class TabTableViewController: UIViewController{
             
             if let js = response.result.value{
                 let json = JSON(js)
+                print(json)
                 if  json["data"].count-1>0{
                     for i in 0...json["data"].count-1{
                         self.dataBase["name"]?.append(json["data"][i]["nation_z"].string!)

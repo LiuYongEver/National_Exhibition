@@ -12,6 +12,7 @@ import CoreLocation
 class MapViewController: UIViewController,BMKMapViewDelegate{
     var _mapView: BMKMapView?
     var _mapManager:BMKMapManager!
+    var pointAnnotation: BMKPointAnnotation?
     var enableCustomMap = false
     
     var CLocation:[Float]!
@@ -39,7 +40,7 @@ class MapViewController: UIViewController,BMKMapViewDelegate{
         addCustomGesture()//添加自定义手势
         
         //添加普通地图/个性化地图切换开关
-        let segment = UISegmentedControl(items: ["normal", "custom"])
+        let segment = UISegmentedControl(items: ["普通地图", "卫星图"])
         segment.selectedSegmentIndex = 0
         segment.addTarget(self, action: #selector(changeMapAction(_:)), for: .valueChanged)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: segment)
@@ -64,9 +65,15 @@ class MapViewController: UIViewController,BMKMapViewDelegate{
          *注：必须在BMKMapView对象初始化之前设置自定义地图样式，设置后会影响所有地图实例
          *设置方法：+ (void)customMapStyle:(NSString*) customMapStyleJsonFilePath;
          */
-        enableCustomMap = segment.selectedSegmentIndex == 1
+        if segment.selectedSegmentIndex == 1{
+            _mapView?.mapType = UInt(BMKMapTypeSatellite)
+        }else{
+            _mapView?.mapType = UInt(BMKMapTypeStandard)
+        }
+        
+        //enableCustomMap = segment.selectedSegmentIndex == 1
         //打开/关闭个性化地图
-        BMKMapView.enableCustomMapStyle(enableCustomMap)
+        //BMKMapView.enableCustomMapStyle(enableCustomMap)
     }
     
     // MARK: - BMKMapViewDelegate
@@ -76,10 +83,12 @@ class MapViewController: UIViewController,BMKMapViewDelegate{
      *@param mapview 地图View
      */
     func mapViewDidFinishLoading(_ mapView: BMKMapView!) {
-        let alertVC = UIAlertController(title: "", message: "BMKMapView控件初始化完成", preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "知道了", style: .cancel, handler: nil)
-        alertVC.addAction(alertAction)
-        self .present(alertVC, animated: true, completion: nil)
+        addPointAnnotation()
+        _mapView?.setCenter(CLLocationCoordinate2D.init(latitude: Double(CLocation[0]), longitude: Double(CLocation[1])), animated: true)
+//        let alertVC = UIAlertController(title: "", message: "BMKMapView控件初始化完成", preferredStyle: .alert)
+//        let alertAction = UIAlertAction(title: "知道了", style: .cancel, handler: nil)
+//        alertVC.addAction(alertAction)
+//        //self .present(alertVC, animated: true, completion: nil)
     }
     
     // MARK: - 添加自定义手势 （若不自定义手势，不需要下面的代码）
@@ -90,6 +99,18 @@ class MapViewController: UIViewController,BMKMapViewDelegate{
          */
 
     }
+    
+    func addPointAnnotation() {
+            if pointAnnotation == nil {
+                pointAnnotation = BMKPointAnnotation()
+                pointAnnotation?.coordinate = CLLocationCoordinate2DMake(Double(CLocation[0]), Double(CLocation[1]))
+                pointAnnotation?.title = "我是pointAnnotation"
+                pointAnnotation?.subtitle = "此Annotation可拖拽!"
+            }
+            _mapView?.addAnnotation(pointAnnotation)
+            _mapView?.setCenter(CLLocationCoordinate2DMake(39.915, 116.404), animated: true)
+        }
+    
     
     func handleSingleTap(_ tap: UITapGestureRecognizer) {
         NSLog("custom single tap handle")
