@@ -13,7 +13,8 @@ import Alamofire
 import SVProgressHUD
 
 class PoliticView:UIView{
-    
+    var carouselView:SliderGalleryController!
+    var modelArr = [String]()
     var country_code:String!
     var database:[String:String]=[
         "现任首脑":"",
@@ -68,7 +69,7 @@ class PoliticView:UIView{
         textView1.bounces = false
         back.addSubview(textView1)
         textView1.attributedText = getText()
-        
+       // setCarouselView()
         
     }
     

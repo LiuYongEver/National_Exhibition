@@ -11,11 +11,11 @@ import UIKit
 import Alamofire
 import SVProgressHUD
 
-class Environment:UIView{
+class Environment:UIScrollView{
     
-    
-    let carouselView = CarouselView.init(frame: Rect(105, 77, 540, 364))
-    var modelArr = [CarouselModel]()
+    var psdelegate:PushVCDelegate?
+    var carouselView:SliderGalleryController!
+    var modelArr = [String]()
     var country_code:String!
     var database:[String:String]=[
         "地理环境":"",
@@ -43,6 +43,7 @@ class Environment:UIView{
         super.init(frame: frame)
         self.backgroundColor = backColor
         self.country_code = country_code
+       
         Alarequest()
         
     }
@@ -64,30 +65,12 @@ class Environment:UIView{
         textView1.bounces = false
         back.addSubview(textView1)
         textView1.attributedText = getText()
-        
+        setCarouselView()
         
     }
     
-    
-    func setCarouselView(){
-        if (self.database["图片"] != "") {
-            
-            let imaArr = self.database["图片"]
-            let arr =  imaArr?.components(separatedBy: ",")
-            for i in arr!{
-               let  dataDic = ["i":i]
-                modelArr.append(CarouselModel.init(dic: dataDic as [String : NSObject]))
-            }
-            
-            carouselView.carouselModelArr = self.modelArr
-            self.textView1.frame =
-           self.addSubview(carouselView)
-        }
-    }
     
 
-    
-    
     func getText()->NSMutableAttributedString{
         var atrrString:String  = ""
         let ll = NSMutableAttributedString()
@@ -202,6 +185,9 @@ class Environment:UIView{
                 if let gg = json["data"]["conferences"].string{
                     self.database["重要文献"] = gg
                 }
+                if let gg = json["data"]["picture"].string{
+                    self.database["图片"] = gg
+                }
                 
                 
                 DispatchQueue.main.async {
@@ -221,153 +207,97 @@ class Environment:UIView{
     
 }
 
+extension Environment:SliderGalleryControllerDelegate{
+    
+    // MARK: - 轮播图协议
+    //图片轮播组件协议方法：获取内部scrollView尺寸
+    
+    func initSliderView(){
+        
+        
+        //初始化图片轮播组件
+        textView1.isScrollEnabled = false
+       //改变textview高度和Scrollview显示高度
+        let size = textView1.sizeThatFits(CGSize.init(width: textView1.frame.width, height: CGFloat(MAXFLOAT)))
+       // CGSize size = [textView sizeThatFits:CGSizeMake(CGRectGetWidth(textView.frame), MAXFLOAT)];
+        var  frame = textView1.frame;
+        frame.size.height = size.height;
+        textView1.frame = frame
+        self.contentSize = CGSize.init(width: SCREEN_WIDTH, height: getHeight(407)+size.height+104)
+        carouselView = SliderGalleryController()
+        carouselView.delegate = self
+        //(frame: Rect(105, 10, 540, 364))
+        carouselView.view.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH,
+                                          height: getHeight(364));
+        carouselView.view.backgroundColor = UIColor.white
+        //将图片轮播组件添加到当前视图
+        //self.addChildViewController(carouselView)
+        
+        self.addSubview(carouselView.view)
+        
+        //添加组件的点击事件
+        let tap = UITapGestureRecognizer(target: self,
+                                         action: #selector(handleTapAction(_:)))
+        carouselView.view.addGestureRecognizer(tap)
+        
+        
+    }
+    
+    
+    
+    func galleryScrollerViewSize() -> CGSize {
+        return CGSize(width: SCREEN_WIDTH, height:getHeight(364))
+    }
+    
+    //图片轮播组件协议方法：获取数据集合
+    func galleryDataSource() -> [String] {
+        return self.modelArr
+    }
+    
+    //点击事件响应
+    @objc func handleTapAction(_ tap:UITapGestureRecognizer)->Void{
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.carouselView.view.frame = FloatRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
+        })
+        
+//        //获取图片索引值
+        let index = carouselView.currentIndex
+        self.psdelegate?.Push(vc: ImageDetailViewController.init(model: self.modelArr, cuIndex: 1))
+//        //弹出索引信息
+//        self.navigationController?.navigationBar.tintColor = UIColor.white
+//        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"",style:.plain,target:nil,action:nil)
+//        self.present(VideoDetailViewController(self.turnVideo_url[index],self.turnVideo_ID[index]), animated: true, completion: nil)
+//        // self.hidesBottomBarWhenPushed = true
+//        //self.navigationController?.pushViewController(VideoDetailViewController(self.turnVideo_url[index],self.turnVideo_ID[index]), animated: true)
+//        self.hidesBottomBarWhenPushed = false
+//        let alertController = UIAlertController(title: "您点击的图片索引是：",
+//                                                message: "\(index)", preferredStyle: .alert)
+//        let cancelAction = UIAlertAction(title: "确定", style: .cancel, handler: nil)
+//        alertController.addAction(cancelAction)
+//        //self.present(alertController, animated: true, completion: nil)
+    }
 
     
-//    var country_code:String!
-//    var database:[String:String]=[
-//        "geography":"",
-//        "climate":"",
-//        "nationName":"",
-//        "picture":"www.baidu"]
-//    
-//    
-//    
-//    lazy var textView1:UITextView = {
-//        let Text = UITextView.init()
-//        return Text
-//    }()
-//    var back:UIScrollView!
-//    
-//    
-//    
-//    init(frame: CGRect,country_code:String) {
-//        super.init(frame: frame)
-//        self.country_code = country_code
-//        Alarequest()
-//        
-//    }
-//    
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-//    
-//    func setText(){
-//        back = UIScrollView.init(frame: self.frame)
-//        back.contentSize = CGSize(width:SCREEN_WIDTH,height:SCREEN_HEIGHT*2)
-//        self.addSubview(back)
-//        textView1.frame = Rect(33, 473,700, 150)
-//        textView1.isEditable = false
-//        textView1.textColor = title2color
-//        if let gg =  self.database["geography"]{
-//          let atrString = NSMutableAttributedString.init(string: gg, attributes:  [NSAttributedStringKey.foregroundColor : title2color, NSAttributedStringKey.font : UIFont.systemFont(ofSize: getHeight(32))])
-//           textView1.attributedText = atrString
-//        }
-//        back.addSubview(textView1)
-//        
-//        let titlelabel = UILabel.init(frame: Rect(23,12, 0, 0))
-//        titlelabel.font = UIFont.boldSystemFont(ofSize: getHeight(42))
-//        titlelabel.text = "地理环境"
-//        titlelabel.sizeToFit()
-//        back.addSubview(titlelabel)
-//        
-//        let Image = UIImageView.init(frame: Rect(105, 77, 540, 364))
-//
-//        Image.sd_setImage(with: URL.init(string: self.database["picture"]!), placeholderImage: #imageLiteral(resourceName: "baccc"), options: .avoidAutoSetImage, completed: nil)
-//        back.addSubview(Image)
-//        let imagelabel = UILabel.init(frame: Rect(327,450,100, 30))
-//        imagelabel.font = UIFont.systemFont(ofSize: getHeight(26))
-//        imagelabel.text = self.database["nationName"]
-//        imagelabel.sizeToFit()
-//        imagelabel.textColor = title2color
-//        //imagelabel.backgroundColor = naviColor
-//        back.addSubview(imagelabel)
-//        
-//        let line = UIView.init(frame: FloatRect(0,getHeight(648), SCREEN_WIDTH, getHeight(15)))
-//        line.backgroundColor = lineColor
-//        back.addSubview(line)
-//        
-//        let titlelabel2 = UILabel.init(frame: Rect(23,12+15, 0, 0))
-//        titlelabel2.font = UIFont.boldSystemFont(ofSize: getHeight(42))
-//        titlelabel2.text = "气候环境"
-//        titlelabel2.sizeToFit()
-//        line.addSubview(titlelabel2)
-//       
-//        let textView2 = UITextView()
-//        textView2.frame = Rect(33,648+92,700, 150)
-//        textView2.isEditable = false
-//        textView2.textColor = title2color
-//        if let gg =  self.database["climate"]{
-//            let atrString = NSMutableAttributedString.init(string: gg, attributes:  [NSAttributedStringKey.foregroundColor : title2color, NSAttributedStringKey.font : UIFont.systemFont(ofSize: getHeight(32))])
-//            textView2.attributedText = atrString
-//        }
-//        back.addSubview(textView2)
-//        
-//        
-//        let line2 = UIView.init(frame: FloatRect(0,getHeight(167+648+92), SCREEN_WIDTH, getHeight(15)))
-//        line2.backgroundColor = lineColor
-//        back.addSubview(line2)
-//        
-//        
-//        let titlelabel3 = UILabel.init(frame: Rect(23,12+15, 0, 0))
-//        titlelabel3.font = UIFont.boldSystemFont(ofSize: getHeight(42))
-//        titlelabel3.text = "相关统计"
-//        titlelabel3.sizeToFit()
-//        line2.addSubview(titlelabel3)
-//        
-//        
-//        let line3 = UIView.init(frame: FloatRect(0,getHeight(167+648+92+310), SCREEN_WIDTH, getHeight(15)))
-//        line3.backgroundColor = lineColor
-//        back.addSubview(line3)
-//        
-//        
-//    }
-//    
-//    
-//    func Alarequest(){
-//        let url = rootUrl+"/find_nature_pk"
-//        print(country_code)
-//        let paramete = ["country_code":"\(country_code!)"]
-//        print(paramete)
-//        Alamofire.request(url, method: .post,parameters:paramete).responseJSON(completionHandler: {
-//            response in
-//            if let al = response.response{
-//                // print(al)
-//                print(response.result.isSuccess)
-//            }else{
-//                SVProgressHUD.showError(withStatus: "网络连接失败")
-//                SVProgressHUD.dismiss(withDelay: 1)
-//            }
-//            
-//            if let js = response.result.value{
-//                let json = JSON(js)//["data"]
-//                //print(json)
-//                if let gg = json["data"]["geography"].string{
-//                    self.database["geography"] = gg
-//                }
-//                if let gg = json["data"]["picture"].string{
-//                    self.database["picture"] = gg
-//                }
-//                if let gg = json["data"]["climate"].string{
-//                    self.database["climate"] = gg
-//                }
-//                if let gg = json["data"]["nation_z"].string{
-//                    self.database["nationName"] = gg
-//                }
-//
-//                DispatchQueue.main.async {
-//                    self.setText()
-//                }
-//                
-//
-//            }
-//        })
-//        
-//        
-//        
-//    }
-//    
-//   
-//    
-//    
-//}
+    func setCarouselView(){
+        if (self.database["图片"] != "") {
+            
+            let imaArr = self.database["图片"]
+            let arr =  imaArr?.components(separatedBy: ",")
+            for i in arr!{
+                let  dataDic = imageUrl+i.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+                modelArr.append(dataDic)
+                //print(dataDic)
+            }
+            
+            //carouselView.carouselModelArr = self.modelArr
+           self.textView1.frame = FloatRect(getWidth(0),getHeight(364),SCREEN_WIDTH,SCREEN_HEIGHT-104)
+           initSliderView()
+            //self.addSubview(carouselView.view)
+        }
+    }
+    
+    
+    
+}
 

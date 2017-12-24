@@ -75,7 +75,7 @@ class BasicInformationViewController: UIViewController{
             childVcs.append(UIViewController())
         }
         
-        childVcs[1] = EnvrionmentViewController.init(code: self.contry_code!)
+       
         let vieww = IndexPageView(frame: FloatRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64),titles: title,child:childVcs,parentViewController: self)
         
         vieww.changeto(btn: vieww.titleButton[defaultCode])
@@ -91,7 +91,9 @@ class BasicInformationViewController: UIViewController{
         childVcs[0].view.backgroundColor = backColor
         v?.backgroundColor = backColor
         childVcs[0].view = v
-
+        let ev = Environment.init(frame: self.view.frame, country_code: self.contry_code!)
+        ev.psdelegate = self
+        childVcs[1].view = ev
         childVcs[2].view = PoloticV
         childVcs[3].view = EconomicView.init(frame: self.view.frame, country_code: contry_code!)
         childVcs[4].view = SocietyView.init(frame: self.view.frame, country_code: contry_code!)
