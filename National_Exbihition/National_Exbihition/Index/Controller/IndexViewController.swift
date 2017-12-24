@@ -57,14 +57,15 @@ class IndexViewController: UIViewController{
         searchBar.placeholder = "中国"
         searchBar.layer.cornerRadius = 5
         
-        let btn = UIButton(frame:FloatRect(0, 0, getWidth(509), getHeight(92)))
+        
+        let btn = UIButton(frame:FloatRect(0, 0, getWidth(509), getHeight(102)))
         btn.backgroundColor = UIColor.clear
         searchBar.addSubview(btn)
         btn.addTarget(self, action: #selector(searchTouch), for: .touchUpInside)
        // searchBar.backgroundColor = UIColor.white
      //searchBar.layer.masksToBounds = true
         self.navigationController?.navigationBar.addSubview(searchBar)
-
+       self.automaticallyAdjustsScrollViewInsets = false
         ImageExbihition.frame = Rect(26,21, 155, 41)
         ImageExbihition.image = #imageLiteral(resourceName: "国情概览"); self.navigationController?.navigationBar.addSubview(ImageExbihition)
         self.navigationController?.navigationBar.tintColor = UIColor.white

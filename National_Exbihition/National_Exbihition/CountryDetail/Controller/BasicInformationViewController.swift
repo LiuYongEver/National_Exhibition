@@ -12,10 +12,9 @@ import Alamofire
 import SVProgressHUD
 import SDWebImage
 
-class BasicInformationViewController: UIViewController {
+class BasicInformationViewController: UIViewController{
 
     var v:BasicView?
-    var audioPlayer: STKAudioPlayer = STKAudioPlayer()
     var contry_code:String?
     var defaultCode:Int!
 
@@ -52,6 +51,7 @@ class BasicInformationViewController: UIViewController {
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        self.v?.audioPlayer.stop()
         SVProgressHUD.dismiss()
     }
     
@@ -86,7 +86,7 @@ class BasicInformationViewController: UIViewController {
         v = BasicView.init(frame: self.view.frame, country_code: self.contry_code!)
         v?.pushDelegate = self
         //nib.instantiate(withOwner: nil, options: nil)[0] as? BasicView
-        v?.musicButton.addTarget(self, action: #selector(playMusic(_:)), for: .touchUpInside)
+       // v?.musicButton.addTarget(self, action: #selector(playMusic(_:)), for: .touchUpInside)
         //let vivi = UIView(frame:FloatRect(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64))
         childVcs[0].view.backgroundColor = backColor
         v?.backgroundColor = backColor
@@ -102,17 +102,7 @@ class BasicInformationViewController: UIViewController {
         childVcs[7].view = OverseasView.init(frame: self.view.frame, country_code: contry_code!);
     }
 
-    @objc func playMusic(_ btn:UIButton){
-        btn.isSelected = !btn.isSelected
-        if btn.isSelected{
-           print("play")
-          audioPlayer.play("http://www.abstractpath.com/files/audiosamples/sample.mp3")
-        }else{
-            print("stop")
-           audioPlayer.stop()
-        }
-        
-    }
+
     
     @objc func touchReturn(){
         

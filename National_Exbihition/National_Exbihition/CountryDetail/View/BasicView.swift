@@ -15,11 +15,12 @@ import SVProgressHUD
 
 protocol PushVCDelegate {
      func Push(vc:UIViewController)
+     //func playMusic(str:String)
 }
 
 
 
-class BasicView: UIView {
+class BasicView: UIView{
     
     var pushDelegate:PushVCDelegate?
     var playAction: UIButton! = UIButton()
@@ -27,12 +28,13 @@ class BasicView: UIView {
     var topview: UIView! = UIView()
     var videoView: UIImageView! = UIImageView()
     var mapButton = UIButton()
-    
+    var audioPlayer: STKAudioPlayer = STKAudioPlayer()
     
     var InfoLabels:[UILabel]? = [UILabel]()
     var musicButton = UIButton()
     var country_code:String!
     var CLLloaction:[Float]?
+    var muUrl:String?
     
     init(frame: CGRect,country_code:String) {
         super.init(frame: frame)
@@ -44,9 +46,15 @@ class BasicView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
+        print(aStream.streamStatus.rawValue)
+    }
+    
+    
     
     override func draw(_ rect: CGRect) {
        // self.backgroundColor = backColor
+        audioPlayer.delegate = self
         SVProgressHUD.show(withStatus: "加载中")
         self.addSubview(videoView)
         self.addSubview(topview)
@@ -101,9 +109,9 @@ class BasicView: UIView {
         mapButton.setImage(#imageLiteral(resourceName: "位置-线"), for: .normal)
         //mapButton.imageEdgeInsets = UIEdgeInsets.init(top: <#T##CGFloat#>, left: <#T##CGFloat#>, bottom: <#T##CGFloat#>, right: <#T##CGFloat#>)
         
-        musicButton.frame = FloatRect(self.InfoLabels![6].frame.width + 20, self.InfoLabels![6].frame.origin.y - 5, getWidth(41), getHeight(43))
         musicButton.setImage(#imageLiteral(resourceName: "音乐"), for: .normal)
         musicButton.setImage(#imageLiteral(resourceName: "stopPlay"), for: .selected)
+        musicButton.addTarget(self, action: #selector(playMusic(_:)), for: .touchUpInside)
         mapButton.addTarget(self, action: #selector(ppush), for: .touchUpInside)
         //musicButton.backgroundColor = naviColor
  
@@ -117,6 +125,24 @@ class BasicView: UIView {
         }
     }
     
+    @objc func playMusic(_ btn:UIButton){
+        btn.isSelected = !btn.isSelected
+        if btn.isSelected{
+            print("play")
+            if let mm = muUrl{
+                print(mm.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
+                SVProgressHUD.show(withStatus: "歌曲加载中")
+                audioPlayer.play(mm.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!);
+            }else{
+                 SVProgressHUD.showInfo(withStatus: "暂无国歌")
+                 SVProgressHUD.dismiss(withDelay: 1)
+            }
+        }else{
+            print("stop")
+            audioPlayer.stop()
+        }
+        
+    }
    
     func Alarequest(){
         let url = rootUrl+"/find_nationinfo_pk"
@@ -155,7 +181,11 @@ class BasicView: UIView {
                             self.InfoLabels![4].text = "面"+"\t\t\t\t"+"积: " + jj
                         }
                         if let jj = json["country_emblem"].string{
-                            self.InfoLabels![4].text = "行政区划: " + jj
+                            self.InfoLabels![5].text = "行政区划: " + jj
+                        }
+                        if let jj = json["nation_song"].string{
+                            self.InfoLabels![6].text = "国    歌: "
+                            self.muUrl = imageUrl+jj
                         }
                         
                         if let jj = json["capital_latitude"].float{
@@ -173,7 +203,8 @@ class BasicView: UIView {
                         }
                         
                         
-                        
+                       self.musicButton.frame = FloatRect(self.InfoLabels![6].frame.width + 20, self.InfoLabels![6].frame.origin.y - 5, getWidth(41), getHeight(43))
+
                         self.mapButton.snp.makeConstraints({
                             make in
                             make.left.greaterThanOrEqualTo(self.InfoLabels![3].snp.right);
@@ -181,6 +212,7 @@ class BasicView: UIView {
                             make.height.equalTo(getHeight(50))
                             make.centerY.equalTo(self.InfoLabels![3])
                         })
+                        
                         
                         
                         
@@ -201,6 +233,33 @@ class BasicView: UIView {
         
         
     }
-
-    
 }
+
+extension BasicView:STKAudioPlayerDelegate{
+    func audioPlayer(_ audioPlayer: STKAudioPlayer, stateChanged state: STKAudioPlayerState, previousState: STKAudioPlayerState) {
+        print(state)
+    }
+    func audioPlayer(_ audioPlayer: STKAudioPlayer, logInfo line: String) {
+        print(1)
+    }
+    func audioPlayer(_ audioPlayer: STKAudioPlayer, didStartPlayingQueueItemId queueItemId: NSObject) {
+        print(2)
+        SVProgressHUD.showSuccess(withStatus: "加载完成")
+        SVProgressHUD.dismiss(withDelay: 0.2)
+    }
+    func audioPlayer(_ audioPlayer: STKAudioPlayer, didFinishPlayingQueueItemId queueItemId: NSObject, with stopReason: STKAudioPlayerStopReason, andProgress progress: Double, andDuration duration: Double) {
+        print(3)
+    }
+    
+    func audioPlayer(_ audioPlayer: STKAudioPlayer, didFinishBufferingSourceWithQueueItemId queueItemId: NSObject) {
+        print(4)
+    }
+    func audioPlayer(_ audioPlayer: STKAudioPlayer, didCancelQueuedItems queuedItems: [Any]) {
+        print(5)
+    }
+    
+    func audioPlayer(_ audioPlayer: STKAudioPlayer, unexpectedError errorCode: STKAudioPlayerErrorCode) {
+        
+    }
+}
+

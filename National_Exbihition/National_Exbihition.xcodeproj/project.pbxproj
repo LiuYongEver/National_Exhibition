@@ -20,6 +20,9 @@
 		086EA5BF1FB2DE8A00E549F7 /* National_ExbihitionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EA5BE1FB2DE8A00E549F7 /* National_ExbihitionTests.swift */; };
 		086EA5CA1FB2DE8B00E549F7 /* National_ExbihitionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EA5C91FB2DE8B00E549F7 /* National_ExbihitionUITests.swift */; };
 		088CC30A1FECF1B40026D7EE /* PublicFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088CC3091FECF1B40026D7EE /* PublicFunc.swift */; };
+		088EA63A1FEF7C7F00EDEC22 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088EA6391FEF7C7F00EDEC22 /* CarouselView.swift */; };
+		088EA63C1FEF7D4F00EDEC22 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088EA63B1FEF7D4F00EDEC22 /* ImageCollectionViewCell.swift */; };
+		088EA63F1FEF7F0F00EDEC22 /* CarouselModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088EA63E1FEF7F0F00EDEC22 /* CarouselModel.swift */; };
 		0896F4C51FE6507000658306 /* SocietyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0896F4C41FE6507000658306 /* SocietyView.swift */; };
 		0896F4C71FE65CAC00658306 /* TechnologyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0896F4C61FE65CAC00658306 /* TechnologyView.swift */; };
 		0896F4C91FE65DE400658306 /* RelationshipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0896F4C81FE65DE400658306 /* RelationshipView.swift */; };
@@ -86,6 +89,9 @@
 		086EA5C91FB2DE8B00E549F7 /* National_ExbihitionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = National_ExbihitionUITests.swift; sourceTree = "<group>"; };
 		086EA5CB1FB2DE8B00E549F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		088CC3091FECF1B40026D7EE /* PublicFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicFunc.swift; sourceTree = "<group>"; };
+		088EA6391FEF7C7F00EDEC22 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
+		088EA63B1FEF7D4F00EDEC22 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		088EA63E1FEF7F0F00EDEC22 /* CarouselModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselModel.swift; sourceTree = "<group>"; };
 		0896F4C41FE6507000658306 /* SocietyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocietyView.swift; sourceTree = "<group>"; };
 		0896F4C61FE65CAC00658306 /* TechnologyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnologyView.swift; sourceTree = "<group>"; };
 		0896F4C81FE65DE400658306 /* RelationshipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipView.swift; sourceTree = "<group>"; };
@@ -283,6 +289,15 @@
 			path = National_ExbihitionUITests;
 			sourceTree = "<group>";
 		};
+		088EA63D1FEF7D5200EDEC22 /* CarouseView */ = {
+			isa = PBXGroup;
+			children = (
+				088EA6391FEF7C7F00EDEC22 /* CarouselView.swift */,
+				088EA63B1FEF7D4F00EDEC22 /* ImageCollectionViewCell.swift */,
+			);
+			path = CarouseView;
+			sourceTree = "<group>";
+		};
 		08C79D591FB5BBED00BF7686 /* CountryDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -296,6 +311,7 @@
 		08C79D5A1FB5BC1400BF7686 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				088EA63D1FEF7D5200EDEC22 /* CarouseView */,
 				08FE0AEE1FCFB081005915A4 /* ChartView.swift */,
 				08A6D8DA1FB4472900FAC0B0 /* BasicView.swift */,
 				08A24A8F1FDFAD90001D590E /* EnvironmentView.swift */,
@@ -314,6 +330,7 @@
 			isa = PBXGroup;
 			children = (
 				088CC3091FECF1B40026D7EE /* PublicFunc.swift */,
+				088EA63E1FEF7F0F00EDEC22 /* CarouselModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -644,11 +661,14 @@
 				08FE0AEF1FCFB0BD005915A4 /* ChartView.swift in Sources */,
 				08A6D8D81FB4466D00FAC0B0 /* BasicInformationViewController.swift in Sources */,
 				081738121FD56C1300F2C4E1 /* MineView.swift in Sources */,
+				088EA63F1FEF7F0F00EDEC22 /* CarouselModel.swift in Sources */,
 				08201E701FB2F17200563887 /* IndexView.swift in Sources */,
 				08DD9B4F1FD68FC1002BC6C4 /* SelectContinentTableViewController.swift in Sources */,
 				08F734191FC01E5300E0CAE9 /* SearchViewController.swift in Sources */,
 				080C9D391FE36DC70029507F /* AboutUsViewController.swift in Sources */,
 				08C79D5E1FB5C0CD00BF7686 /* TabTableViewController.swift in Sources */,
+				088EA63C1FEF7D4F00EDEC22 /* ImageCollectionViewCell.swift in Sources */,
+				088EA63A1FEF7C7F00EDEC22 /* CarouselView.swift in Sources */,
 				08A24A901FDFAD90001D590E /* EnvironmentView.swift in Sources */,
 				0896F4CB1FE6622700658306 /* OverseasView.swift in Sources */,
 				08FE0AF21FCFB127005915A4 /* MoreChartViewController.swift in Sources */,

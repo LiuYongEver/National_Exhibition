@@ -139,7 +139,7 @@ class TabTableViewController: UIViewController{
             
             if let js = response.result.value{
                 let json = JSON(js)
-                print(json)
+                //print(json)
                 if  json["data"].count-1>0{
                     for i in 0...json["data"].count-1{
                         self.dataBase["name"]?.append(json["data"][i]["nation_z"].string!)
@@ -280,7 +280,15 @@ extension TabTableViewController:UITableViewDelegate,UITableViewDataSource,selec
         
         let fg = dataBase["flag"]?[indexPath.row]
         if  fg != "" {
-            cell.flagImage.sd_setImage(with: URL.init(string: fg!), completed: nil)
+            //print(imageUrl+fg!)国旗地址
+            let fg2 = fg?.components(separatedBy: "webapps/")
+            //print(fg2![1])
+            let ecc  = imageUrl+fg2![1]
+            let eco = ecc.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            let url = URL.init(string:eco!)
+            //print(url)
+    
+            cell.flagImage.sd_setImage(with: url, completed: nil)
         }else{
             cell.flagImage.image = #imageLiteral(resourceName: "baccc")
         }

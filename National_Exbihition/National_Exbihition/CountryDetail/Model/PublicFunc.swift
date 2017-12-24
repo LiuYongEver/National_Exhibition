@@ -44,3 +44,22 @@ func getReFArray(value:String,url:[String])->[String]{
     return new
     
 }
+
+
+//func getArrayFromWeb() {
+//    let manager = AFHTTPSessionManager()
+//    manager.get("http://www.douyutv.com/api/v1/slide/6", parameters: ["version" : "2.300"], progress: nil, success: { (task:URLSessionDataTask, json:Any) in
+//        //            print("jsonData: \(json)")
+//        guard let dataDic = json as? [String : NSObject] else { return }
+//        guard let dataArr = dataDic["data"] as? [[String : NSObject]] else { return }
+//        for dic in dataArr {
+//            self.modelArr.append(CarouselModel(dic: dic))
+//        }
+//        self.carouselView.carouselModelArr = self.modelArr
+//    }) { (task:URLSessionDataTask?, error:Error) in
+//        print("error : \(error)")
+//    }
+//}
+
+
+

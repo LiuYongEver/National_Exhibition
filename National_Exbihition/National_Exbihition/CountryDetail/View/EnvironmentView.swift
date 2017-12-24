@@ -12,6 +12,10 @@ import Alamofire
 import SVProgressHUD
 
 class Environment:UIView{
+    
+    
+    let carouselView = CarouselView.init(frame: Rect(105, 77, 540, 364))
+    var modelArr = [CarouselModel]()
     var country_code:String!
     var database:[String:String]=[
         "地理环境":"",
@@ -64,6 +68,22 @@ class Environment:UIView{
         
     }
     
+    
+    func setCarouselView(){
+        if (self.database["图片"] != "") {
+            
+            let imaArr = self.database["图片"]
+            let arr =  imaArr?.components(separatedBy: ",")
+            for i in arr!{
+               let  dataDic = ["i":i]
+                modelArr.append(CarouselModel.init(dic: dataDic as [String : NSObject]))
+            }
+            
+            carouselView.carouselModelArr = self.modelArr
+            self.textView1.frame =
+           self.addSubview(carouselView)
+        }
+    }
     
 
     
@@ -139,9 +159,9 @@ class Environment:UIView{
     
     func Alarequest(){
         let url = rootUrl+"/find_nature_pk"
-        print(country_code)
+       // print(country_code)
         let paramete = ["country_code":"\(country_code!)"]
-        print(paramete)
+       // print(paramete)
         Alamofire.request(url, method: .post,parameters:paramete).responseJSON(completionHandler: {
             response in
             if let al = response.response{
