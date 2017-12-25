@@ -10,8 +10,11 @@ import UIKit
 import Alamofire
 import SVProgressHUD
 
-class OverseasView:UIView{
+class OverseasView:UIScrollView{
     
+    var psdelegate:PushVCDelegate?
+    var carouselView:SliderGalleryController!
+    var modelArr = [String]()
     var country_code:String!
     var database:[String:String]=[
         "华侨数量":"",
@@ -61,7 +64,7 @@ class OverseasView:UIView{
         textView1.bounces = false
         back.addSubview(textView1)
         textView1.attributedText = getText()
-        
+        setCarouselView()
         
     }
     
@@ -182,7 +185,9 @@ class OverseasView:UIView{
                 if let gg = json["data"]["conferences"].string{
                     self.database["重要文献"] = gg
                 }
-                
+                if let gg = json["data"]["picture"].string{
+                    self.database["图片"] = gg
+                }
                 
                 DispatchQueue.main.async {
                     self.setText()
@@ -200,4 +205,83 @@ class OverseasView:UIView{
     
     
 }
+
+extension OverseasView:SliderGalleryControllerDelegate{
+    
+    // MARK: - 轮播图协议
+    //图片轮播组件协议方法：获取内部scrollView尺寸
+    
+    func initSliderView(){
+        
+        
+        //初始化图片轮播组件
+        textView1.isScrollEnabled = false
+        //改变textview高度和Scrollview显示高度
+        let size = textView1.sizeThatFits(CGSize.init(width: textView1.frame.width, height: CGFloat(MAXFLOAT)))
+        // CGSize size = [textView sizeThatFits:CGSizeMake(CGRectGetWidth(textView.frame), MAXFLOAT)];
+        var  frame = textView1.frame;
+        frame.size.height = size.height;
+        textView1.frame = frame
+        self.contentSize = CGSize.init(width: SCREEN_WIDTH, height: getHeight(407)+size.height+104)
+        carouselView = SliderGalleryController()
+        carouselView.delegate = self
+        //(frame: Rect(105, 10, 540, 364))
+        carouselView.view.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH,
+                                         height: getHeight(364));
+        carouselView.view.backgroundColor = UIColor.white
+        //将图片轮播组件添加到当前视图
+        //self.addChildViewController(carouselView)
+        
+        self.addSubview(carouselView.view)
+        
+        //添加组件的点击事件
+        let tap = UITapGestureRecognizer(target: self,
+                                         action: #selector(handleTapAction(_:)))
+        carouselView.view.addGestureRecognizer(tap)
+        
+        
+    }
+    
+    
+    
+    func galleryScrollerViewSize() -> CGSize {
+        return CGSize(width: SCREEN_WIDTH, height:getHeight(364))
+    }
+    
+    //图片轮播组件协议方法：获取数据集合
+    func galleryDataSource() -> [String] {
+        return self.modelArr
+    }
+    
+    //点击事件响应
+    @objc func handleTapAction(_ tap:UITapGestureRecognizer)->Void{
+        
+        //        //获取图片索引值
+        let index = carouselView.currentIndex
+        self.psdelegate?.present(vc:ImageDetailViewController.init(model: self.modelArr, cuIndex: index) )//.Push(vc:
+    }
+    
+    
+    func setCarouselView(){
+        if (self.database["图片"] != "") {
+            
+            let imaArr = self.database["图片"]
+            let arr =  imaArr?.components(separatedBy: ",")
+            for i in arr!{
+                let  dataDic = imageUrl+i.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+                modelArr.append(dataDic)
+                //print(dataDic)
+            }
+            
+            //carouselView.carouselModelArr = self.modelArr
+            self.textView1.frame = FloatRect(getWidth(0),getHeight(364),SCREEN_WIDTH,SCREEN_HEIGHT-104)
+            initSliderView()
+            //self.addSubview(carouselView.view)
+        }
+    }
+    
+    
+    
+}
+
 

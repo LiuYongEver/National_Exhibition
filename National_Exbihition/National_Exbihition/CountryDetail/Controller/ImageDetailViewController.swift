@@ -26,18 +26,23 @@ class ImageDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         setCarouselView()
-        self.view.backgroundColor = title1Color
+        self.view.backgroundColor = UIColor.black
         let backbutton = UIButton(type: .custom)
-        backbutton.frame = CGRect(x: 0, y: 0, width:68, height: 60)
+        backbutton.frame = CGRect(x: 0, y: 0, width:88, height: 80)
         //backbutton.setImage(UIImage(named: "back@1x"), for: .normal)
-        let bti = UIImageView.init(frame:( CGRect(x:0, y: 13, width: 22, height: 22)))
+        let bti = UIImageView.init(frame:( CGRect(x:15, y: 13+15, width: 22, height: 22)))
         bti.image = #imageLiteral(resourceName: "back@1x")
-        backbutton.addSubview(bti)
+        self.view.addSubview(bti)
+        backbutton.backgroundColor = UIColor.clear
+        backbutton.addTarget(self, action: #selector(diss), for: .touchUpInside)
         self.view.addSubview(backbutton)
         
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    @objc func diss(){
+        self.dismiss(animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,12 +73,15 @@ extension ImageDetailViewController:SliderGalleryControllerDelegate{
        
         carouselView = SliderGalleryController()
         carouselView.delegate = self
+        carouselView.currentIndex = self.currentIndex
+        carouselView.didIntTimer()
         //(frame: Rect(105, 10, 540, 364))
         carouselView.view.frame = CGRect(x: 0, y: SCREEN_HEIGHT/6, width: SCREEN_WIDTH,
                                          height: SCREEN_HEIGHT);
         carouselView.view.backgroundColor = UIColor.white
         //将图片轮播组件添加到当前视图
         //self.addChildViewController(carouselView)
+        carouselView.view.backgroundColor = UIColor.black
         
         self.view.addSubview(carouselView.view)
         
@@ -99,24 +107,10 @@ extension ImageDetailViewController:SliderGalleryControllerDelegate{
     //点击事件响应
     @objc func handleTapAction(_ tap:UITapGestureRecognizer)->Void{
         
-        UIView.animate(withDuration: 0.5, animations: {
-            self.carouselView.view.frame = FloatRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
-        })
-        
-        //        //获取图片索引值
-        //        let index = sliderGallery.currentIndex
-        //        //弹出索引信息
-        //        self.navigationController?.navigationBar.tintColor = UIColor.white
-        //        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"",style:.plain,target:nil,action:nil)
-        //        self.present(VideoDetailViewController(self.turnVideo_url[index],self.turnVideo_ID[index]), animated: true, completion: nil)
-        //        // self.hidesBottomBarWhenPushed = true
-        //        //self.navigationController?.pushViewController(VideoDetailViewController(self.turnVideo_url[index],self.turnVideo_ID[index]), animated: true)
-        //        self.hidesBottomBarWhenPushed = false
-        //        let alertController = UIAlertController(title: "您点击的图片索引是：",
-        //                                                message: "\(index)", preferredStyle: .alert)
-        //        let cancelAction = UIAlertAction(title: "确定", style: .cancel, handler: nil)
-        //        alertController.addAction(cancelAction)
-        //        //self.present(alertController, animated: true, completion: nil)
+//        UIView.animate(withDuration: 0.5, animations: {
+//            self.carouselView.view.frame = FloatRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
+//        })
+
     }
     
     

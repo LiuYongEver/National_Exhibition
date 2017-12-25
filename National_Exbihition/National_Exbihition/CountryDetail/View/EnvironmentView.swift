@@ -257,25 +257,9 @@ extension Environment:SliderGalleryControllerDelegate{
     //点击事件响应
     @objc func handleTapAction(_ tap:UITapGestureRecognizer)->Void{
         
-        UIView.animate(withDuration: 0.5, animations: {
-            self.carouselView.view.frame = FloatRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
-        })
-        
 //        //获取图片索引值
         let index = carouselView.currentIndex
-        self.psdelegate?.Push(vc: ImageDetailViewController.init(model: self.modelArr, cuIndex: 1))
-//        //弹出索引信息
-//        self.navigationController?.navigationBar.tintColor = UIColor.white
-//        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"",style:.plain,target:nil,action:nil)
-//        self.present(VideoDetailViewController(self.turnVideo_url[index],self.turnVideo_ID[index]), animated: true, completion: nil)
-//        // self.hidesBottomBarWhenPushed = true
-//        //self.navigationController?.pushViewController(VideoDetailViewController(self.turnVideo_url[index],self.turnVideo_ID[index]), animated: true)
-//        self.hidesBottomBarWhenPushed = false
-//        let alertController = UIAlertController(title: "您点击的图片索引是：",
-//                                                message: "\(index)", preferredStyle: .alert)
-//        let cancelAction = UIAlertAction(title: "确定", style: .cancel, handler: nil)
-//        alertController.addAction(cancelAction)
-//        //self.present(alertController, animated: true, completion: nil)
+        self.psdelegate?.present(vc:ImageDetailViewController.init(model: self.modelArr, cuIndex: index) )//.Push(vc:
     }
 
     

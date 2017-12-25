@@ -14,7 +14,8 @@ import Alamofire
 import SVProgressHUD
 
 protocol PushVCDelegate {
-     func Push(vc:UIViewController)
+    func Push(vc:UIViewController);
+    func present(vc:UIViewController);
      //func playMusic(str:String)
 }
 

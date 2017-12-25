@@ -140,9 +140,18 @@ class SliderGalleryController: UIViewController,UIScrollViewDelegate{
     //设置自动滚动计时器
     func configureAutoScrollTimer() {
         //设置一个定时器，每三秒钟滚动一次
+       
         autoScrollTimer = Timer.scheduledTimer(timeInterval: 3, target: self,
                                                selector: #selector(SliderGalleryController.letItScroll),
-                                               userInfo: nil, repeats: true)
+                                                userInfo: nil, repeats: true)
+
+        
+    }
+    
+    func didIntTimer(){
+        //autoScrollTimer?.invalidate()
+        //autoScrollTimer = nil
+        //self.configureAutoScrollTimer()
     }
     
     //计时器时间一到，滚动一张图片

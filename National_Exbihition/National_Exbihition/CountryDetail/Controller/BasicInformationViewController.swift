@@ -23,6 +23,42 @@ class BasicInformationViewController: UIViewController{
     lazy var PoloticV:UIView = {
         let vie = PoliticView.init(frame: self.view.frame, country_code: self.contry_code!)
         vie.backgroundColor = backColor
+        vie.psdelegate = self
+        return vie
+    }()
+    
+    lazy var EconomicV:UIView = {
+        let vie = EconomicView.init(frame: self.view.frame, country_code: contry_code!)
+        vie.backgroundColor = backColor
+        vie.psdelegate = self
+        return vie
+    }()
+    
+    lazy var SocietyV:UIView = {
+        let vie = SocietyView.init(frame: self.view.frame, country_code: contry_code!)
+        vie.backgroundColor = backColor
+        vie.psdelegate = self
+        return vie
+    }()
+    
+    lazy var TechnologyV:UIView = {
+        let vie = TechnologyView.init(frame: self.view.frame, country_code: contry_code!)
+        vie.backgroundColor = backColor
+        vie.psdelegate = self
+        return vie
+    }()
+    
+    lazy var RelatonshipV:UIView = {
+        let vie = RelationshipView.init(frame: self.view.frame, country_code: contry_code!)
+        vie.backgroundColor = backColor
+        vie.psdelegate = self
+        return vie
+    }()
+    
+    lazy var OverSeaV:UIView = {
+        let vie = OverseasView.init(frame: self.view.frame, country_code: contry_code!)
+        vie.backgroundColor = backColor
+        vie.psdelegate = self
         return vie
     }()
     
@@ -95,17 +131,14 @@ class BasicInformationViewController: UIViewController{
         ev.psdelegate = self
         childVcs[1].view = ev
         childVcs[2].view = PoloticV
-        childVcs[3].view = EconomicView.init(frame: self.view.frame, country_code: contry_code!)
-        childVcs[4].view = SocietyView.init(frame: self.view.frame, country_code: contry_code!)
-        
-        childVcs[5].view = TechnologyView.init(frame: self.view.frame, country_code: contry_code!);
-        
-         childVcs[6].view = RelationshipView.init(frame: self.view.frame, country_code: contry_code!);
-        childVcs[7].view = OverseasView.init(frame: self.view.frame, country_code: contry_code!);
+        childVcs[3].view = EconomicV
+        childVcs[4].view = SocietyV
+        childVcs[5].view = TechnologyV
+         childVcs[6].view = RelatonshipV
+        childVcs[7].view = OverSeaV
     }
 
 
-    
     @objc func touchReturn(){
         
         self.dismiss(animated: false, completion: nil)
@@ -126,6 +159,9 @@ extension BasicInformationViewController:PushVCDelegate{
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
         vc.hidesBottomBarWhenPushed = false
+    }
+    func present(vc: UIViewController) {
+        self.present(vc, animated: true, completion: nil)
     }
     
     
