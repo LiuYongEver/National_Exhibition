@@ -7,15 +7,21 @@
 //
 
 import UIKit
-
+import Alamofire
+import SVProgressHUD
 class RecommendViewController: UIViewController {
     
     let layout = UICollectionViewFlowLayout()
     var collectionView: UICollectionView?
-    
+    public var dataBase:[String:[String]] = [
+        "flag":[],
+        "name":[],
+        "nation_id":[],
+    ]
  
     
     override func viewDidLoad() {
+        request()
         setCollectionView()
         self.view.backgroundColor = backColor
         self.navigationController?.navigationBar.backgroundColor = naviColor
@@ -81,26 +87,67 @@ class RecommendViewController: UIViewController {
     for i in (self.navigationController?.navigationBar.subviews)!{
         i.removeFromSuperview()
     }
-//    let animation = CATransition.init()
-//    animation.duration = 0.5;
-//    animation.type = kCATransitionFade
-//    animation.subtype = kCATransitionFromRight
-//    self.view.window?.layer.add(animation, forKey: nil);
-//    let nav = UINavigationController(rootViewController:AllCountryViewController())
-//    self.present(nav, animated: false, completion: nil)
         self.navigationController?.pushViewController(AllCountryViewController(), animated: true)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func getImage(fg:String)->URL{
+        if  fg != "" {
+            let fg2 = fg.components(separatedBy: "webapps/")
+            //print(fg2![1])
+            let ecc  = imageUrl+fg2[1]
+            let eco = ecc.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            let url = URL.init(string:eco!)
+            //print(url)
+            
+            return url!
+        }else{
+            return URL.init(string: "")!
+        }
     }
-    */
+    
+    
+
+    func request(){
+        SVProgressHUD.show(withStatus:"加载中")
+
+       // print(getContinet,continent_id)
+        
+        let url = rootUrl+"/selectHotCountry"
+        Alamofire.request(url, method: .post).responseJSON(completionHandler: {
+            response in
+            if let al = response.response{
+                 print(al)
+            }else{
+                SVProgressHUD.showError(withStatus: "网络连接失败")
+                SVProgressHUD.dismiss(withDelay: 1)
+            }
+            
+            if let js = response.result.value{
+                let json = JSON(js)
+                print(json)
+                if  json["data"].count-1>0{
+                    for i in 0...json["data"].count-1{
+                        self.dataBase["name"]?.append(json["data"][i]["nation_z"].string!)
+                        if let flag = json["data"][i]["nation_flag"].string{
+                            self.dataBase["flag"]?.append(flag)
+                        }else{
+                            self.dataBase["flag"]?.append("");
+                        }
+                        self.dataBase["nation_id"]?.append(json["data"][i]["country_code"].string!)
+                    
+                    }
+                    SVProgressHUD.dismiss()
+                    self.collectionView?.reloadData()
+                }else{
+                    SVProgressHUD.dismiss()                }
+            }
+            
+        })
+        
+       // SVProgressHUD.dismiss()
+        
+    }
+    
 
 }
 
@@ -120,10 +167,15 @@ extension RecommendViewController:UICollectionViewDelegate,UICollectionViewDataS
         //cell.backgroundColor = UIColor.yellow
         
         let national_flag = UIImageView(frame:FloatRect(0, 0, cell.contentView.frame.width, getHeight(151)))
-        national_flag.image = #imageLiteral(resourceName: "组 183")
+        if self.dataBase["flag"]!.count>0{
+            national_flag.sd_setImage(with:getImage(fg:self.dataBase["flag"]![indexPath.row] ), placeholderImage: #imageLiteral(resourceName: "baccc"), completed: nil);
+        }
         
         let nation_name = UILabel(frame:Rect(89, 150+14, 0, 0))
-        nation_name.text = "中国"
+        if self.dataBase["name"]!.count>0{
+            nation_name.text = self.dataBase["name"]?[indexPath.row]
+        }
+        
         nation_name.font = UIFont.systemFont(ofSize: getHeight(26))
         nation_name.sizeToFit()
         
@@ -141,17 +193,10 @@ extension RecommendViewController:UICollectionViewDelegate,UICollectionViewDataS
             i.removeFromSuperview()
         }
         self.navigationController?.pushViewController(BasicInformationViewController.init(title: "", defaultCode: 0), animated: true)
-        //        let nav = UINavigationController.init(rootViewController: BasicInformationViewController.init(title: "", defaultCode: 0))
-//        let animation = CATransition.init()
-//        animation.duration = 0.5;
-//        animation.type = kCATransitionFade
-//        animation.subtype = kCATransitionFromRight
-//        self.view.window?.layer.add(animation, forKey: nil)
-       // self.present(nav, animated:false, completion: nil)
+
 
     }
     
     
-    
-    
+
 }

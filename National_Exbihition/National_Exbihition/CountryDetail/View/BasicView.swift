@@ -27,6 +27,7 @@ class BasicView: UIView{
     var playAction: UIButton! = UIButton()
     var namelabel: UILabel! = UILabel()
     var topview: UIView! = UIView()
+    var bottomview: UIView! = UIView()
     var videoView: UIImageView! = UIImageView()
     var mapButton = UIButton()
     var audioPlayer: STKAudioPlayer = STKAudioPlayer()
@@ -34,8 +35,10 @@ class BasicView: UIView{
     var InfoLabels:[UILabel]? = [UILabel]()
     var musicButton = UIButton()
     var country_code:String!
+    var videoCode:String?
     var CLLloaction:[Float]?
     var muUrl:String?
+    var imaUrl:String?
     
     init(frame: CGRect,country_code:String) {
         super.init(frame: frame)
@@ -57,6 +60,8 @@ class BasicView: UIView{
        // self.backgroundColor = backColor
         audioPlayer.delegate = self
         SVProgressHUD.show(withStatus: "加载中")
+        bottomview.frame = self.frame
+        self.addSubview(bottomview)
         self.addSubview(videoView)
         self.addSubview(topview)
         self.addSubview(namelabel)
@@ -65,7 +70,7 @@ class BasicView: UIView{
         
         self.frame = FloatRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
         self.videoView.frame = FloatRect(0, 0, SCREEN_WIDTH, getHeight(450))
-        videoView.image = #imageLiteral(resourceName: "组 186")
+        //videoView.image = #imageLiteral(resourceName: "组 186")
         playAction.setImage(#imageLiteral(resourceName: "播放"), for: .normal)
         self.playAction.snp.makeConstraints({
             (make) in
@@ -104,7 +109,7 @@ class BasicView: UIView{
         }
         
         
-        self.addSubview(self.musicButton)
+     
 
        // mapButton.backgroundColor = naviColor
         mapButton.setImage(#imageLiteral(resourceName: "位置-线"), for: .normal)
@@ -188,6 +193,14 @@ class BasicView: UIView{
                             self.InfoLabels![6].text = "国    歌: "
                             self.muUrl = imageUrl+jj
                         }
+                        if let jj = json["video_code"].string{
+                            self.videoCode = jj
+                        }
+                        if let jj = json["map_picture"].string{
+                            self.imaUrl = jj
+                            self.videoView.sd_setImage(with:getImage(fg: self.imaUrl!), placeholderImage: #imageLiteral(resourceName: "baccc"),completed: nil)
+                        }
+                        
                         
                         if let jj = json["capital_latitude"].float{
                            // print(jj)
@@ -203,7 +216,7 @@ class BasicView: UIView{
                             i.sizeToFit()
                         }
                         
-                        
+                       
                        self.musicButton.frame = FloatRect(self.InfoLabels![6].frame.width + 20, self.InfoLabels![6].frame.origin.y - 5, getWidth(41), getHeight(43))
 
                         self.mapButton.snp.makeConstraints({
@@ -213,6 +226,21 @@ class BasicView: UIView{
                             make.height.equalTo(getHeight(50))
                             make.centerY.equalTo(self.InfoLabels![3])
                         })
+                        
+                        if self.muUrl != nil
+                        {
+                               self.addSubview(self.musicButton)
+                        }
+                        
+                    
+  
+                        if self.videoCode == nil
+                        {
+                            //self.videoView.removeFromSuperview()
+                            self.playAction.removeFromSuperview()
+                        }
+                        
+                        
                         
                         
                         

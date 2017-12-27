@@ -24,7 +24,8 @@ class TabTableViewController: UIViewController{
         "name":[],
         "nation_id":[],
         "capital":[],
-        "establish_time":[]
+        "establish_time":[],
+        "content":[]
     ]
     
     var index : String?
@@ -102,7 +103,7 @@ class TabTableViewController: UIViewController{
    // MARK: - Alarequest
     
     func request(){
-        SVProgressHUD.show(withStatus:"loading")
+       // SVProgressHUD.show(withStatus:"loading")
         var continent_id = "A"
         var titles = ["亚洲 (Asia)","欧洲 (Europe)","北美洲 (North America)","南美洲 (South America)","非洲 (Africa)","大洋洲 (Oceania)","南极洲 (Antarctica)" ]
         
@@ -152,13 +153,36 @@ class TabTableViewController: UIViewController{
                             self.dataBase["establish_time"]?.append(flag)
                         }else{
                             self.dataBase["establish_time"]?.append("")
+
                         }
                         if let flag = json["data"][i]["capital"].string{
                             self.dataBase["capital"]?.append(flag)
+                            
                         }else{
                             self.dataBase["capital"]?.append("")
                         }
                         self.dataBase["nation_id"]?.append(json["data"][i]["country_code"].string!)
+                        
+                  
+                        // 2
+                        
+                        if let flag = json["data"][i]["geography"].string{
+                            self.dataBase["content"]?.append(flag)
+                        }else{
+                            self.dataBase["content"]?.append("")
+                        }
+                        
+                        //3
+                        
+                        if let flag = json["data"][i]["geography"].string{
+                            self.dataBase["content"]?.append(flag)
+                        }else{
+                            self.dataBase["content"]?.append("")
+                        }
+                      
+                        
+                        
+                        
                         
                         
                         //self.dataBase["content"]?.append("")
@@ -178,16 +202,7 @@ class TabTableViewController: UIViewController{
         })
         
         SVProgressHUD.dismiss()
-         
-        
-        
-        
-        
-//        for i in 0...5{
-//        self.dataBase["flag"]?.append("ss")
-//        self.dataBase["name"]?.append("中国")
-//        self.dataBase["content"]?.append("国名   中国，是大手笔方法好欺负那可是粉红 i 企鹅放假啊反馈客户问起恢复 i 恶气本菲卡是毕福剑阿富汗 i 前后放假啊什么能发掘并发放 i 啊师傅把沙发")
-//        }
+
     }
     
     
@@ -295,8 +310,12 @@ extension TabTableViewController:UITableViewDelegate,UITableViewDataSource,selec
         
         cell.nameTitle.text = (self.dataBase["name"]?[indexPath.row])! + "   \(self.index!)"
         cell.nameTitle.sizeToFit()
-        let content = ("国名： "+self.dataBase["name"]![indexPath.row]+" 建立时间:"+self.dataBase["establish_time"]![indexPath.row]+" 首都："+self.dataBase["capital"]![indexPath.row])
-        cell.contentLabel.text = (content)//+self.dataBase["capital"]![indexPath.row])
+        //let content = self.dataBase[]
+        if self.getIndex().Index == "nationinfo"{
+            cell.contentLabel.text = "国名："+self.dataBase["name"]![indexPath.row]+"建立时间："+self.dataBase["establish_time"]![indexPath.row]+"首都："+self.dataBase["capital"]![indexPath.row]
+        }else{
+            cell.contentLabel.text = self.dataBase["content"]![indexPath.row];
+        }
         //cell.contentLabel.sizeToFit()
         return cell
     }

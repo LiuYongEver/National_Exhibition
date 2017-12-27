@@ -34,6 +34,7 @@
 		08A6D8D51FB419EE00FAC0B0 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A6D8D41FB419EE00FAC0B0 /* RecommendViewController.swift */; };
 		08A6D8D81FB4466D00FAC0B0 /* BasicInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A6D8D61FB4466D00FAC0B0 /* BasicInformationViewController.swift */; };
 		08A6D8DB1FB4472900FAC0B0 /* BasicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A6D8DA1FB4472900FAC0B0 /* BasicView.swift */; };
+		08AE6C291FF397800070985E /* SelecteTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AE6C281FF397800070985E /* SelecteTypeViewController.swift */; };
 		08C79D5E1FB5C0CD00BF7686 /* TabTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C79D5D1FB5C0CD00BF7686 /* TabTableViewController.swift */; };
 		08C79D601FB5C11E00BF7686 /* TabTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C79D5F1FB5C11E00BF7686 /* TabTableViewCell.swift */; };
 		08CC477E1FE0FE29000818C0 /* EconomicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CC477D1FE0FE29000818C0 /* EconomicView.swift */; };
@@ -102,6 +103,7 @@
 		08A6D8D41FB419EE00FAC0B0 /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
 		08A6D8D61FB4466D00FAC0B0 /* BasicInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInformationViewController.swift; sourceTree = "<group>"; };
 		08A6D8DA1FB4472900FAC0B0 /* BasicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicView.swift; sourceTree = "<group>"; };
+		08AE6C281FF397800070985E /* SelecteTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelecteTypeViewController.swift; sourceTree = "<group>"; };
 		08C79D5D1FB5C0CD00BF7686 /* TabTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTableViewController.swift; sourceTree = "<group>"; };
 		08C79D5F1FB5C11E00BF7686 /* TabTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTableViewCell.swift; sourceTree = "<group>"; };
 		08C79D631FBB116500BF7686 /* National_Exbihition-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "National_Exbihition-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -373,6 +375,7 @@
 			isa = PBXGroup;
 			children = (
 				08F734181FC01E5300E0CAE9 /* SearchViewController.swift */,
+				08AE6C281FF397800070985E /* SelecteTypeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -649,6 +652,7 @@
 				08CC477E1FE0FE29000818C0 /* EconomicView.swift in Sources */,
 				08201E721FB2F1C100563887 /* Propoty.swift in Sources */,
 				08DA83991FC5AB460003259C /* SearchHistoryTableViewCell.swift in Sources */,
+				08AE6C291FF397800070985E /* SelecteTypeViewController.swift in Sources */,
 				08E371161FCD6587005FEE4D /* AllCountryViewController.swift in Sources */,
 				08DA83971FC409970003259C /* searchDatabase.swift in Sources */,
 				089263921FEF8D5F002EDD63 /* SliderGallery.swift in Sources */,

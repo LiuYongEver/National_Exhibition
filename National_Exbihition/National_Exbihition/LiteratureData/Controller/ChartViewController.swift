@@ -75,7 +75,7 @@ class ChartViewController: UIViewController{
     
     func  setPageView(){
         var childVcs = [UIViewController]()
-        let title  =  ["统计数据","重要文献","重要研究"]
+        let title  =  ["统计数据","重要研究","其他文献"]
         for i in 0...title.count-1{
             childVcs.append(UIViewController())
             childVcs[i].view.backgroundColor = backColor
@@ -85,7 +85,7 @@ class ChartViewController: UIViewController{
 
         chartView.backgroundColor = backColor
         childVcs[0].view.addSubview(chartView)
-        childVcs[1] = wenxian
+        childVcs[2] = wenxian
         let vieww = IndexPageView(frame: FloatRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64),titles: title,child:childVcs,parentViewController: self)
         self.view.addSubview(vieww)
 

@@ -17,5 +17,7 @@ struct searchDatabase {
     var hotTag:[String]
     var resultName:[String]
     var resultTag:[String]
+    var resultDetail:[String]
+    var resultImage:[String]
     
 }

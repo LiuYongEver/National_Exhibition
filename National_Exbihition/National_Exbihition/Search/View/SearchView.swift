@@ -20,7 +20,7 @@ class SearchView: UIView {
     var tableview:UITableView!
     var database:searchviewDelegate?
     var flag = true;//true 为搜索历史
-    
+    let btn = UIButton.init(frame: FloatRect(0, 0, SCREEN_WIDTH, getHeight(95)))    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setTV()
@@ -90,8 +90,10 @@ extension SearchView:UITableViewDelegate,UITableViewDataSource{
             if let data = database?.getDatabase().resultName[indexPath.row]{
                 cell.flagImage.image = #imageLiteral(resourceName: "组 3")
                 cell.nameTitle.text = data
+                cell.contentLabel.text = database?.getDatabase().resultDetail[indexPath.row]
+                
                 cell.nameTitle.sizeToFit()
-                cell.contentLabel.text = " "
+                //cell.contentLabel.text = " "
             }
             
             
@@ -116,7 +118,7 @@ extension SearchView:UITableViewDelegate,UITableViewDataSource{
             return "热门搜索"
         }
         }else{
-            return "结果"
+            return ""
         }
     }
     
@@ -126,6 +128,22 @@ extension SearchView:UITableViewDelegate,UITableViewDataSource{
         }
         return getHeight(95)
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if !flag{
+            let view = UIView.init(frame: FloatRect(0, 0, SCREEN_WIDTH, getHeight(95)))
+            
+            view.backgroundColor = backColor
+           
+            btn.setTitle("类别", for: .normal)
+            btn.setTitleColor(title1Color, for: .normal)
+            view.addSubview(btn)
+            return view
+        }
+        
+        return nil
+    }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.isSelected = false

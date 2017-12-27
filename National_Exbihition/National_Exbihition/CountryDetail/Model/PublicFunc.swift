@@ -8,6 +8,28 @@
 
 import Foundation
 
+
+
+
+
+
+func getImage(fg:String)->URL{
+    if  fg != "" {
+        let fg2 = fg.components(separatedBy: "webapps/")
+        //print(fg2![1])
+        let ecc  = imageUrl+fg2[1]
+        let eco = ecc.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        let url = URL.init(string:eco!)
+        //print(url)
+        
+        return url!
+    }else{
+        return URL.init(string: "")!
+    }
+}
+
+
+
 func getUrls(str:String) -> [String] {
     var urls = [String]()
     do {
