@@ -36,6 +36,15 @@ class SearchView: UIView {
         self.tableview.dataSource = self
         self.addSubview(tableview)
     }
+    
+    func saveInfo(index:Int){
+        //      if let exit = UserDefaults.standard.dictionary(forKey: "history")
+        let usd = UserDefaults.standard;
+        print(database?.getDatabase().resultTag);
+  usd.set([database?.getDatabase().resultTag[index],database?.getDatabase().resultName[index]], forKey: "history");
+        print(usd.array(forKey: "history"))
+    }
+    
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -88,7 +97,7 @@ extension SearchView:UITableViewDelegate,UITableViewDataSource{
         }else{
             let cell = TabTableViewCell.init(style: .default, reuseIdentifier: "cell")
             if let data = database?.getDatabase().resultName[indexPath.row]{
-                cell.flagImage.image = #imageLiteral(resourceName: "组 3")
+                cell.flagImage.sd_setImage(with: getImage(fg:  (database?.getDatabase().resultImage[indexPath.row])!))
                 cell.nameTitle.text = data
                 cell.contentLabel.text = database?.getDatabase().resultDetail[indexPath.row]
                 
@@ -146,6 +155,7 @@ extension SearchView:UITableViewDelegate,UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.saveInfo(index: indexPath.row)
         tableView.cellForRow(at: indexPath)?.isSelected = false
     }
     

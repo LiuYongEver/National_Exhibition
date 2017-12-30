@@ -27,7 +27,7 @@ class SearchViewController: UIViewController,UINavigationControllerDelegate{
     }
     override func viewDidLoad() {
         netRequest()
-
+       
         super.viewDidLoad()
         self.searchContentView = SearchView.init(frame: self.view.frame)
         self.searchContentView.database = self
@@ -39,10 +39,11 @@ class SearchViewController: UIViewController,UINavigationControllerDelegate{
     
     override func viewWillDisappear(_ animated: Bool){
         self.searchBar.isHidden = true
+        self.searchBar.resignFirstResponder()
     }
     
  
-    
+ 
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -124,6 +125,13 @@ class SearchViewController: UIViewController,UINavigationControllerDelegate{
                         self.searchData?.resultName.append(gg+"基本信息")
                     }
                 }
+                if let gg2 = json["data"]["NationInfo"]["country_code"].string{
+                    self.searchData?.resultTag.append(gg2)
+                }else{
+                    self.searchData?.resultTag.append("")
+                }
+                
+                
                 
                 
                 if self.type == "环境资源" {
@@ -140,6 +148,15 @@ class SearchViewController: UIViewController,UINavigationControllerDelegate{
                         }else{
                             self.searchData?.resultImage.append("")
                         }
+                        
+                        if let gg2 = json["data"]["Nature"]["country_code"].string{
+                            self.searchData?.resultTag.append(gg2)
+                        }else{
+                            self.searchData?.resultTag.append("")
+                        }
+                        
+                        
+                        
                     }
                 }
                 }
@@ -159,6 +176,13 @@ class SearchViewController: UIViewController,UINavigationControllerDelegate{
                             }else{
                                 self.searchData?.resultImage.append("")
                             }
+                            
+                            if let gg2 = json["data"]["Politic"]["country_code"].string{
+                                self.searchData?.resultTag.append(gg2)
+                            }else{
+                                self.searchData?.resultTag.append("")
+                            }
+                            
                         }
                     }
                 }
@@ -168,7 +192,7 @@ class SearchViewController: UIViewController,UINavigationControllerDelegate{
                     if  json["data"]["Development"].exists(){
                         if let gg = json["data"]["Development"]["nation_z"].string{
                             self.searchData?.resultName.append(gg+"  经济发展")
-                            if let gg2 = json["data"]["Development"]["constitution"].string{
+                            if let gg2 = json["data"]["Development"]["economy"].string{
                                 self.searchData?.resultDetail.append(gg2)
                             }else{
                                 self.searchData?.resultDetail.append("")
@@ -177,6 +201,13 @@ class SearchViewController: UIViewController,UINavigationControllerDelegate{
                                 self.searchData?.resultImage.append(gg2)
                             }else{
                                 self.searchData?.resultImage.append("")
+                            }
+                            
+                            
+                            if let gg2 = json["data"]["Development"]["country_code"].string{
+                                self.searchData?.resultTag.append(gg2)
+                            }else{
+                                self.searchData?.resultTag.append("")
                             }
                         }
                     }

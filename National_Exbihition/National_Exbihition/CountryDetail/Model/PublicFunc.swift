@@ -24,7 +24,7 @@ func getImage(fg:String)->URL{
         
         return url!
     }else{
-        return URL.init(string: "")!
+        return URL.init(string: rootUrl)!
     }
 }
 
