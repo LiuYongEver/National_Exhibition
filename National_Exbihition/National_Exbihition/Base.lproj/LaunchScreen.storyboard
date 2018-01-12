@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright © 2017年 LiuYong. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="yQY-3r-BxE">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Copyright © 2017年 LiuYong. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="yQY-3r-BxE">
                                 <rect key="frame" x="0.0" y="626" width="375" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="JaA-RJ-nfK"/>
@@ -26,21 +26,14 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="国情概览" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="O3t-jh-LCd">
-                                <rect key="frame" x="0.0" y="221" width="375" height="43"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo APP启动页" translatesAutoresizingMaskIntoConstraints="NO" id="hIF-MM-J4z">
+                                <rect key="frame" x="124" y="174" width="126" height="126"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="O3t-jh-LCd" secondAttribute="trailing" id="5oa-hC-5dq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="yQY-3r-BxE" secondAttribute="bottom" constant="11" id="J10-95-imK"/>
-                            <constraint firstItem="O3t-jh-LCd" firstAttribute="trailing" secondItem="yQY-3r-BxE" secondAttribute="trailing" id="M06-3t-dUz"/>
-                            <constraint firstItem="O3t-jh-LCd" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Opo-gH-FHR"/>
-                            <constraint firstItem="O3t-jh-LCd" firstAttribute="leading" secondItem="yQY-3r-BxE" secondAttribute="leading" id="SdF-uT-cyE"/>
-                            <constraint firstItem="O3t-jh-LCd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="201" id="faO-3A-N9P"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -50,4 +43,7 @@
             <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo APP启动页" width="1000" height="1000"/>
+    </resources>
 </document>

@@ -101,7 +101,7 @@ class RecommendViewController: UIViewController {
             
             return url!
         }else{
-            return URL.init(string: "")!
+            return URL.init(string: rootUrl)!
         }
     }
     
@@ -156,7 +156,7 @@ extension RecommendViewController:UICollectionViewDelegate,UICollectionViewDataS
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9
+        return self.dataBase["nation_id"]!.count
     }
     
     
@@ -167,7 +167,11 @@ extension RecommendViewController:UICollectionViewDelegate,UICollectionViewDataS
         //cell.backgroundColor = UIColor.yellow
         
         let national_flag = UIImageView(frame:FloatRect(0, 0, cell.contentView.frame.width, getHeight(151)))
-        if self.dataBase["flag"]!.count>0{
+        
+        
+        
+        //print(indexPath.row)
+        if (self.dataBase["flag"]!.count>=indexPath.row  && self.dataBase["flag"]!.count != 0){
             national_flag.sd_setImage(with:getImage(fg:self.dataBase["flag"]![indexPath.row] ), placeholderImage: #imageLiteral(resourceName: "baccc"), completed: nil);
         }
         
@@ -192,7 +196,7 @@ extension RecommendViewController:UICollectionViewDelegate,UICollectionViewDataS
         for i in (self.navigationController?.navigationBar.subviews)!{
             i.removeFromSuperview()
         }
-        self.navigationController?.pushViewController(BasicInformationViewController.init(title: "", defaultCode: 0), animated: true)
+        self.navigationController?.pushViewController(BasicInformationViewController.init(title: self.dataBase["nation_id"]![indexPath.row], defaultCode: 0), animated: true)
 
 
     }
