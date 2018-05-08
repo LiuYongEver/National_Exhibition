@@ -28,6 +28,18 @@ extension UIColor{
         
     }
 }
+
+
+
+public func setNavi(nav:UINavigationController){
+    nav.navigationBar.barTintColor = naviColor
+    nav.navigationBar.isTranslucent = false
+    nav.navigationBar.tintColor = UIColor.white
+    nav.navigationItem.backBarButtonItem?.tintColor = UIColor.white
+}
+
+
+
 public func hexStringToColor(hexString: String) -> UIColor{
     
     var cString: String = hexString.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)

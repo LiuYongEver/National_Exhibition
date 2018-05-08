@@ -49,6 +49,20 @@
 		08FE0AEF1FCFB0BD005915A4 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FE0AEE1FCFB081005915A4 /* ChartView.swift */; };
 		08FE0AF21FCFB127005915A4 /* MoreChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FE0AF11FCFB127005915A4 /* MoreChartViewController.swift */; };
 		08FE0AF41FCFB13E005915A4 /* MoreChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FE0AF31FCFB13E005915A4 /* MoreChartView.swift */; };
+		2D931AC82089B8AB00898169 /* CommunityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D931AC72089B8AB00898169 /* CommunityTableViewController.swift */; };
+		2D931AD1208B1A2F00898169 /* AlaRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D931AD0208B1A2E00898169 /* AlaRequestManager.swift */; };
+		2D931AD3208B275700898169 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D931AD2208B275700898169 /* CommunityViewController.swift */; };
+		2DA1E8CD2078A57800A6F9B3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA1E8CB2078A57800A6F9B3 /* LoginViewController.swift */; };
+		2DA1E8CE2078A57800A6F9B3 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DA1E8CC2078A57800A6F9B3 /* LoginViewController.xib */; };
+		2DA1E8D42079202200A6F9B3 /* QuestionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA1E8D32079202200A6F9B3 /* QuestionDetailViewController.swift */; };
+		2DA1E8D62079205900A6F9B3 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA1E8D52079205900A6F9B3 /* QuestionView.swift */; };
+		2DA1E8D82079206E00A6F9B3 /* QuestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DA1E8D72079206E00A6F9B3 /* QuestionView.xib */; };
+		2DE81728209DA65000EF21C4 /* button_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE81727209DA65000EF21C4 /* button_Extension.swift */; };
+		2DE8172A209EE37C00EF21C4 /* AskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE81729209EE37C00EF21C4 /* AskViewController.swift */; };
+		2DE8172C209EE44C00EF21C4 /* askView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE8172B209EE44C00EF21C4 /* askView.swift */; };
+		2DE8172E209EE45900EF21C4 /* askView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DE8172D209EE45900EF21C4 /* askView.xib */; };
+		2DE8173020A16BFB00EF21C4 /* LoginUIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE8172F20A16BFB00EF21C4 /* LoginUIExtension.swift */; };
+		2DE8173220A17DF000EF21C4 /* MyTabViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE8173120A17DF000EF21C4 /* MyTabViewViewController.swift */; };
 		3FEC729F704F9A07CC3B557A /* Pods_National_Exbihition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C9F8079231DA848C6372A5D /* Pods_National_Exbihition.framework */; };
 /* End PBXBuildFile section */
 
@@ -120,6 +134,20 @@
 		08FE0AF11FCFB127005915A4 /* MoreChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreChartViewController.swift; sourceTree = "<group>"; };
 		08FE0AF31FCFB13E005915A4 /* MoreChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreChartView.swift; sourceTree = "<group>"; };
 		2C9F8079231DA848C6372A5D /* Pods_National_Exbihition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_National_Exbihition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D931AC72089B8AB00898169 /* CommunityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityTableViewController.swift; sourceTree = "<group>"; };
+		2D931AD0208B1A2E00898169 /* AlaRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlaRequestManager.swift; sourceTree = "<group>"; };
+		2D931AD2208B275700898169 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
+		2DA1E8CB2078A57800A6F9B3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		2DA1E8CC2078A57800A6F9B3 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		2DA1E8D32079202200A6F9B3 /* QuestionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDetailViewController.swift; sourceTree = "<group>"; };
+		2DA1E8D52079205900A6F9B3 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
+		2DA1E8D72079206E00A6F9B3 /* QuestionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionView.xib; sourceTree = "<group>"; };
+		2DE81727209DA65000EF21C4 /* button_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = button_Extension.swift; sourceTree = "<group>"; };
+		2DE81729209EE37C00EF21C4 /* AskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskViewController.swift; sourceTree = "<group>"; };
+		2DE8172B209EE44C00EF21C4 /* askView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = askView.swift; sourceTree = "<group>"; };
+		2DE8172D209EE45900EF21C4 /* askView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = askView.xib; sourceTree = "<group>"; };
+		2DE8172F20A16BFB00EF21C4 /* LoginUIExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUIExtension.swift; sourceTree = "<group>"; };
+		2DE8173120A17DF000EF21C4 /* MyTabViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabViewViewController.swift; sourceTree = "<group>"; };
 		7A2DE5A9B7CF51A3E07F2620 /* Pods-National_Exbihition.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-National_Exbihition.release.xcconfig"; path = "Pods/Target Support Files/Pods-National_Exbihition/Pods-National_Exbihition.release.xcconfig"; sourceTree = "<group>"; };
 		9485ADD92EAA0169F16F4D1E /* Pods-National_Exbihition.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-National_Exbihition.debug.xcconfig"; path = "Pods/Target Support Files/Pods-National_Exbihition/Pods-National_Exbihition.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -257,12 +285,15 @@
 		086EA5A81FB2DE8A00E549F7 /* National_Exbihition */ = {
 			isa = PBXGroup;
 			children = (
+				2DA1E8CF20791F7500A6F9B3 /* Community */,
+				2DA1E8CA2078A54300A6F9B3 /* Login */,
 				081738081FD56B8900F2C4E1 /* MIne */,
 				08FE0AEA1FCFAFC7005915A4 /* LiteratureData */,
 				08F734141FC01DFA00E0CAE9 /* Search */,
 				08C79D591FB5BBED00BF7686 /* CountryDetail */,
 				08201E641FB2DFB800563887 /* Index */,
 				086EA5A91FB2DE8A00E549F7 /* AppDelegate.swift */,
+				2DE8173120A17DF000EF21C4 /* MyTabViewViewController.swift */,
 				086EA5B01FB2DE8A00E549F7 /* Assets.xcassets */,
 				086EA5B21FB2DE8A00E549F7 /* LaunchScreen.storyboard */,
 				086EA5B51FB2DE8A00E549F7 /* Info.plist */,
@@ -415,6 +446,65 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		2D931ACD2089BB8700898169 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2DA1E8CA2078A54300A6F9B3 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				2DA1E8CB2078A57800A6F9B3 /* LoginViewController.swift */,
+				2DE8172F20A16BFB00EF21C4 /* LoginUIExtension.swift */,
+				2DA1E8CC2078A57800A6F9B3 /* LoginViewController.xib */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		2DA1E8CF20791F7500A6F9B3 /* Community */ = {
+			isa = PBXGroup;
+			children = (
+				2D931ACD2089BB8700898169 /* ViewModel */,
+				2DA1E8D220791FED00A6F9B3 /* Model */,
+				2DA1E8D120791FE500A6F9B3 /* View */,
+				2DA1E8D020791FE200A6F9B3 /* Controller */,
+			);
+			path = Community;
+			sourceTree = "<group>";
+		};
+		2DA1E8D020791FE200A6F9B3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2DA1E8D32079202200A6F9B3 /* QuestionDetailViewController.swift */,
+				2D931AC72089B8AB00898169 /* CommunityTableViewController.swift */,
+				2D931AD2208B275700898169 /* CommunityViewController.swift */,
+				2DE81729209EE37C00EF21C4 /* AskViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2DA1E8D120791FE500A6F9B3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2DA1E8D52079205900A6F9B3 /* QuestionView.swift */,
+				2DA1E8D72079206E00A6F9B3 /* QuestionView.xib */,
+				2DE81727209DA65000EF21C4 /* button_Extension.swift */,
+				2DE8172B209EE44C00EF21C4 /* askView.swift */,
+				2DE8172D209EE45900EF21C4 /* askView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2DA1E8D220791FED00A6F9B3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2D931AD0208B1A2E00898169 /* AlaRequestManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		C4006E59E4FDB7535BDD8B29 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -543,8 +633,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DA1E8D82079206E00A6F9B3 /* QuestionView.xib in Resources */,
+				2DE8172E209EE45900EF21C4 /* askView.xib in Resources */,
 				086EA5B41FB2DE8A00E549F7 /* LaunchScreen.storyboard in Resources */,
 				086EA5B11FB2DE8A00E549F7 /* Assets.xcassets in Resources */,
+				2DA1E8CE2078A57800A6F9B3 /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -644,6 +737,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DE8172C209EE44C00EF21C4 /* askView.swift in Sources */,
 				08A6D8DB1FB4472900FAC0B0 /* BasicView.swift in Sources */,
 				086EA5AA1FB2DE8A00E549F7 /* AppDelegate.swift in Sources */,
 				08FE0AF41FCFB13E005915A4 /* MoreChartView.swift in Sources */,
@@ -660,25 +754,35 @@
 				088CC30A1FECF1B40026D7EE /* PublicFunc.swift in Sources */,
 				08A24A941FE0CA1A001D590E /* EnvrionmentViewController.swift in Sources */,
 				0896F4C71FE65CAC00658306 /* TechnologyView.swift in Sources */,
+				2DE8172A209EE37C00EF21C4 /* AskViewController.swift in Sources */,
+				2DE8173220A17DF000EF21C4 /* MyTabViewViewController.swift in Sources */,
 				08FE0AEF1FCFB0BD005915A4 /* ChartView.swift in Sources */,
 				08A6D8D81FB4466D00FAC0B0 /* BasicInformationViewController.swift in Sources */,
 				081738121FD56C1300F2C4E1 /* MineView.swift in Sources */,
 				08201E701FB2F17200563887 /* IndexView.swift in Sources */,
+				2D931AC82089B8AB00898169 /* CommunityTableViewController.swift in Sources */,
 				08DD9B4F1FD68FC1002BC6C4 /* SelectContinentTableViewController.swift in Sources */,
 				08F734191FC01E5300E0CAE9 /* SearchViewController.swift in Sources */,
 				080C9D391FE36DC70029507F /* AboutUsViewController.swift in Sources */,
 				08C79D5E1FB5C0CD00BF7686 /* TabTableViewController.swift in Sources */,
+				2DA1E8CD2078A57800A6F9B3 /* LoginViewController.swift in Sources */,
 				08A24A901FDFAD90001D590E /* EnvironmentView.swift in Sources */,
+				2D931AD3208B275700898169 /* CommunityViewController.swift in Sources */,
+				2D931AD1208B1A2F00898169 /* AlaRequestManager.swift in Sources */,
 				0896F4CB1FE6622700658306 /* OverseasView.swift in Sources */,
 				08FE0AF21FCFB127005915A4 /* MoreChartViewController.swift in Sources */,
 				08DA83951FC407B80003259C /* SearchView.swift in Sources */,
 				0896F4C51FE6507000658306 /* SocietyView.swift in Sources */,
 				08201E661FB2DFD100563887 /* IndexViewController.swift in Sources */,
 				08A24A961FE0CCA1001D590E /* MapViewController.swift in Sources */,
+				2DE8173020A16BFB00EF21C4 /* LoginUIExtension.swift in Sources */,
+				2DE81728209DA65000EF21C4 /* button_Extension.swift in Sources */,
 				08A6D8D51FB419EE00FAC0B0 /* RecommendViewController.swift in Sources */,
 				081738071FD437FB00F2C4E1 /* dataSelect.swift in Sources */,
 				0896F4CD1FE6634B00658306 /* InterNationalData.swift in Sources */,
+				2DA1E8D42079202200A6F9B3 /* QuestionDetailViewController.swift in Sources */,
 				08F734111FBDA3DE00E0CAE9 /* ChartViewController.swift in Sources */,
+				2DA1E8D62079205900A6F9B3 /* QuestionView.swift in Sources */,
 				0896F4C91FE65DE400658306 /* RelationshipView.swift in Sources */,
 				088D9CB81FEF9DE500FBFA42 /* ImageDetailViewController.swift in Sources */,
 				081738101FD56BEA00F2C4E1 /* MineViewController.swift in Sources */,

@@ -19,7 +19,7 @@ class MineView: UIView {
     
     var delegate:MineViewDelegate?
     var tableview:UITableView!
-    fileprivate var titles = ["我的文章","每日签到","关于我们"]
+    fileprivate var titles = ["我发布的","我的消息","关于我们"]
     var nums = ["23","13","3"]
     lazy var headerView:UIView = {
         let view = UIView.init(frame: FloatRect(0, 0, SCREEN_WIDTH, getHeight(168+131)))
@@ -27,6 +27,12 @@ class MineView: UIView {
         let line = UIView.init(frame: FloatRect(0, getHeight(167), SCREEN_WIDTH, getHeight(1)))
         line.backgroundColor = lineColor
         view.addSubview(line)
+        
+        view.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer.init(target: self, action: #selector(touchHead))
+        view.addGestureRecognizer(tap)
+        
+        
         return view
     }()
     
@@ -82,6 +88,7 @@ class MineView: UIView {
         tableview.delegate = self
         tableview.isScrollEnabled = false
         self.addSubview(tableview)
+        tableview.tableFooterView = UIView.init(frame: CGRect.zero)
         
 
         
@@ -99,6 +106,15 @@ class MineView: UIView {
 }
 
 extension MineView:UITableViewDelegate,UITableViewDataSource{
+    
+     @objc  func touchHead(){
+           self.delegate?.push(vc: LoginViewController())
+        
+    }
+    
+    
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
@@ -113,6 +129,7 @@ extension MineView:UITableViewDelegate,UITableViewDataSource{
         text.sizeToFit()
        // cell.imageView?.image = #imageLiteral(resourceName: "我的文章")
         let iimag = UIImageView.init(frame: Rect(30, 30, 45, 48))
+        iimag.contentMode = .scaleAspectFit
         iimag.image = UIImage.init(named: titles[indexPath.row])
         let iimag2 = UIImageView.init(frame: Rect(700, 33, 30, 34))
         iimag2.image = #imageLiteral(resourceName: "更多")
@@ -135,6 +152,11 @@ extension MineView:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         userName.text = "昵称"
+        if let nick = UserDefaults.standard.string(forKey: "nickname"){
+            userName.text = nick
+        }
+        
+        
         userName.sizeToFit()
         headerView.addSubview(HeadImgae)
         headerView.addSubview(userName)
