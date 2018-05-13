@@ -54,6 +54,8 @@
 		2D41480120A1D70100A72E5D /* FocusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D41480020A1D70100A72E5D /* FocusModel.swift */; };
 		2D41480320A3058700A72E5D /* CollectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D41480220A3058700A72E5D /* CollectModel.swift */; };
 		2D41480520A3257F00A72E5D /* ChartDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D41480420A3257F00A72E5D /* ChartDataBase.swift */; };
+		2D87BA6F20A804C2009A8E5E /* LiteratureTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87BA6E20A804C2009A8E5E /* LiteratureTableViewController.swift */; };
+		2D87BA7120A806FD009A8E5E /* LiteratureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87BA7020A806FD009A8E5E /* LiteratureModel.swift */; };
 		2D931AC82089B8AB00898169 /* CommunityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D931AC72089B8AB00898169 /* CommunityTableViewController.swift */; };
 		2D931AD1208B1A2F00898169 /* AlaRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D931AD0208B1A2E00898169 /* AlaRequestManager.swift */; };
 		2D931AD3208B275700898169 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D931AD2208B275700898169 /* CommunityViewController.swift */; };
@@ -149,6 +151,8 @@
 		2D41480020A1D70100A72E5D /* FocusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FocusModel.swift; path = National_Exbihition/MIne/FocusModel.swift; sourceTree = SOURCE_ROOT; };
 		2D41480220A3058700A72E5D /* CollectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CollectModel.swift; path = National_Exbihition/MIne/CollectModel.swift; sourceTree = SOURCE_ROOT; };
 		2D41480420A3257F00A72E5D /* ChartDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartDataBase.swift; sourceTree = "<group>"; };
+		2D87BA6E20A804C2009A8E5E /* LiteratureTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiteratureTableViewController.swift; sourceTree = "<group>"; };
+		2D87BA7020A806FD009A8E5E /* LiteratureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiteratureModel.swift; sourceTree = "<group>"; };
 		2D931AC72089B8AB00898169 /* CommunityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityTableViewController.swift; sourceTree = "<group>"; };
 		2D931AD0208B1A2E00898169 /* AlaRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlaRequestManager.swift; sourceTree = "<group>"; };
 		2D931AD2208B275700898169 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
@@ -462,6 +466,7 @@
 			children = (
 				081738061FD437FB00F2C4E1 /* dataSelect.swift */,
 				2D41480420A3257F00A72E5D /* ChartDataBase.swift */,
+				2D87BA7020A806FD009A8E5E /* LiteratureModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -471,6 +476,7 @@
 			children = (
 				08F734101FBDA3DE00E0CAE9 /* ChartViewController.swift */,
 				08FE0AF11FCFB127005915A4 /* MoreChartViewController.swift */,
+				2D87BA6E20A804C2009A8E5E /* LiteratureTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -811,8 +817,10 @@
 				2D41480120A1D70100A72E5D /* FocusModel.swift in Sources */,
 				08A6D8D81FB4466D00FAC0B0 /* BasicInformationViewController.swift in Sources */,
 				081738121FD56C1300F2C4E1 /* MineView.swift in Sources */,
+				2D87BA6F20A804C2009A8E5E /* LiteratureTableViewController.swift in Sources */,
 				08201E701FB2F17200563887 /* IndexView.swift in Sources */,
 				2D931AC82089B8AB00898169 /* CommunityTableViewController.swift in Sources */,
+				2D87BA7120A806FD009A8E5E /* LiteratureModel.swift in Sources */,
 				08DD9B4F1FD68FC1002BC6C4 /* SelectContinentTableViewController.swift in Sources */,
 				08F734191FC01E5300E0CAE9 /* SearchViewController.swift in Sources */,
 				080C9D391FE36DC70029507F /* AboutUsViewController.swift in Sources */,

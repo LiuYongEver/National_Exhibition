@@ -22,6 +22,10 @@ class Focus:NSObject{
         
     }
     
+    override func setValue(_ value: Any?, forUndefinedKey key: String) {
+        print(key)
+    }
+    
     class func dictToModel(list:[[String:AnyObject]])->[Focus]{
         var model = [Focus]()
         for dict in list{

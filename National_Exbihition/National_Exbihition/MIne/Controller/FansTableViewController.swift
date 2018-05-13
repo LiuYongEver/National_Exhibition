@@ -41,7 +41,7 @@ class FansTableViewController: UITableViewController {
         Alamofire.request(url, method:.post, parameters: param).responseJSON
             {response in
                 if let resultDict = response.result.value as? [String:AnyObject]{
-                   // print(response.result.value)
+                      //print(response.result.value)
                       if let lists = resultDict["data"] as? [[String:AnyObject]]{
                       print(lists)
                         let dic = [["id":"2","focusing_nickname":"1","focusingPicture":"1","233":"3"]]

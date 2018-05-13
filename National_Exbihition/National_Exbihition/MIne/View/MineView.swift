@@ -125,6 +125,7 @@ extension MineView:UITableViewDelegate,UITableViewDataSource{
             self.delegate?.push(vc: FocusTableViewController())
         case 2:
             self.delegate?.push(vc: FansTableViewController())
+            
         default:
             return
         }
