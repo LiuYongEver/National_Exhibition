@@ -10,6 +10,7 @@ target ‘National_Exbihition’ do
   pod 'Charts' 
   pod 'ChartsRealm'
   pod 'SwiftFCXRefresh'
-  pod “BaiduMapKit” 
+  pod “BaiduMapKit”
+  pod 'HandyJSON', '~> 4.1.1'
 end
 

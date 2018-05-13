@@ -8,22 +8,31 @@
 
 import UIKit
 import Charts
+import Alamofire
 class ChartViewController: UIViewController{
     
     let searchBar = UISearchBar()
     let ImageExbihition = UIImageView()
     var chartView:ChartView!
+    var DataBase:[ChartData_Populaton]?{
+        didSet{
+            self.chartView.dataBase = DataBase
+            setChart()
+            
+        }
+        
+        
+    }
    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         setNavi()
-
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = backColor;
+        loadData()
         setChart()
         setPageView()
         // Do any additional setup after loading the view.
@@ -122,5 +131,40 @@ extension ChartViewController:UISearchBarDelegate{
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         print("开始搜索")
     }
+    
+    
+    func loadData(){
+        
+        let url = rootUrl+"/findInternationaleDataByContinent"
+        let param = ["continent":"亚洲","kind":"9","year":"2015","end_year":"2017"]
+        
+        AlaRequestManager.shared.POST(urlString: url, params: param as [String : AnyObject], success:({
+            json in
+           // print(json)
+            //let js = JSON(json).dictionaryObject
+           // print(js!["data"] as! [String:AnyObject])
+            // let dic = "\u{2665}";
+            //  print(dic.unicodeScalars)
+            //print(json["data"] as Any)
+            
+            if let lists = json["data"]!["Population"] as? [[String:AnyObject]]{
+                //print(lists)
+                //let dic = [["id":2,"focusing_nickname":"1","focusingPicture":"1"]]
+                let models = ChartData_Populaton.dictToModel(list:lists as [[String : AnyObject]])
+                self.DataBase = models
+               // print(models[0].nation_z)
+               // self.funs = models
+                
+            }
+            
+
+     
+            
+        }))
+
+        
+    }
+    
+    
     
 }

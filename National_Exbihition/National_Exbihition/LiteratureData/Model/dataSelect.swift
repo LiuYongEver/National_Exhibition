@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct dataSelect {
+struct dataSelect{
     var continet:[String]
     var dataType:[String]
     var nation:[String]

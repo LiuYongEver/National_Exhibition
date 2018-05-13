@@ -20,7 +20,7 @@ class MineView: UIView {
     var delegate:MineViewDelegate?
     var tableview:UITableView!
     fileprivate var titles = ["我发布的","我的消息","关于我们"]
-    var nums = ["23","13","3"]
+    var nums = [" 23\n收藏"," 13\n关注","3\n粉丝"]
     lazy var headerView:UIView = {
         let view = UIView.init(frame: FloatRect(0, 0, SCREEN_WIDTH, getHeight(168+131)))
         view.backgroundColor = backColor
@@ -61,11 +61,15 @@ class MineView: UIView {
     
     lazy var collectedButtons:[UIButton]={
         var button = [UIButton]()
-        for i in 0...3{
+        for i in 0...2{
             let btn = UIButton.init(frame: FloatRect(0+(SCREEN_WIDTH/3)*CGFloat(i),0, SCREEN_WIDTH/3, 61))
+            btn.titleLabel?.font = UIFont.systemFont(ofSize: getHeight(32))
             btn.tag = i
+            btn.addTarget(self, action: #selector(touchFocus(btn:)), for: .touchUpInside)
             button.append(btn)
         }
+        
+        
         return button
     }()
     
@@ -113,6 +117,20 @@ extension MineView:UITableViewDelegate,UITableViewDataSource{
     }
     
     
+    @objc func touchFocus(btn:UIButton){
+        switch btn.tag {
+        case 0:
+            self.delegate?.push(vc: CollectionTableViewController())
+        case 1:
+            self.delegate?.push(vc: FocusTableViewController())
+        case 2:
+            self.delegate?.push(vc: FansTableViewController())
+        default:
+            return
+        }
+        
+    }
+    
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -123,7 +141,7 @@ extension MineView:UITableViewDelegate,UITableViewDataSource{
         let cell = UITableViewCell.init(style: .default, reuseIdentifier: "cell")
         let text = UILabel()
         text.text = titles[indexPath.row]
-        text.font = UIFont.systemFont(ofSize: getHeight(36))
+        text.font = UIFont.systemFont(ofSize: getHeight(32))
         text.textColor = title1Color
         text.frame = Rect(91, 36, 0, 0)
         text.sizeToFit()
@@ -164,9 +182,12 @@ extension MineView:UITableViewDelegate,UITableViewDataSource{
         for i in self.collectedButtons{
             cell1back.addSubview(i)
             i.setTitleColor(title2color, for: .normal)
-            i.setTitle(" 23\n收藏", for: .normal)
+            i.setTitle(nums[i.tag], for: .normal)
             i.titleLabel?.numberOfLines = 0
         }
+        let line = UIView.init(frame: FloatRect(0, 61, SCREEN_WIDTH,getHeight(10)))
+        line.backgroundColor = lineColor
+        collectedButtons[0].addSubview(line)
         return headerView
     }
     

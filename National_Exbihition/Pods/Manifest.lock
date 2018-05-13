@@ -7,6 +7,7 @@ PODS:
   - ChartsRealm (3.0.4):
     - Charts (= 3.0.4)
     - RealmSwift (~> 2.10)
+  - HandyJSON (4.1.1)
   - Realm (2.10.2):
     - Realm/Headers (= 2.10.2)
   - Realm/Headers (2.10.2)
@@ -25,6 +26,7 @@ DEPENDENCIES:
   - BaiduMapKit
   - Charts
   - ChartsRealm
+  - HandyJSON (~> 4.1.1)
   - SDWebImage
   - SnapKit
   - StreamingKit
@@ -36,6 +38,7 @@ SPEC CHECKSUMS:
   BaiduMapKit: f61b19ecf07a3f2deede72b221b366bf698739ed
   Charts: 0705898046257443f0afbbc3179f4b67507b6e48
   ChartsRealm: 3cf7c9ebf9c6312efbf418cf1da91d72d5416b26
+  HandyJSON: 3a3de917c4118767ffe41c29b5acba23409649f4
   Realm: 0ef72b837fb67e9f4b098bac771ddd72c7fdbb69
   RealmSwift: 07a9ae0505091eda6b2ee7c190c3786d6e90a7b0
   SDWebImage: 1fa4c9edf525b744f002db89f3f5a38b3cd4c541
@@ -44,6 +47,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
   SwiftFCXRefresh: 74cad61a77485cb510a23b485913039f347e67ce
 
-PODFILE CHECKSUM: e6095138fe00c16492fa4f6d73a7b1bbf91a6d66
+PODFILE CHECKSUM: 9540c63d97603a8cd37e26ba06ba38e269279044
 
 COCOAPODS: 1.3.1

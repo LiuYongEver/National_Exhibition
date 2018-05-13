@@ -23,11 +23,32 @@ class AlaRequestManager{
                // print(response)
                 if  response.result.isSuccess {
                     if let value = response.result.value{
+                        
+                        
                         success(JSON(value))
                     }
                 }else{
                     let error = response.result.error
                     failture(error! as NSError)
+                    
+                }
+        }
+    }
+    
+    
+    func POST(urlString : String, params : [String : AnyObject], success : @escaping (_ responseObject : [String:AnyObject])->()) {
+   
+        
+        Alamofire.request(urlString, method:.post, parameters: params).responseJSON
+            {response in
+                // print(response)
+                if  response.result.isSuccess {
+                    if let value = response.result.value{
+                        success(value as! [String : AnyObject])
+                    }
+                }else{
+                    let error = response.result.error
+                    print(error ?? " ")
                     
                 }
         }

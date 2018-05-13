@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKGeneralDelegate{
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame:UIScreen.main.bounds)
         //window?.rootViewController = CusTomTabBar()
-        window?.rootViewController = UINavigationController(rootViewController:MineViewController())
+        window?.rootViewController = MyTabViewViewController()//UINavigationController(rootViewController:MyTabViewViewController())
         self.window?.backgroundColor = backColor
         window?.makeKeyAndVisible()
         //window?.backgroundColor = UIColor.white
