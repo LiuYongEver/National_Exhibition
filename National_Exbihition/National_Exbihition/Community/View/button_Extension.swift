@@ -3,14 +3,7 @@ import UIKit
 extension UIButton {
     
     
-    @objc  func setCountTitle(titles:String){
-        let title = UILabel.init(frame: Rect(60, 0, 60, 26))
-        title.textColor = title2color
-        title.text = titles
-        title.font = UIFont.systemFont(ofSize: getHeight(26))
-        self.addSubview(title)
 
-    }
     
     @objc func set(image anImage: UIImage?, title: String,
                    titlePosition: UIViewContentMode, additionalSpacing: CGFloat, state: UIControlState){

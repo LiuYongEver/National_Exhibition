@@ -30,6 +30,14 @@ extension UIColor{
 }
 
 
+func timeFormat(_ tt:Int)->String{
+    let date  =  Date.init(timeIntervalSince1970: TimeInterval(tt/1000))
+    let formatter = DateFormatter()
+    formatter.dateFormat = "MMM d, yyyy, hh:mm a"
+    return formatter.string(from: date)
+    
+}
+
 
 public func setNavi(nav:UINavigationController){
     nav.navigationBar.barTintColor = naviColor

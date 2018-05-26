@@ -20,7 +20,7 @@ class MineView: UIView {
     var delegate:MineViewDelegate?
     var tableview:UITableView!
     fileprivate var titles = ["我发布的","我的消息","关于我们"]
-    var nums = [" 23\n收藏"," 13\n关注","3\n粉丝"]
+    var nums = [" \n收藏"," \n关注","\n粉丝"]
     lazy var headerView:UIView = {
         let view = UIView.init(frame: FloatRect(0, 0, SCREEN_WIDTH, getHeight(168+131)))
         view.backgroundColor = backColor
@@ -28,9 +28,24 @@ class MineView: UIView {
         line.backgroundColor = lineColor
         view.addSubview(line)
         
+        
         view.isUserInteractionEnabled = true
-        let tap = UITapGestureRecognizer.init(target: self, action: #selector(touchHead))
-        view.addGestureRecognizer(tap)
+
+        //无id就已登陆，点击头部跳转到登录，否则跳转到修改个人信息
+        if let nick = UserDefaults.standard.string(forKey: "id"){
+              print(nick)
+            let tap = UITapGestureRecognizer.init(target: self, action: #selector(changeInfo))
+            view.addGestureRecognizer(tap)
+         
+            
+        }else{
+
+            let tap = UITapGestureRecognizer.init(target: self, action: #selector(touchHead))
+            view.addGestureRecognizer(tap)
+            
+        }
+        
+
         
         
         return view
@@ -115,6 +130,11 @@ extension MineView:UITableViewDelegate,UITableViewDataSource{
            self.delegate?.push(vc: LoginViewController())
         
     }
+
+    @objc  func changeInfo(){
+        self.delegate?.push(vc: ChangeInfoViewController())
+        
+    }
     
     
     @objc func touchFocus(btn:UIButton){
@@ -195,6 +215,8 @@ extension MineView:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 2{
             delegate?.push(vc:AboutUsViewController())
+        }else if indexPath.row == 0{
+            delegate?.push(vc: MyPublishTableViewController())
         }
         tableView.cellForRow(at: indexPath)?.isSelected = false
     }

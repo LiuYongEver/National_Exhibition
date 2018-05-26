@@ -1,51 +1,41 @@
 //
-//  LiteratureTableViewController.swift
+//  MyPublishTableViewController.swift
 //  National_Exbihition
 //
-//  Created by 刘勇 on 2018/5/13.
+//  Created by 刘勇 on 2018/5/26.
 //  Copyright © 2018年 shikeTeam. All rights reserved.
 //
 
-
 import UIKit
-import  Alamofire
+import Alamofire
 import SwiftFCXRefresh
-class LiteratureTableViewController: UITableViewController {
-    
-    private var type:String!
-    var page:Int = 0
+
+class MyPublishTableViewController: UITableViewController {
 
     
-    init(type:String) {
-        self.type = type
-        super.init(nibName: nil, bundle: nil)
-    }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    var funs:[LiteratureModel]?{
+    var funs:[MyPublish]?{
         didSet{
             
-         
+            self.tableView.register(FansTableViewCell.self, forCellReuseIdentifier: "cell")
             self.tableView.reloadData()
             self.tableView.autoShowEmptyView(title: "暂无数据哦！", image: #imageLiteral(resourceName: "空白页"), dataSourceCount: self.funs?.count ?? 0)
+            self.footerRefreshView?.endRefresh()
+
             
         }
     }
     
-    //刷新
+    var page:Int = 1
     var footerRefreshView:FCXRefreshFooterView?
 
-    
     func addRefreshView() {
         footerRefreshView =
             self.tableView.addFCXRefreshFooter { [weak self] (refreshHeader) in
                 self?.loadMoreAction()
         }
     }
-
+    
     func loadMoreAction() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) { [weak self] in
             guard let weakSelf = self,
@@ -61,11 +51,14 @@ class LiteratureTableViewController: UITableViewController {
         
     }
     
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = ""
+        self.navigationItem.title = "我的发布"
         
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell");
         addRefreshView()
         loadData()
         self.tableView.tableFooterView = UIView.init(frame: CGRect.zero)
@@ -75,27 +68,20 @@ class LiteratureTableViewController: UITableViewController {
     
     func loadData(){
         
-        
-        
-        let url:String = {
-            if self.type == "important"{
-             return  rootUrl+"/findResearchWorkByLimit"
-            }else{
-              return rootUrl+"/findLiteratureDataByLimit"
-            }
-        }()
-        let param = ["start":"\(page)"]
+        let url = rootUrl+"/myPublishment"
+        let id = UserDefaults.standard.string(forKey: "id") ?? "1"
+        let param = ["userid":id,"page":"\(page)"]
         Alamofire.request(url, method:.post, parameters: param).responseJSON
             {response in
                 if let resultDict = response.result.value as? [String:AnyObject]{
                     //print(response.result.value)
                     if let lists = resultDict["data"] as? [[String:AnyObject]]{
-                 
+                        
                         if lists.count == 0{
                             self.footerRefreshView?.showNoMoreData()
                         }
                         
-                        let models = LiteratureModel.dictToModel(list:lists)
+                        let models = MyPublish.dictToModel(list:lists)
                         if self.funs == nil{
                             self.funs = models
                         }else{
@@ -103,14 +89,14 @@ class LiteratureTableViewController: UITableViewController {
                                 self.funs?.append(i)
                             }
                             self.tableView.reloadData()
-     
+                            
                         }
                         self.footerRefreshView?.endRefresh()
-
+                        
                     }else{
                         self.footerRefreshView?.showNoMoreData()
-
-                    }                    //print()
+                        
+                    }
                 }
                 
         }
@@ -132,33 +118,15 @@ class LiteratureTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell:UITableViewCell?
-        cell = tableView.dequeueReusableCell(withIdentifier: "cell")
-        if cell == nil{
-            cell = UITableViewCell.init(style: .subtitle, reuseIdentifier: "cell")
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FansTableViewCell
+        //let cell = TabTableViewCell(style: .default ,reuseIdentifier:"cell")
         
-        cell?.textLabel?.numberOfLines = 0;
-        cell?.textLabel?.font = UIFont.systemFont(ofSize: getHeight(32))
-        cell!.textLabel?.text = {
-            if self.type == "important"{
-                let t =  "题目： " + (self.funs?[indexPath.row].title ?? "")
-                return ( t + "\n作者： " + (self.funs?[indexPath.row].author ?? ""));
-            }else{
-                
-                var t = (self.funs?[indexPath.row].document ?? "")
-                let index = t.index(t.startIndex, offsetBy: 31)
-                t = String(t[index...])
-                //t = t.
-                
-                return t    //+ "\n" + (self.funs?[indexPath.row].document_source ?? "");
-            }
-        }()
-
-        //cell!.detailTextLabel?.text = self.funs?[indexPath.row].author
+        cell.nameLabel.text = self.funs?[indexPath.row].question_title
+        cell.headImage.sd_setImage(with: URL.init(string: (self.funs?[indexPath.row].question_picture ?? "") ), placeholderImage: #imageLiteral(resourceName: "baccc"))
+        // print(self.funs?[indexPath.row].focusing_nickname)
         
         
-        return cell!
+        return cell
     }
     
     
@@ -167,10 +135,15 @@ class LiteratureTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
+       
+        let vc = QuestionDetailViewController.init(id: "\(self.funs![indexPath.row].id)")
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
+        vc.hidesBottomBarWhenPushed = false
+
         
     }
     
-    
+
+
 }

@@ -10,11 +10,19 @@ import UIKit
 import Alamofire
 
 
-class FocusTableViewController: UITableViewController {
+protocol  getFocusListDelegate {
+    func getFocus(name:String,id:Int)
+}
 
+
+
+
+
+class FocusTableViewController: UITableViewController {
+   
     
-    
-    
+    var getFoucsdelegate:getFocusListDelegate?
+
     var funs:[Focus]?{
         didSet{
             
@@ -24,6 +32,7 @@ class FocusTableViewController: UITableViewController {
             
         }
     }
+    
     
     
     override func viewDidLoad() {
@@ -39,8 +48,9 @@ class FocusTableViewController: UITableViewController {
     
     func loadData(){
         
-        let url = rootUrl+"/fans"
-        let param = ["userid":"1"]
+        let url = rootUrl+"/focus"
+        let id = UserDefaults.standard.string(forKey: "id") ?? "1"
+        let param = ["userid":id]
         Alamofire.request(url, method:.post, parameters: param).responseJSON
             {response in
                 if let resultDict = response.result.value as? [String:AnyObject]{
@@ -90,6 +100,23 @@ class FocusTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return getHeight(135)
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        if self.getFoucsdelegate != nil {
+            self.getFoucsdelegate?.getFocus(name: self.funs![indexPath.row].focused_nickname ?? " ", id: self.funs![indexPath.row].id)
+            self.navigationController?.popViewController(animated: true)
+            
+        }
+        
+        
+    }
 
 
 }
+
+
+
+
+
+

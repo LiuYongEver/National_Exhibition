@@ -11,7 +11,7 @@ import Foundation
 
 class Funs:NSObject{
     
-   @objc var id:String?
+   @objc var id:Int = 0
    @objc var focusing_nickname:String?
    @objc  var focusingPicture:String?
 //    var imageurl:String?

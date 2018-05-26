@@ -81,11 +81,13 @@ class SearchViewController: UIViewController,UINavigationControllerDelegate{
     func netRequest(){
         
         
+        let usd = UserDefaults.standard
+        let ary =  usd.array(forKey: "history") as! [String]
         
         self.searchData = searchDatabase(historyNames:[
             0:["2"],
-            1:["1","sa","swq","asdqewf"],2:["2","3"]],historyTags:[1:["1","sa","swq","asdqewf","afeqwas"]] ,hotName:["1"], hotTag:["1"],resultName:[],resultTag:[],resultDetail:[],resultImage:[])
-        print(Int((searchData?.historyNames[0]![0])!))
+            1:ary],historyTags:[1:ary] ,hotName:["中国"], hotTag:["1"],resultName:[],resultTag:[],resultDetail:[],resultImage:[])
+        //print(Int((searchData?.historyNames[0]![0])!))
         
         
     }

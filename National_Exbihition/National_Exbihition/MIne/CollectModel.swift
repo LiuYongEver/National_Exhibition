@@ -10,7 +10,7 @@ import Foundation
 
 class Collect:NSObject{
     
-    @objc var id:String?
+    @objc var id:Int = 0
     @objc var question_id:String?
     @objc  var userId:String?
     @objc  var questioner:String?

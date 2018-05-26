@@ -11,6 +11,9 @@ import UIKit
 class QuestionView: UIView {
 
 
+    var database:DetailModel!
+    
+    
     lazy var upView:UIView={
         let view = UIView.init(frame:FloatRect(0, 0, SCREEN_WIDTH, getHeight(185)))
         view.backgroundColor = UIColor.white
@@ -43,6 +46,8 @@ class QuestionView: UIView {
         label.font = UIFont.systemFont(ofSize: getHeight(32))
         label.numberOfLines = 0
         label.textColor = title1Color
+        label.text = self.database.question_title
+        label.sizeToFit()
         
         return label
     }()
@@ -61,6 +66,12 @@ class QuestionView: UIView {
         let label = UILabel(frame: Rect(30,116,674, 79))
         label.font = UIFont.systemFont(ofSize: getHeight(26))
         label.textColor = naviColor
+//        let text = ["基本信息","环境资源","政治军事","经济发展","社会状况","科技教育","国际关系","侨情"]
+        label.text = self.database.data_type
+        
+        
+        
+        label.sizeToFit()
         // label.numberOfLines = 0
         return label
     }()
@@ -76,9 +87,11 @@ class QuestionView: UIView {
     
     lazy var userName:UILabel = {
         
-        let label = UILabel(frame: Rect(30,46,100,26))
+        let label = UILabel(frame: Rect(30+90,46,100,26))
         label.font = UIFont.systemFont(ofSize: getHeight(26))
         label.textColor = title1Color
+        label.text = self.database.nickName ?? ""
+        label.sizeToFit()
         
         return label
     }()
@@ -87,6 +100,7 @@ class QuestionView: UIView {
     lazy var  focusButton:UIButton={
         let button = UIButton(frame: Rect(601,32,121,48))
         button.setTitle("+ 关注", for: .normal)
+        button.setTitle("已关注", for: .selected)
         button.titleLabel?.font = UIFont.systemFont(ofSize: getHeight(26))
         button.backgroundColor = UIColor.init(red: 222/255, green: 238/255, blue: 246/255, alpha: 1)
         button.setTitleColor(naviColor, for: .normal)
@@ -97,14 +111,24 @@ class QuestionView: UIView {
     lazy var contentText:UITextView={
         let l = UITextView(frame: Rect(0,106,750,820))
         
-        let IMG  = #imageLiteral(resourceName: "baccc")
-        let ttAttach = NSTextAttachment()
         var ll = NSMutableAttributedString()
-        ttAttach.image = IMG
-        //ttAttach.bounds = FloatRect(-10,0,SCREEN_WIDTH,getHeight(15))
-        ll.append(NSAttributedString.init(attachment: ttAttach))
+
         
-        let titleatrString = NSAttributedString.init(string: "\n内内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内", attributes:  [NSAttributedStringKey.foregroundColor : title1Color, NSAttributedStringKey.font : UIFont.systemFont(ofSize: getHeight(26))])
+        if let IMG  = self.database.question_picture{
+          
+             var eco:String = IMG//.removingPercentEncoding ?? ""
+             let url = getSomeImageURL(image: eco)
+            let ttAttach = NSTextAttachment()
+            do{
+              var data = try Data(contentsOf: url)
+              ttAttach.image = UIImage.init(data: data)
+             ll.append(NSAttributedString.init(attachment: ttAttach))
+            }catch {
+                print(error)
+            }
+        }
+        
+        let titleatrString = NSAttributedString.init(string: self.database.question_description ?? "", attributes:  [NSAttributedStringKey.foregroundColor : title1Color, NSAttributedStringKey.font : UIFont.systemFont(ofSize: getHeight(26))])
         
         ll.append(titleatrString)
         
@@ -119,8 +143,8 @@ class QuestionView: UIView {
     //点赞等button
     
     
-    lazy var  dislikeButton:UIButton={
-        let button = UIButton(frame: Rect(263,17,120,36))
+    lazy var  dislikeButton:LikeButton={
+        let button = LikeButton(frame: Rect(263,17,120,36))
 
        // button.frame = CGRect(x:getWidth(255),y:getHeight(15),width:getWidth(100),height:getHeight(41))
         // videoCount.titleLabel?.adjustsFontSizeToFitWidth = true
@@ -130,47 +154,39 @@ class QuestionView: UIView {
         button.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: 0 , bottom: 0, right: getWidth(84))
         button.setImage(#imageLiteral(resourceName: "critic2"), for: .normal)
         button.setImage(#imageLiteral(resourceName: "critic1"), for: .selected)
-        button.setCountTitle(titles: "62")
- 
-        button.setTitle("62", for: .normal)
-   
-     
 
-        //button.set(image: #imageLiteral(resourceName: "critic2"), title: "63", titlePosition: .right, additionalSpacing: 0, state: .normal)
-        
-        //button.setTitleColor(title2color, for: .normal)
-      //  button.center = CGPoint.init(x: 263+(120)/2, y: 17+18)
+       // button.setTitle("62", for: .normal)
+        button.setCountTitle(titles: "0")
+      
         button.tag = 1;
         
        // button.backgroundColor = UIColor.init(red: 222/255, green: 238/255, blue: 246/255, alpha: 1)
         //button.setTitleColor(naviColor, for: .normal)
         return button
     }()
-    lazy var  likeButton:UIButton={
-        let button = UIButton(frame: Rect(263+130,17,120,36))
+    lazy var  likeButton:LikeButton={
+        let button = LikeButton(frame: Rect(263+130,17,120,36))
         button.imageEdgeInsets = UIEdgeInsets.init(top: 0, left:0 , bottom: 0, right:getWidth(84))
         button.titleEdgeInsets = UIEdgeInsets.init(top: 0, left: getWidth(49), bottom: 0, right: 0)
-        button.setTitle("62", for: .normal)
         button.setImage(#imageLiteral(resourceName: "zan2"), for: .normal)
         button.setImage(#imageLiteral(resourceName: "zan1"), for: .selected)
         button.titleLabel?.font = UIFont.systemFont(ofSize: getHeight(26))
         button.setTitleColor(title2color, for: .normal)
+        button.setCountTitle(titles: "0")
 
         button.tag = 2;
 
-        // button.backgroundColor = UIColor.init(red: 222/255, green: 238/255, blue: 246/255, alpha: 1)
-        //button.setTitleColor(naviColor, for: .normal)
         return button
     }()
-    lazy var  collectButton:UIButton={
-        let button = UIButton(frame: Rect(263+130*2,17,120,36))
+    lazy var  collectButton:LikeButton={
+        let button = LikeButton(frame: Rect(263+130*2,17,120,36))
         button.imageEdgeInsets = UIEdgeInsets.init(top: 0, left:0 , bottom: 0, right:getWidth(84))
         button.titleEdgeInsets = UIEdgeInsets.init(top: 0, left: getWidth(49), bottom: 0, right: 0)
-        button.setTitle("62", for: .normal)
         button.setImage(#imageLiteral(resourceName: "collect2"), for: .normal)
         button.setImage(#imageLiteral(resourceName: "collect1"), for: .selected)
         button.titleLabel?.font = UIFont.systemFont(ofSize: getHeight(26))
         button.setTitleColor(title2color, for: .normal)
+        button.setCountTitle(titles: "0")
 
         button.tag = 3;
 
@@ -179,11 +195,11 @@ class QuestionView: UIView {
         //button.setTitleColor(naviColor, for: .normal)
         return button
     }()
-    lazy var  commentButton:UIButton={
-        let button = UIButton(frame: Rect(263+130*3,17,120,36))
+    lazy var  commentButton:LikeButton={
+        let button = LikeButton(frame: Rect(263+130*3,17,120,36))
         button.imageEdgeInsets = UIEdgeInsets.init(top: 0, left:0 , bottom: 0, right:getWidth(84))
         button.titleEdgeInsets = UIEdgeInsets.init(top: 0, left: getWidth(49), bottom: 0, right: 0)
-        button.setTitle("62", for: .normal)
+        button.setCountTitle(titles: "0")
         button.setImage(#imageLiteral(resourceName: "comment2"), for: .normal)
         button.setImage(#imageLiteral(resourceName: "comment1"), for: .selected)
         button.titleLabel?.font = UIFont.systemFont(ofSize: getHeight(26))
@@ -198,14 +214,21 @@ class QuestionView: UIView {
     
     
     
+    func changeText(_ m:CountModel){
+        dislikeButton.changeTitle(titles: "\(m.disLikeCount)")
+        likeButton.changeTitle(titles: "\(m.likeCount)")
+        collectButton.changeTitle(titles: "\(m.collectCount)")
+        commentButton.changeTitle(titles: "\(m.commentCount)")
+    }
     
     
     
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     
-    override init(frame: CGRect) {
+     init(frame: CGRect,model:DetailModel) {
         super.init(frame: frame)
+        self.database = model
         self.upView.addSubview(titleLabel)
         self.upView.addSubview(tagLabel)
         upView.addSubview(answerButton)
@@ -237,11 +260,6 @@ class QuestionView: UIView {
     
     override func draw(_ rect: CGRect) {
 
-        
-        
-        
-        
-        
     
         // Drawing code
     }

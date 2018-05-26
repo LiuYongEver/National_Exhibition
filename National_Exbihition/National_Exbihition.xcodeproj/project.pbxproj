@@ -49,6 +49,14 @@
 		08FE0AEF1FCFB0BD005915A4 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FE0AEE1FCFB081005915A4 /* ChartView.swift */; };
 		08FE0AF21FCFB127005915A4 /* MoreChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FE0AF11FCFB127005915A4 /* MoreChartViewController.swift */; };
 		08FE0AF41FCFB13E005915A4 /* MoreChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FE0AF31FCFB13E005915A4 /* MoreChartView.swift */; };
+		2D1CF6C220AC571F00BC7384 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1CF6C120AC571F00BC7384 /* LoginView.swift */; };
+		2D1CF6C420B002C900BC7384 /* ChangeInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1CF6C320B002C900BC7384 /* ChangeInfoViewController.swift */; };
+		2D1CF6C620B003B000BC7384 /* ChangeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1CF6C520B003B000BC7384 /* ChangeInfo.swift */; };
+		2D1CF6C820B1553700BC7384 /* DropListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1CF6C720B1553700BC7384 /* DropListView.swift */; };
+		2D1CF6CA20B6DB1300BC7384 /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1CF6C920B6DB1300BC7384 /* DetailModel.swift */; };
+		2D1CF6CC20B9282300BC7384 /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1CF6CB20B9282300BC7384 /* LikeButton.swift */; };
+		2D1CF6CE20B92D1800BC7384 /* CommentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1CF6CD20B92D1800BC7384 /* CommentTableViewController.swift */; };
+		2D1CF6D020B92D5300BC7384 /* WriteCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1CF6CF20B92D5300BC7384 /* WriteCommentViewController.swift */; };
 		2D4147FC20A1C78B00A72E5D /* Tableview+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4147FB20A1C78B00A72E5D /* Tableview+Extension.swift */; };
 		2D4147FE20A1C7D100A72E5D /* emptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4147FD20A1C7D100A72E5D /* emptyView.swift */; };
 		2D41480120A1D70100A72E5D /* FocusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D41480020A1D70100A72E5D /* FocusModel.swift */; };
@@ -56,11 +64,13 @@
 		2D41480520A3257F00A72E5D /* ChartDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D41480420A3257F00A72E5D /* ChartDataBase.swift */; };
 		2D87BA6F20A804C2009A8E5E /* LiteratureTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87BA6E20A804C2009A8E5E /* LiteratureTableViewController.swift */; };
 		2D87BA7120A806FD009A8E5E /* LiteratureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87BA7020A806FD009A8E5E /* LiteratureModel.swift */; };
+		2D8D54ED20B9347100D4D501 /* MyPublishTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8D54EC20B9347100D4D501 /* MyPublishTableViewController.swift */; };
+		2D8D54EF20B9351100D4D501 /* MyNoticeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8D54EE20B9351100D4D501 /* MyNoticeTableViewController.swift */; };
+		2D8D54F120B9358B00D4D501 /* MyPublishModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8D54F020B9358B00D4D501 /* MyPublishModel.swift */; };
 		2D931AC82089B8AB00898169 /* CommunityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D931AC72089B8AB00898169 /* CommunityTableViewController.swift */; };
 		2D931AD1208B1A2F00898169 /* AlaRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D931AD0208B1A2E00898169 /* AlaRequestManager.swift */; };
 		2D931AD3208B275700898169 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D931AD2208B275700898169 /* CommunityViewController.swift */; };
 		2DA1E8CD2078A57800A6F9B3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA1E8CB2078A57800A6F9B3 /* LoginViewController.swift */; };
-		2DA1E8CE2078A57800A6F9B3 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DA1E8CC2078A57800A6F9B3 /* LoginViewController.xib */; };
 		2DA1E8D42079202200A6F9B3 /* QuestionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA1E8D32079202200A6F9B3 /* QuestionDetailViewController.swift */; };
 		2DA1E8D62079205900A6F9B3 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA1E8D52079205900A6F9B3 /* QuestionView.swift */; };
 		2DA1E8D82079206E00A6F9B3 /* QuestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DA1E8D72079206E00A6F9B3 /* QuestionView.xib */; };
@@ -146,6 +156,14 @@
 		08FE0AF11FCFB127005915A4 /* MoreChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreChartViewController.swift; sourceTree = "<group>"; };
 		08FE0AF31FCFB13E005915A4 /* MoreChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreChartView.swift; sourceTree = "<group>"; };
 		2C9F8079231DA848C6372A5D /* Pods_National_Exbihition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_National_Exbihition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D1CF6C120AC571F00BC7384 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		2D1CF6C320B002C900BC7384 /* ChangeInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeInfoViewController.swift; sourceTree = "<group>"; };
+		2D1CF6C520B003B000BC7384 /* ChangeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeInfo.swift; sourceTree = "<group>"; };
+		2D1CF6C720B1553700BC7384 /* DropListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropListView.swift; sourceTree = "<group>"; };
+		2D1CF6C920B6DB1300BC7384 /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
+		2D1CF6CB20B9282300BC7384 /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButton.swift; sourceTree = "<group>"; };
+		2D1CF6CD20B92D1800BC7384 /* CommentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewController.swift; sourceTree = "<group>"; };
+		2D1CF6CF20B92D5300BC7384 /* WriteCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteCommentViewController.swift; sourceTree = "<group>"; };
 		2D4147FB20A1C78B00A72E5D /* Tableview+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tableview+Extension.swift"; sourceTree = "<group>"; };
 		2D4147FD20A1C7D100A72E5D /* emptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = emptyView.swift; sourceTree = "<group>"; };
 		2D41480020A1D70100A72E5D /* FocusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FocusModel.swift; path = National_Exbihition/MIne/FocusModel.swift; sourceTree = SOURCE_ROOT; };
@@ -153,11 +171,13 @@
 		2D41480420A3257F00A72E5D /* ChartDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartDataBase.swift; sourceTree = "<group>"; };
 		2D87BA6E20A804C2009A8E5E /* LiteratureTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiteratureTableViewController.swift; sourceTree = "<group>"; };
 		2D87BA7020A806FD009A8E5E /* LiteratureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiteratureModel.swift; sourceTree = "<group>"; };
+		2D8D54EC20B9347100D4D501 /* MyPublishTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPublishTableViewController.swift; sourceTree = "<group>"; };
+		2D8D54EE20B9351100D4D501 /* MyNoticeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNoticeTableViewController.swift; sourceTree = "<group>"; };
+		2D8D54F020B9358B00D4D501 /* MyPublishModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyPublishModel.swift; path = National_Exbihition/MIne/Controller/MyPublishModel.swift; sourceTree = SOURCE_ROOT; };
 		2D931AC72089B8AB00898169 /* CommunityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityTableViewController.swift; sourceTree = "<group>"; };
 		2D931AD0208B1A2E00898169 /* AlaRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlaRequestManager.swift; sourceTree = "<group>"; };
 		2D931AD2208B275700898169 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		2DA1E8CB2078A57800A6F9B3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		2DA1E8CC2078A57800A6F9B3 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		2DA1E8D32079202200A6F9B3 /* QuestionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDetailViewController.swift; sourceTree = "<group>"; };
 		2DA1E8D52079205900A6F9B3 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		2DA1E8D72079206E00A6F9B3 /* QuestionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionView.xib; sourceTree = "<group>"; };
@@ -217,6 +237,7 @@
 			children = (
 				081738111FD56C1300F2C4E1 /* MineView.swift */,
 				2DBBA18320A19052005640F2 /* FansTableViewCell.swift */,
+				2D1CF6C520B003B000BC7384 /* ChangeInfo.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -227,6 +248,7 @@
 				2DBBA18120A18FE3005640F2 /* FansModel.swift */,
 				2D41480020A1D70100A72E5D /* FocusModel.swift */,
 				2D41480220A3058700A72E5D /* CollectModel.swift */,
+				2D8D54F020B9358B00D4D501 /* MyPublishModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -239,6 +261,9 @@
 				2DBBA17B20A18EFF005640F2 /* CollectionTableViewController.swift */,
 				2DBBA17D20A18F12005640F2 /* FocusTableViewController.swift */,
 				2DBBA17F20A18F24005640F2 /* FansTableViewController.swift */,
+				2D1CF6C320B002C900BC7384 /* ChangeInfoViewController.swift */,
+				2D8D54EC20B9347100D4D501 /* MyPublishTableViewController.swift */,
+				2D8D54EE20B9351100D4D501 /* MyNoticeTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -508,9 +533,9 @@
 		2DA1E8CA2078A54300A6F9B3 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				2D1CF6C120AC571F00BC7384 /* LoginView.swift */,
 				2DA1E8CB2078A57800A6F9B3 /* LoginViewController.swift */,
 				2DE8172F20A16BFB00EF21C4 /* LoginUIExtension.swift */,
-				2DA1E8CC2078A57800A6F9B3 /* LoginViewController.xib */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -533,6 +558,8 @@
 				2D931AC72089B8AB00898169 /* CommunityTableViewController.swift */,
 				2D931AD2208B275700898169 /* CommunityViewController.swift */,
 				2DE81729209EE37C00EF21C4 /* AskViewController.swift */,
+				2D1CF6CD20B92D1800BC7384 /* CommentTableViewController.swift */,
+				2D1CF6CF20B92D5300BC7384 /* WriteCommentViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -540,11 +567,13 @@
 		2DA1E8D120791FE500A6F9B3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2D1CF6C720B1553700BC7384 /* DropListView.swift */,
 				2DA1E8D52079205900A6F9B3 /* QuestionView.swift */,
 				2DA1E8D72079206E00A6F9B3 /* QuestionView.xib */,
 				2DE81727209DA65000EF21C4 /* button_Extension.swift */,
 				2DE8172B209EE44C00EF21C4 /* askView.swift */,
 				2DE8172D209EE45900EF21C4 /* askView.xib */,
+				2D1CF6CB20B9282300BC7384 /* LikeButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -553,6 +582,7 @@
 			isa = PBXGroup;
 			children = (
 				2D931AD0208B1A2E00898169 /* AlaRequestManager.swift */,
+				2D1CF6C920B6DB1300BC7384 /* DetailModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -689,7 +719,6 @@
 				2DE8172E209EE45900EF21C4 /* askView.xib in Resources */,
 				086EA5B41FB2DE8A00E549F7 /* LaunchScreen.storyboard in Resources */,
 				086EA5B11FB2DE8A00E549F7 /* Assets.xcassets in Resources */,
-				2DA1E8CE2078A57800A6F9B3 /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -804,6 +833,8 @@
 				08201E721FB2F1C100563887 /* Propoty.swift in Sources */,
 				08DA83991FC5AB460003259C /* SearchHistoryTableViewCell.swift in Sources */,
 				08AE6C291FF397800070985E /* SelecteTypeViewController.swift in Sources */,
+				2D1CF6D020B92D5300BC7384 /* WriteCommentViewController.swift in Sources */,
+				2D8D54EF20B9351100D4D501 /* MyNoticeTableViewController.swift in Sources */,
 				08E371161FCD6587005FEE4D /* AllCountryViewController.swift in Sources */,
 				08DA83971FC409970003259C /* searchDatabase.swift in Sources */,
 				089263921FEF8D5F002EDD63 /* SliderGallery.swift in Sources */,
@@ -813,14 +844,21 @@
 				0896F4C71FE65CAC00658306 /* TechnologyView.swift in Sources */,
 				2DE8172A209EE37C00EF21C4 /* AskViewController.swift in Sources */,
 				2DE8173220A17DF000EF21C4 /* MyTabViewViewController.swift in Sources */,
+				2D1CF6C220AC571F00BC7384 /* LoginView.swift in Sources */,
 				08FE0AEF1FCFB0BD005915A4 /* ChartView.swift in Sources */,
+				2D1CF6C820B1553700BC7384 /* DropListView.swift in Sources */,
+				2D1CF6CC20B9282300BC7384 /* LikeButton.swift in Sources */,
 				2D41480120A1D70100A72E5D /* FocusModel.swift in Sources */,
+				2D8D54F120B9358B00D4D501 /* MyPublishModel.swift in Sources */,
 				08A6D8D81FB4466D00FAC0B0 /* BasicInformationViewController.swift in Sources */,
 				081738121FD56C1300F2C4E1 /* MineView.swift in Sources */,
 				2D87BA6F20A804C2009A8E5E /* LiteratureTableViewController.swift in Sources */,
 				08201E701FB2F17200563887 /* IndexView.swift in Sources */,
 				2D931AC82089B8AB00898169 /* CommunityTableViewController.swift in Sources */,
 				2D87BA7120A806FD009A8E5E /* LiteratureModel.swift in Sources */,
+				2D1CF6C420B002C900BC7384 /* ChangeInfoViewController.swift in Sources */,
+				2D8D54ED20B9347100D4D501 /* MyPublishTableViewController.swift in Sources */,
+				2D1CF6CE20B92D1800BC7384 /* CommentTableViewController.swift in Sources */,
 				08DD9B4F1FD68FC1002BC6C4 /* SelectContinentTableViewController.swift in Sources */,
 				08F734191FC01E5300E0CAE9 /* SearchViewController.swift in Sources */,
 				080C9D391FE36DC70029507F /* AboutUsViewController.swift in Sources */,
@@ -830,6 +868,7 @@
 				2DBBA17E20A18F12005640F2 /* FocusTableViewController.swift in Sources */,
 				08A24A901FDFAD90001D590E /* EnvironmentView.swift in Sources */,
 				2D931AD3208B275700898169 /* CommunityViewController.swift in Sources */,
+				2D1CF6CA20B6DB1300BC7384 /* DetailModel.swift in Sources */,
 				2DBBA17C20A18EFF005640F2 /* CollectionTableViewController.swift in Sources */,
 				2D931AD1208B1A2F00898169 /* AlaRequestManager.swift in Sources */,
 				0896F4CB1FE6622700658306 /* OverseasView.swift in Sources */,
@@ -850,6 +889,7 @@
 				08F734111FBDA3DE00E0CAE9 /* ChartViewController.swift in Sources */,
 				2DA1E8D62079205900A6F9B3 /* QuestionView.swift in Sources */,
 				0896F4C91FE65DE400658306 /* RelationshipView.swift in Sources */,
+				2D1CF6C620B003B000BC7384 /* ChangeInfo.swift in Sources */,
 				088D9CB81FEF9DE500FBFA42 /* ImageDetailViewController.swift in Sources */,
 				081738101FD56BEA00F2C4E1 /* MineViewController.swift in Sources */,
 			);

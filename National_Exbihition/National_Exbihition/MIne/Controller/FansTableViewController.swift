@@ -37,15 +37,16 @@ class FansTableViewController: UITableViewController {
     func loadData(){
         
         let url = rootUrl+"/fans"
-        let param = ["userid":"1"]
+        let id = UserDefaults.standard.string(forKey: "id") ?? "1"
+        let param = ["userid":id]
         Alamofire.request(url, method:.post, parameters: param).responseJSON
             {response in
                 if let resultDict = response.result.value as? [String:AnyObject]{
                       //print(response.result.value)
                       if let lists = resultDict["data"] as? [[String:AnyObject]]{
                       print(lists)
-                        let dic = [["id":"2","focusing_nickname":"1","focusingPicture":"1","233":"3"]]
-                        let models = Funs.dictToModel(list:dic as [[String : AnyObject]])
+                       // let dic = [["id":"2","focusing_nickname":"1","focusingPicture":"1","233":"3"]]
+                        let models = Funs.dictToModel(list:lists as [[String : AnyObject]])
                         
                       self.funs = models
    

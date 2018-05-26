@@ -14,6 +14,8 @@ class ChartViewController: UIViewController{
     let searchBar = UISearchBar()
     let ImageExbihition = UIImageView()
     var chartView:ChartView!
+
+    
     var DataBase:[ChartData_Populaton]?{
         didSet{
             self.chartView.dataBase = DataBase

@@ -12,36 +12,26 @@ class LoginViewController: UIViewController {
 
 
     
-    @IBOutlet weak var getCodeButton: UIButton!
-    @IBOutlet weak var phoneText: UITextField!
-    
-    @IBOutlet weak var codeText: UITextField!
    
-    lazy var LoginButton:UIButton = {
-        let login = UIButton.init(frame:CGRect(x:getWidth(90),y:getHeight(800),width:getWidth(555),height:getHeight(86)))
-        login.layer.cornerRadius = 7
-        login.backgroundColor = naviColor
-        login.setTitleColor(UIColor.white, for: .normal)
-        login.setTitle("立即登录", for: .normal)
-        login.titleLabel?.font = UIFont.systemFont(ofSize: getHeight(32))
-        
-        return login
+    
+    
+    
+    lazy var LoginView:loginView={
+        let view = loginView.init(frame: self.view.frame)
+        return view
     }()
- 
-    
-    //get code
-    
+   
     
     var countDownTime:Timer?
     
     var  remainSeconds: Int = 0{
         willSet{
-            self.getCodeButton.setTitle("\(newValue)秒后重新获取", for: .normal)
-            self.getCodeButton.isEnabled = false
+            self.LoginView.getCode.setTitle("\(newValue)秒后重新获取", for: .normal)
+            self.LoginView.getCode.isEnabled = false
             
             if newValue <= 0 {
-                self.getCodeButton.setTitle("重新获取", for: .normal)
-                self.getCodeButton.isEnabled = true
+                self.LoginView.getCode.setTitle("重新获取", for: .normal)
+                self.LoginView.getCode.isEnabled = true
             }
             
         }

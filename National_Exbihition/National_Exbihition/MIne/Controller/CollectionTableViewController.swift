@@ -37,7 +37,9 @@ class CollectionTableViewController: UITableViewController {
     func loadData(){
         
         let url = rootUrl+"/collection"
-        let param = ["userid":"1","page":"0"]
+        let id = UserDefaults.standard.string(forKey: "id") ?? "1"
+        let param = ["userid":id,"page":"1"]
+        //let param = ["userid":"1",]
         Alamofire.request(url, method:.post, parameters: param).responseJSON
             {response in
                 if let resultDict = response.result.value as? [String:AnyObject]{

@@ -34,6 +34,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" title="Button" image="add"/>
+                                    <connections>
+                                        <action selector="addImage:" destination="iN0-l3-epB" eventType="touchUpInside" id="BC3-oJ-DPw"/>
+                                    </connections>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ygF-Sn-HxJ">
                                     <rect key="frame" x="100" y="0.0" width="80" height="80"/>
@@ -100,6 +103,9 @@
                                     <integer key="value" value="1"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="selectType:" destination="iN0-l3-epB" eventType="touchUpInside" id="Ur2-II-ra4"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jXa-T8-MRs">
                             <rect key="frame" x="30" y="532" width="354" height="40"/>
@@ -147,6 +153,14 @@
                 <constraint firstItem="fXY-91-lzW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="yA0-Ui-c94"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="DetailText" destination="nHx-HR-wD1" id="BH4-4d-JUy"/>
+                <outlet property="Image" destination="ygF-Sn-HxJ" id="b5E-Ju-V6a"/>
+                <outlet property="InviteSome" destination="8zE-gm-VKO" id="4hA-lv-fga"/>
+                <outlet property="OkButton" destination="jXa-T8-MRs" id="W22-zL-nlV"/>
+                <outlet property="nameOfNation" destination="pit-yt-LnP" id="wDC-k5-zYe"/>
+                <outlet property="titleTet" destination="P6W-tJ-dlS" id="iv6-bz-W1o"/>
+            </connections>
             <point key="canvasLocation" x="-56" y="101"/>
         </view>
         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="SFG-KP-htj">

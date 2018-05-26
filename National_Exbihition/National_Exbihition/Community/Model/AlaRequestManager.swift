@@ -18,9 +18,15 @@ class AlaRequestManager{
     
     func postRequest(urlString : String, params : [String : AnyObject], success : @escaping (_ responseObject : JSON)->(), failture : @escaping (_ error : NSError)->()) {
         
-        Alamofire.request(urlString, method:.post, parameters: params).responseJSON
+        
+      //  let headers = ["Content-Type":"a566eb03378211f7dc9ff15ca78c2d93"]
+
+        
+        Alamofire.request(urlString, method:.post, parameters: params, encoding: URLEncoding.httpBody, headers: nil).responseJSON
             {response in
-               // print(response)
+                
+                
+                print(response.request)
                 if  response.result.isSuccess {
                     if let value = response.result.value{
                         
@@ -29,6 +35,7 @@ class AlaRequestManager{
                     }
                 }else{
                     let error = response.result.error
+                    print(error)
                     failture(error! as NSError)
                     
                 }
@@ -41,13 +48,13 @@ class AlaRequestManager{
         
         Alamofire.request(urlString, method:.post, parameters: params).responseJSON
             {response in
-                // print(response)
+                 print(response.request?.httpBodyStream)
                 if  response.result.isSuccess {
                     if let value = response.result.value{
                         success(value as! [String : AnyObject])
                     }
                 }else{
-                    let error = response.result.error
+                    let error = response.result.error.debugDescription
                     print(error ?? " ")
                     
                 }
@@ -55,23 +62,42 @@ class AlaRequestManager{
     }
     
 
-//
-//    func postRequest(urlString:String,params:[String:AnyObject],success:(responseObject:([String : AnyObject])->(),failture:(_ error:NSError)->())){
-//
-//        Alamofire.request(urlString, method:.post, parameters: params).responseJSON{
-//            response in
-//            if let success = response.result.value{
-//                 let value = JSON(success)
-//                 success(success)
-//            }
-//
-//
-//
-//            }
-//
-//
-//        }
-    
+    func oriRequest(){
+        let myUrl = URL(string: "http://112.74.36.246:8080/nation/api/update_userinfo");
+        var request = URLRequest(url:myUrl!);
+        request.httpMethod = "POST";
+        request.addValue("multipart/from-data", forHTTPHeaderField: "Content-Type")
+        
+        let postString = "account=18850076841&nickname=222&sex=0";
+        request.httpBody = postString.data(using: String.Encoding.utf8);
+        
+        print(request.httpBody as Any)
+        
+        
+        URLSession.shared.dataTask(with: request, completionHandler: { (data:Data?, response:URLResponse?, error:Error?) -> Void in
+            
+            
+   
+            
+            if error != nil {
+                print("fail")
+                return
+            }
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
+               // print ("1")
+                print(JSON(data))
+
+                
+                if let parseJSON = json {
+                }
+                    
+            } catch{
+                print(error)
+            }
+        }).resume()
+    }
     
     
     

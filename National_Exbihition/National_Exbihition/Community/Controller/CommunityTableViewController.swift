@@ -20,7 +20,7 @@ class CommunityTableViewController: UIViewController{
     var getContinet = ""
     var footerRefreshView:FCXRefreshFooterView?
     fileprivate var tableview:UITableView?
-    var page = 0
+    var page = 1
     
     
     
@@ -114,24 +114,24 @@ class CommunityTableViewController: UIViewController{
                         }else{
                             self.dataBase["capital"]?.append("")
                         }
-                        self.dataBase["id"]?.append(json["data"][i]["country_code"].string!)
+                        self.dataBase["nation_id"]?.append("\(json["data"][i]["id"].int!)")
                         
                         
                         // 2
                         
-                        if let flag = json["data"][i]["geography"].string{
-                            self.dataBase["content"]?.append(flag)
-                        }else{
-                            self.dataBase["content"]?.append("")
-                        }
-                        
-                        //3
-                        
-                        if let flag = json["data"][i]["geography"].string{
-                            self.dataBase["content"]?.append(flag)
-                        }else{
-                            self.dataBase["content"]?.append("")
-                        }
+//                        if let flag = json["data"][i]["geography"].string{
+//                            self.dataBase["content"]?.append(flag)
+//                        }else{
+//                            self.dataBase["content"]?.append("")
+//                        }
+//
+//                        //3
+//
+//                        if let flag = json["data"][i]["geography"].string{
+//                            self.dataBase["content"]?.append(flag)
+//                        }else{
+//                            self.dataBase["content"]?.append("")
+//                        }
 
                     }
                     self.footerRefreshView?.endRefresh()
@@ -175,7 +175,7 @@ class CommunityTableViewController: UIViewController{
     }
     
     func getIndex()->(Index:String,IndexCode:Int){
-        let indexx = ["","nationinfo","nature","politic","development","society","technology","relationship","overseas",""]
+        let indexx = ["recommend","nationinfo","nature","politic","development","society","technology","relationship","overseas",""]
         let ttitle  =  ["推荐","基本信息","环境资源","政治军事","经济发展","社会状况","科技教育","国际关系","侨情","国际数据"]
         for i in 0...ttitle.count-1{
             if ttitle[i] == index{
@@ -221,13 +221,13 @@ extension CommunityTableViewController:UITableViewDelegate,UITableViewDataSource
         
         let fg = dataBase["flag"]?[indexPath.row]
         if  fg != "" {
-            //print(imageUrl+fg!)国旗地址
+            print(imageUrl+fg!)//国旗地址
             let fg2 = fg?.components(separatedBy: "webapps/")
             //print(fg2![1])
-            let ecc  = imageUrl+fg2![1]
-            let eco = ecc.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            //let ecc  = imageUrl+fg2![1]
+            let eco = (imageUrl+fg!).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
             let url = URL.init(string:eco!)
-            //print(url)
+            print(url)
             
             cell.flagImage.sd_setImage(with: url, completed: nil)
         }else{
@@ -238,7 +238,12 @@ extension CommunityTableViewController:UITableViewDelegate,UITableViewDataSource
         cell.nameTitle.sizeToFit()
         //let content = self.dataBase[]
         if self.getIndex().Index == "nationinfo"{
-            cell.contentLabel.text = "国名："+self.dataBase["name"]![indexPath.row]+"建立时间："+self.dataBase["establish_time"]![indexPath.row]+"首都："+self.dataBase["capital"]![indexPath.row]
+            
+            let n = Int(self.dataBase["establish_time"]![indexPath.row])
+            let str = timeFormat(n ?? 0)
+
+            cell.contentLabel.text = "问题描述："+self.dataBase["name"]![indexPath.row]+"提问时间：" + str
+            //+"首都："+self.dataBase["capital"]![indexPath.row]
         }else{
             cell.contentLabel.text = self.dataBase["content"]![indexPath.row];
         }
@@ -267,7 +272,7 @@ extension CommunityTableViewController:UITableViewDelegate,UITableViewDataSource
             i.removeFromSuperview()
         }
         
-        let vc = QuestionDetailViewController()
+        let vc = QuestionDetailViewController.init(id: self.dataBase["nation_id"]![indexPath.row])
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
         vc.hidesBottomBarWhenPushed = false

@@ -17,35 +17,30 @@ extension LoginViewController{
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.codeText.resignFirstResponder()
-        self.phoneText.resignFirstResponder()
+        self.LoginView.textPhone.resignFirstResponder()
+       self.LoginView.textCode.resignFirstResponder()
         
     }
     
     
     
     func setUI(){
-       // self.loginNowButton.layer.cornerRadius = 4
-        self.getCodeButton.layer.cornerRadius = 4
-        self.phoneText.keyboardType = .numberPad
-        self.codeText.keyboardType = .numberPad
-        
-        self.getCodeButton.titleLabel?.font=UIFont.systemFont(ofSize: getHeight(26))
-        getCodeButton.addTarget(self, action: #selector(getCodeRequest), for: .touchUpInside)
-        LoginButton.addTarget(self, action: #selector(loginNow), for: .touchUpInside)
-       self.view.addSubview(LoginButton)
+
+       LoginView.getCode.addTarget(self, action: #selector(getCodeRequest), for: .touchUpInside)
+       LoginView.loginNow.addTarget(self, action: #selector(loginNow), for: .touchUpInside)
+        self.view.addSubview(LoginView)
     }
     
     
   @objc func getCodeRequest(){
         let url = rootUrl + "/getRandomCode"
-    if  self.phoneText.text == ""{
+    if  self.LoginView.textPhone.text == ""{
         SVProgressHUD.showInfo(withStatus: "请输入手机号")
         SVProgressHUD.dismiss(withDelay: 2)
         return
     }else{
-        self.getCodeButton.isEnabled = false
-        let phone  = self.phoneText.text
+        self.LoginView.getCode.isEnabled = false
+        let phone  = self.LoginView.textPhone.text
         let paramDic =  ["phoneNums":phone]
         
         AlaRequestManager.shared.postRequest(urlString: url, params: paramDic as [String : AnyObject], success: ({success in
@@ -72,14 +67,14 @@ extension LoginViewController{
     
     
   @objc func loginNow(){
-        let url = rootUrl + "/loginUp.do"
-        if  self.phoneText.text == "" || self.phoneText.text == "" {
+        let url = rootUrl + "/loginUp"
+        if  self.LoginView.textCode.text == "" || self.LoginView.textPhone.text == "" {
             SVProgressHUD.showInfo(withStatus: "请输入完整")
             SVProgressHUD.dismiss(withDelay: 2)
             return
         }else{
-            let phone  = self.phoneText.text!
-            let code  = self.codeText.text!
+            let phone  = self.LoginView.textPhone.text!
+            let code  =  self.LoginView.textCode.text!
 
             let paramDic =  ["account":phone,"code":code]
             print(paramDic)
@@ -93,7 +88,7 @@ extension LoginViewController{
                         UserDefaults.standard.set(nc, forKey: "nickname")
                     }
                     if let nc = success["data"]["id"].int{
-                        UserDefaults.standard.set(nc, forKey: "\(nc)")
+                        UserDefaults.standard.set("\(nc)", forKey: "id")
                     }
                     if let nc = success["data"]["picture"].int{
                         UserDefaults.standard.set(nc, forKey: "picture")
@@ -101,7 +96,7 @@ extension LoginViewController{
                     
                     UserDefaults.standard.set(phone, forKey: "account")
                     UserDefaults.standard.set(code, forKey: "code")
-
+                    self.present(MyTabViewViewController(), animated: true, completion: nil)
                     
                     
                     
@@ -110,8 +105,9 @@ extension LoginViewController{
                     SVProgressHUD.showInfo(withStatus: success["status"]["data"].string);
                 }
                 
-                self.present(MyTabViewViewController(), animated: true, completion: nil)
+
                 print(success)
+                print(UserDefaults.standard.string(forKey: "id"))
                 
             }), failture: ({
                 error in

@@ -28,6 +28,16 @@ func getImage(fg:String)->URL{
     }
 }
 
+func getSomeImageURL(image:String)->URL{
+    var eco:String = image//.removingPercentEncoding ?? ""
+    var imgURl = "http://112.74.36.246:8080"
+    var o:String = imgURl +  eco
+    o = o.replacingOccurrences(of: "\\", with: "/")
+    print(o)
+    o = o.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+    return URL.init(string: o)!
+}
+
 
 
 func getUrls(str:String) -> [String] {
